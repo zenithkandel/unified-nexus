@@ -79,6 +79,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .loader__logo {
@@ -86,49 +87,7 @@
   height: 120px;
   object-fit: contain;
   filter: brightness(0) invert(1);
-}
-
-/* Split logo for animation */
-.loader__logo-wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 120px;
-  margin: 0 auto;
-}
-
-.loader__logo-half {
-  width: 60px;
-  height: 120px;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.loader__logo-half--left {
-  margin: 0;
-  padding: 0;
-}
-
-.loader__logo-half--right {
-  margin: 0;
-  padding: 0;
-}
-
-.loader__logo-half img {
-  width: 120px;
-  height: 120px;
-  object-fit: contain;
-  filter: brightness(0) invert(1);
   display: block;
-}
-
-.loader__logo-half--left img {
-  transform: translateX(0);
-}
-
-.loader__logo-half--right img {
-  transform: translateX(-60px);
 }
 
 /* --------------------------------------------------------------------------
