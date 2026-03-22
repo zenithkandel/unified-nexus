@@ -78,6 +78,7 @@
   margin-bottom: var(--space-6);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .loader__logo {
@@ -92,20 +93,26 @@
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: 120px;
+  margin: 0 auto;
 }
 
 .loader__logo-half {
   width: 60px;
   height: 120px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .loader__logo-half--left {
-  margin-right: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .loader__logo-half--right {
-  margin-left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .loader__logo-half img {
@@ -113,6 +120,7 @@
   height: 120px;
   object-fit: contain;
   filter: brightness(0) invert(1);
+  display: block;
 }
 
 .loader__logo-half--left img {
