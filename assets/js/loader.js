@@ -12,8 +12,7 @@ class Loader {
     this.progressText = document.querySelector('.loader__percentage');
     this.statusText = document.querySelector('.loader__status');
     this.hint = document.querySelector('.loader__hint');
-    this.logoLeft = document.querySelector('.loader__logo-half--left');
-    this.logoRight = document.querySelector('.loader__logo-half--right');
+    this.logo = document.querySelector('.loader__logo');
 
     this.minDuration = 1500;
     this.autoTriggerDelay = 1500;
@@ -150,19 +149,12 @@ class Loader {
 
     const ease = 'power3.inOut';
 
-    // Phase 1: Split logo halves apart (0-200ms)
-    if (this.logoLeft && this.logoRight) {
-      tl.to(this.logoLeft, {
-        x: -30,
+    // Phase 1: Fade out logo with subtle scale
+    if (this.logo) {
+      tl.to(this.logo, {
+        scale: 0.9,
         opacity: 0,
-        duration: 0.2,
-        ease: ease
-      }, 0);
-
-      tl.to(this.logoRight, {
-        x: 30,
-        opacity: 0,
-        duration: 0.2,
+        duration: 0.3,
         ease: ease
       }, 0);
     }
