@@ -464,8 +464,12 @@
 }
 
 /* Center section labels when inside text-center */
-.text-center .section-label {
+.text-center .section-label,
+.text-center .section-title,
+.text-center .section-subtitle {
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .section-title {

@@ -408,6 +408,12 @@
   margin: 0 auto;
 }
 
+.cta .section-label,
+.cta .section-title,
+.cta .section-subtitle {
+  text-align: center;
+}
+
 /* Fix button contrast on CTA section */
 .cta .btn-primary {
   border-color: var(--color-bg-ink);
