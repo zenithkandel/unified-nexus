@@ -448,6 +448,12 @@
   text-transform: uppercase;
   color: var(--color-accent-rust);
   margin-bottom: var(--space-2);
+  display: block;
+}
+
+/* Center section labels when inside text-center */
+.text-center .section-label {
+  text-align: center;
 }
 
 .section-title {

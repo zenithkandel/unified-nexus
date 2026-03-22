@@ -44,17 +44,7 @@ class CustomCursor {
     this.cursor.classList.add('cursor');
     document.body.appendChild(this.cursor);
 
-    // Hide default cursor
-    document.body.style.cursor = 'none';
-
-    // Add cursor styles for interactive elements
-    const style = document.createElement('style');
-    style.textContent = `
-      a, button, [role="button"], input[type="submit"], .nav__link, .btn, .card, .club-card, .member-card, .social-link {
-        cursor: none !important;
-      }
-    `;
-    document.head.appendChild(style);
+    // Keep default cursor visible - the custom cursor is decorative only
   }
 
   addEventListeners() {

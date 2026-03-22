@@ -408,6 +408,20 @@
   margin: 0 auto;
 }
 
+/* Fix button contrast on CTA section */
+.cta .btn-primary {
+  border-color: var(--color-bg-ink);
+  color: var(--color-bg-ink);
+}
+
+.cta .btn-primary::before {
+  background: var(--color-bg-ink);
+}
+
+.cta .btn-primary:hover {
+  color: var(--color-bg-base);
+}
+
 /* --------------------------------------------------------------------------
    Footer
    -------------------------------------------------------------------------- */
