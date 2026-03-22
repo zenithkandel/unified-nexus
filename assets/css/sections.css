@@ -445,7 +445,7 @@
 }
 
 .cta .btn-primary:hover {
-  color: var(--color-bg-base);
+  color: var(--color-ink-secondary);
 }
 
 /* --------------------------------------------------------------------------
