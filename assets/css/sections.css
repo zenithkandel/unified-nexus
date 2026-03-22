@@ -163,20 +163,20 @@
 .hero__scroll-line {
   width: 1px;
   height: 60px;
-  background: linear-gradient(
-    to bottom,
-    var(--color-ink-muted),
-    transparent
-  );
+  background: linear-gradient(to bottom,
+      var(--color-ink-muted),
+      transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
 @keyframes scrollPulse {
+
   0%,
   100% {
     opacity: 0.3;
     transform: scaleY(0.8);
   }
+
   50% {
     opacity: 1;
     transform: scaleY(1);
@@ -187,6 +187,7 @@
   .hero__text {
     grid-column: 1 / 8;
   }
+
   .hero__media {
     grid-column: 8 / 13;
   }
