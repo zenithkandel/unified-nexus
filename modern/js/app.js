@@ -102,12 +102,7 @@
       const staggerObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const children = entry.target.children;
-            Array.from(children).forEach((child, index) => {
-              setTimeout(() => {
-                child.classList.add('revealed');
-              }, index * 100);
-            });
+            entry.target.classList.add('revealed');
             staggerObserver.unobserve(entry.target);
           }
         });
@@ -410,7 +405,7 @@
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--color-sage, #84a98c) 0%, var(--color-terracotta, #c08b6c) 100%);
+        background: linear-gradient(90deg, var(--clr-primary, #84a98c) 0%, var(--clr-accent, #c08b6c) 100%);
         width: 0%;
         z-index: 10000;
         transition: width 0.1s linear;
@@ -485,7 +480,7 @@
 
         setTimeout(() => {
           btn.innerHTML = 'Sent!';
-          btn.style.background = 'var(--color-sage)';
+          btn.style.background = 'var(--clr-primary)';
 
           setTimeout(() => {
             btn.innerHTML = originalHTML;
@@ -518,9 +513,9 @@
             this.navLinks.forEach(link => {
               const href = link.getAttribute('href');
               if (href === `#${id}`) {
-                link.classList.add('navbar__link--active');
+                link.classList.add('active');
               } else {
-                link.classList.remove('navbar__link--active');
+                link.classList.remove('active');
               }
             });
           }
