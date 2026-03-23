@@ -42,12 +42,16 @@ class MagneticButtons {
    -------------------------------------------------------------------------- */
 class TextReveal {
   constructor() {
-    this.elements = document.querySelectorAll('.section-title, .hero__headline, .about__text');
+    // Only target simple text elements without existing nested structure
+    this.elements = document.querySelectorAll('.section-title, .vision__quote');
     this.init();
   }
 
   init() {
     this.elements.forEach(el => {
+      // Skip if already has nested elements (like spans)
+      if (el.children.length > 0) return;
+
       // Split text into words
       const text = el.textContent;
       const words = text.split(' ');
@@ -69,7 +73,7 @@ class TextReveal {
       });
     }, { threshold: 0.2 });
 
-    this.elements.forEach(el => observer.observe(el));
+    document.querySelectorAll('.text-reveal-ready').forEach(el => observer.observe(el));
   }
 }
 
@@ -79,7 +83,7 @@ class TextReveal {
    -------------------------------------------------------------------------- */
 class TiltCards {
   constructor() {
-    this.cards = document.querySelectorAll('.club-card, .team-card');
+    this.cards = document.querySelectorAll('.club-card, .member-card');
     this.maxTilt = 10;
     this.init();
   }
@@ -153,10 +157,17 @@ class FloatingParticles {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
       overflow: hidden;
     `;
-    document.body.insertBefore(this.container, document.body.firstChild);
+
+    // Insert after main-content so particles appear above background
+    const mainContent = document.querySelector('.main-content');
+    if (mainContent) {
+      mainContent.appendChild(this.container);
+    } else {
+      document.body.appendChild(this.container);
+    }
 
     for (let i = 0; i < this.particleCount; i++) {
       this.createParticle();
@@ -318,13 +329,19 @@ class CounterAnimations {
   }
 
   init() {
-    // Add stats section if it exists or create counter elements
-    const statsElements = document.querySelectorAll('[data-count]');
+    // Use existing stats in the about section
+    const statNumbers = document.querySelectorAll('.about__stat-number');
 
-    if (statsElements.length === 0) {
-      // Create stats display in about section
-      this.createStatsSection();
-    }
+    statNumbers.forEach(el => {
+      // Parse the text content to extract number and suffix
+      const text = el.textContent.trim();
+      const match = text.match(/^(\d+)(.*)$/);
+      if (match) {
+        el.dataset.count = match[1];
+        el.dataset.suffix = match[2] || '';
+        el.textContent = '0' + (match[2] || '');
+      }
+    });
 
     // Observe counters
     const observer = new IntersectionObserver((entries) => {
@@ -336,34 +353,7 @@ class CounterAnimations {
       });
     }, { threshold: 0.5 });
 
-    document.querySelectorAll('[data-count]').forEach(el => observer.observe(el));
-  }
-
-  createStatsSection() {
-    const aboutSection = document.querySelector('.about');
-    if (!aboutSection) return;
-
-    const stats = [
-      { count: 10, label: 'Active Clubs', suffix: '+' },
-      { count: 500, label: 'Members', suffix: '+' },
-      { count: 50, label: 'Events Yearly', suffix: '+' },
-      { count: 100, label: 'Success Stories', suffix: '%' }
-    ];
-
-    const statsContainer = document.createElement('div');
-    statsContainer.className = 'stats-grid';
-    statsContainer.innerHTML = stats.map(s => `
-      <div class="stat-item">
-        <span class="stat-number" data-count="${s.count}" data-suffix="${s.suffix}">0</span>
-        <span class="stat-label">${s.label}</span>
-      </div>
-    `).join('');
-
-    // Insert after the about content
-    const aboutContent = aboutSection.querySelector('.about__content');
-    if (aboutContent) {
-      aboutContent.after(statsContainer);
-    }
+    statNumbers.forEach(el => observer.observe(el));
   }
 
   animateCounter(el) {
@@ -550,7 +540,7 @@ class SectionColorTransitions {
    -------------------------------------------------------------------------- */
 class TypingEffect {
   constructor() {
-    this.element = document.querySelector('.hero__tagline');
+    this.element = document.querySelector('.hero__description');
     this.originalText = '';
     this.init();
   }
@@ -558,9 +548,10 @@ class TypingEffect {
   init() {
     if (!this.element) return;
 
-    this.originalText = this.element.textContent;
+    this.originalText = this.element.textContent.trim();
     this.element.textContent = '';
     this.element.style.borderRight = '2px solid var(--color-accent-warm, #c9a87c)';
+    this.element.style.minHeight = '4em';
 
     // Wait for loader to complete
     window.addEventListener('loaderComplete', () => {
@@ -653,32 +644,50 @@ class InteractionsManager {
   }
 
   init() {
-    // Wait for DOM and loader
+    // Wait for DOM to be ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => this.initFeatures());
+      document.addEventListener('DOMContentLoaded', () => this.waitForLoader());
     } else {
-      this.initFeatures();
+      this.waitForLoader();
     }
   }
 
-  initFeatures() {
-    // Initialize all features
-    this.features = [
-      new MagneticButtons(),
-      new TextReveal(),
-      new TiltCards(),
-      new FloatingParticles(),
-      new ScrollProgress(),
-      new CursorTrail(),
-      new CounterAnimations(),
-      new InteractiveLogo(),
-      new SectionColorTransitions(),
-      new TypingEffect(),
-      new SmoothScrollEnhanced(),
-      new ParallaxElements()
-    ];
+  waitForLoader() {
+    // Wait for loader to complete before initializing most features
+    window.addEventListener('loaderComplete', () => {
+      this.initFeatures();
+    });
 
-    console.log('Unified Nexus: All interactive features loaded');
+    // Fallback: if loader already complete or not present
+    setTimeout(() => {
+      if (this.features.length === 0) {
+        this.initFeatures();
+      }
+    }, 2500);
+  }
+
+  initFeatures() {
+    try {
+      // Initialize all features
+      this.features = [
+        new MagneticButtons(),
+        new TextReveal(),
+        new TiltCards(),
+        new FloatingParticles(),
+        new ScrollProgress(),
+        new CursorTrail(),
+        new CounterAnimations(),
+        new InteractiveLogo(),
+        new SectionColorTransitions(),
+        new TypingEffect(),
+        new SmoothScrollEnhanced(),
+        new ParallaxElements()
+      ];
+
+      console.log('Unified Nexus: All interactive features loaded');
+    } catch (error) {
+      console.error('Unified Nexus: Error loading interactive features', error);
+    }
   }
 }
 

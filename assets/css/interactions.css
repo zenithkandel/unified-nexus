@@ -108,8 +108,8 @@
 /* --------------------------------------------------------------------------
    Typing Effect Cursor
    -------------------------------------------------------------------------- */
-.hero__tagline {
-  min-height: 1.5em;
+.hero__description {
+  min-height: 4em;
 }
 
 @keyframes blink-cursor {
@@ -125,7 +125,7 @@
   }
 }
 
-.hero__tagline[style*="border-right"] {
+.hero__description[style*="border-right"] {
   animation: blink-cursor 1s infinite;
   padding-right: 4px;
 }
