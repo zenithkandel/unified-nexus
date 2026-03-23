@@ -308,10 +308,10 @@
       this.glow.className = 'cursor-glow';
       this.glow.style.cssText = `
         position: fixed;
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         border-radius: 50%;
-        background: radial-gradient(circle, rgba(132,169,140,0.08) 0%, transparent 70%);
+        background: radial-gradient(circle, rgba(201,168,124,0.06) 0%, transparent 70%);
         pointer-events: none;
         z-index: 0;
         transform: translate(-50%, -50%);
@@ -404,8 +404,8 @@
         position: fixed;
         top: 0;
         left: 0;
-        height: 3px;
-        background: linear-gradient(90deg, var(--clr-primary, #84a98c) 0%, var(--clr-accent, #c08b6c) 100%);
+        height: 2px;
+        background: var(--clr-gold, #c9a87c);
         width: 0%;
         z-index: 10000;
         transition: width 0.1s linear;
@@ -480,7 +480,7 @@
 
         setTimeout(() => {
           btn.innerHTML = 'Sent!';
-          btn.style.background = 'var(--clr-primary)';
+          btn.style.background = 'var(--clr-gold, #c9a87c)';
 
           setTimeout(() => {
             btn.innerHTML = originalHTML;
