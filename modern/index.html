@@ -1,520 +1,805 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Unified Nexus - A modern student-led creative platform for learning, expression & collaboration. Join 10+ clubs and discover your potential.">
-  <title>Unified Nexus | Modern Student Creative Platform</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Unified Nexus - A modern student-led creative platform for learning, expression & collaboration. Join 10+ clubs and discover your potential."
+    />
+    <title>Unified Nexus | Modern Student Creative Platform</title>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../assets/images/logos/logo-icon.png">
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/images/logos/logo-icon.png"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader__content">
-      <div class="loader__spinner"></div>
-      <p class="loader__text">Loading experience...</p>
-    </div>
-  </div>
-
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="container navbar__inner">
-      <a href="#" class="navbar__brand">
-        <img src="../assets/images/logos/logo-icon.png" alt="Unified Nexus" class="navbar__logo">
-        <span>Unified Nexus</span>
-      </a>
-
-      <ul class="navbar__menu">
-        <li><a href="#about" class="navbar__link">About</a></li>
-        <li><a href="#clubs" class="navbar__link">Clubs</a></li>
-        <li><a href="#team" class="navbar__link">Team</a></li>
-        <li><a href="#contact" class="navbar__link">Contact</a></li>
-        <li><a href="#contact" class="navbar__cta">Join Now</a></li>
-      </ul>
-
-      <button class="navbar__toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero" id="hero">
-    <div class="hero__bg">
-      <div class="hero__gradient hero__gradient--1"></div>
-      <div class="hero__gradient hero__gradient--2"></div>
-    </div>
-
-    <div class="container hero__content">
-      <div class="hero__text" data-reveal>
-        <div class="hero__badge">
-          <span class="hero__badge-dot"></span>
-          Student-Led Platform
-        </div>
-
-        <h1 class="hero__title">
-          <span>Where Creativity</span>
-          <span class="text-gradient">Meets Community</span>
-        </h1>
-
-        <p class="hero__subtitle">
-          Unified Nexus brings together passionate students to explore, create,
-          and grow. Join a vibrant community where your talents shine.
-        </p>
-
-        <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary">
-            Get Started
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="#about" class="btn btn--secondary">Learn More</a>
-        </div>
-      </div>
-
-      <div class="hero__visual" data-reveal="right">
-        <div class="hero__image-wrapper">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=500&fit=crop" alt="Students collaborating" class="hero__image">
-        </div>
-
-        <div class="hero__float-card hero__float-card--1">
-          <div class="hero__float-card__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <span class="hero__float-card__label">Active Members</span>
-          <span class="hero__float-card__value">500+</span>
-        </div>
-
-        <div class="hero__float-card hero__float-card--2">
-          <div class="hero__float-card__icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <span class="hero__float-card__label">Clubs</span>
-          <span class="hero__float-card__value">10+</span>
-        </div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+      <div class="loader__content">
+        <div class="loader__spinner"></div>
+        <p class="loader__text">Loading experience...</p>
       </div>
     </div>
-  </section>
 
-  <!-- About Section -->
-  <section class="about section" id="about">
-    <div class="container">
-      <div class="about__header" data-reveal>
-        <span class="about__label">About Us</span>
-        <h2 class="about__title">A Platform Built for Students</h2>
-        <p>We empower students to discover their passions, develop their talents, and make meaningful connections in a supportive creative community.</p>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="container navbar__inner">
+        <a href="#" class="navbar__brand">
+          <img
+            src="../assets/images/logos/logo-icon.png"
+            alt="Unified Nexus"
+            class="navbar__logo"
+          />
+          <span>Unified Nexus</span>
+        </a>
+
+        <ul class="navbar__menu">
+          <li><a href="#about" class="navbar__link">About</a></li>
+          <li><a href="#clubs" class="navbar__link">Clubs</a></li>
+          <li><a href="#team" class="navbar__link">Team</a></li>
+          <li><a href="#contact" class="navbar__link">Contact</a></li>
+          <li><a href="#contact" class="navbar__cta">Join Now</a></li>
+        </ul>
+
+        <button class="navbar__toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero__bg">
+        <div class="hero__gradient hero__gradient--1"></div>
+        <div class="hero__gradient hero__gradient--2"></div>
       </div>
 
-      <div class="about__grid" data-stagger>
-        <div class="about__card">
-          <div class="about__card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M12 16v-4M12 8h.01"/>
-            </svg>
+      <div class="container hero__content">
+        <div class="hero__text" data-reveal>
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            Student-Led Platform
           </div>
-          <h3 class="about__card-title">Creative Expression</h3>
-          <p class="about__card-text">Explore various forms of art, music, literature, and performance in a judgment-free environment.</p>
-        </div>
 
-        <div class="about__card">
-          <div class="about__card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="about__card-title">Community Building</h3>
-          <p class="about__card-text">Connect with like-minded students who share your interests and build lasting friendships.</p>
-        </div>
+          <h1 class="hero__title">
+            <span>Where Creativity</span>
+            <span class="text-gradient">Meets Community</span>
+          </h1>
 
-        <div class="about__card">
-          <div class="about__card-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-              <polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
-          </div>
-          <h3 class="about__card-title">Personal Growth</h3>
-          <p class="about__card-text">Develop leadership, communication, and teamwork skills through hands-on activities.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+          <p class="hero__subtitle">
+            Unified Nexus brings together passionate students to explore,
+            create, and grow. Join a vibrant community where your talents shine.
+          </p>
 
-  <!-- Stats Section -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid" data-stagger>
-        <div class="stats__item">
-          <div class="stats__number" data-count="10">0</div>
-          <div class="stats__label">Active Clubs</div>
-        </div>
-        <div class="stats__item">
-          <div class="stats__number" data-count="500">0</div>
-          <div class="stats__label">Members</div>
-        </div>
-        <div class="stats__item">
-          <div class="stats__number" data-count="50">0</div>
-          <div class="stats__label">Events Yearly</div>
-        </div>
-        <div class="stats__item">
-          <div class="stats__number" data-count="100">0</div>
-          <div class="stats__label">Success Rate %</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Clubs Section -->
-  <section class="clubs section" id="clubs">
-    <div class="container">
-      <div class="clubs__header" data-reveal>
-        <div class="clubs__header-text">
-          <span class="about__label">Our Clubs</span>
-          <h2 class="about__title">Find Your Passion</h2>
-          <p>Join one of our diverse clubs and start your creative journey today.</p>
-        </div>
-        <a href="#contact" class="btn btn--secondary">View All</a>
-      </div>
-
-      <div class="clubs__grid" data-stagger>
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18V5l12-2v13"/>
-              <circle cx="6" cy="18" r="3"/>
-              <circle cx="18" cy="16" r="3"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Music Club</h3>
-          <p class="club-card__desc">Create, perform, and share your musical talents with fellow enthusiasts.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Debate Club</h3>
-          <p class="club-card__desc">Sharpen your critical thinking and public speaking skills.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="4" r="2"/>
-              <path d="M12 6v4M8 22l2-8M16 22l-2-8"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Dance Club</h3>
-          <p class="club-card__desc">Express yourself through movement and choreography.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor"/>
-              <circle cx="17.5" cy="10.5" r="0.5" fill="currentColor"/>
-              <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor"/>
-              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Art Club</h3>
-          <p class="club-card__desc">Unleash your creativity through visual arts and design.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Literature Club</h3>
-          <p class="club-card__desc">Explore the world of words, poetry, and storytelling.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-
-        <article class="club-card">
-          <div class="club-card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-            </svg>
-          </div>
-          <h3 class="club-card__title">Environment Club</h3>
-          <p class="club-card__desc">Make a positive impact on our planet through action.</p>
-          <div class="club-card__arrow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Section -->
-  <section class="team section" id="team">
-    <div class="container">
-      <div class="team__header" data-reveal>
-        <span class="about__label">Leadership</span>
-        <h2 class="about__title">Meet Our Team</h2>
-        <p>The passionate individuals driving our community forward.</p>
-      </div>
-
-      <div class="team__grid" data-stagger>
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Tilashma Neupane">
-          </div>
-          <h3 class="team-card__name">Tilashma Neupane</h3>
-          <p class="team-card__role">Director</p>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Shreyas Poudel">
-          </div>
-          <h3 class="team-card__name">Shreyas Poudel</h3>
-          <p class="team-card__role">President</p>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Aakirti Luitel">
-          </div>
-          <h3 class="team-card__name">Aakirti Luitel</h3>
-          <p class="team-card__role">Manager</p>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="Bijal Sakhya">
-          </div>
-          <h3 class="team-card__name">Bijal Sakhya</h3>
-          <p class="team-card__role">Secretary</p>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Soham Gautam">
-          </div>
-          <h3 class="team-card__name">Soham Gautam</h3>
-          <p class="team-card__role">Treasurer</p>
-        </article>
-
-        <article class="team-card">
-          <div class="team-card__avatar">
-            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face" alt="Allan Khanal">
-          </div>
-          <h3 class="team-card__name">Allan Khanal</h3>
-          <p class="team-card__role">IT Head</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta">
-    <div class="cta__bg-pattern"></div>
-    <div class="container">
-      <div class="cta__content" data-reveal="scale">
-        <h2 class="cta__title">Ready to Start Your Journey?</h2>
-        <p class="cta__text">Join hundreds of students who are already discovering their passion and building meaningful connections.</p>
-        <a href="#contact" class="btn btn--primary">Join Unified Nexus</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact section" id="contact">
-    <div class="container">
-      <div class="contact__grid">
-        <div class="contact__info" data-reveal="left">
-          <span class="about__label">Contact</span>
-          <h2 class="contact__title">Get In Touch</h2>
-          <p class="contact__text">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-
-          <div class="contact__methods">
-            <a href="mailto:contact@unifiednexus.com" class="contact__method">
-              <div class="contact__method-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                </svg>
-              </div>
-              <div>
-                <span class="contact__method-label">Email</span>
-                <span class="contact__method-value">contact@unifiednexus.com</span>
-              </div>
+          <div class="hero__actions">
+            <a href="#contact" class="btn btn--primary">
+              Get Started
+              <svg
+                class="btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </a>
+            <a href="#about" class="btn btn--secondary">Learn More</a>
+          </div>
+        </div>
 
-            <a href="https://instagram.com/unifiednexus" target="_blank" class="contact__method">
-              <div class="contact__method-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="2" y="2" width="20" height="20" rx="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </div>
-              <div>
-                <span class="contact__method-label">Instagram</span>
-                <span class="contact__method-value">@unifiednexus</span>
-              </div>
+        <div class="hero__visual" data-reveal="right">
+          <div class="hero__image-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=500&fit=crop"
+              alt="Students collaborating"
+              class="hero__image"
+            />
+          </div>
+
+          <div class="hero__float-card hero__float-card--1">
+            <div class="hero__float-card__icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <span class="hero__float-card__label">Active Members</span>
+            <span class="hero__float-card__value">500+</span>
+          </div>
+
+          <div class="hero__float-card hero__float-card--2">
+            <div class="hero__float-card__icon">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
+              </svg>
+            </div>
+            <span class="hero__float-card__label">Clubs</span>
+            <span class="hero__float-card__value">10+</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+      <div class="container">
+        <div class="about__header" data-reveal>
+          <span class="about__label">About Us</span>
+          <h2 class="about__title">A Platform Built for Students</h2>
+          <p>
+            We empower students to discover their passions, develop their
+            talents, and make meaningful connections in a supportive creative
+            community.
+          </p>
+        </div>
+
+        <div class="about__grid" data-stagger>
+          <div class="about__card">
+            <div class="about__card-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4M12 8h.01" />
+              </svg>
+            </div>
+            <h3 class="about__card-title">Creative Expression</h3>
+            <p class="about__card-text">
+              Explore various forms of art, music, literature, and performance
+              in a judgment-free environment.
+            </p>
+          </div>
+
+          <div class="about__card">
+            <div class="about__card-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h3 class="about__card-title">Community Building</h3>
+            <p class="about__card-text">
+              Connect with like-minded students who share your interests and
+              build lasting friendships.
+            </p>
+          </div>
+
+          <div class="about__card">
+            <div class="about__card-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3 class="about__card-title">Personal Growth</h3>
+            <p class="about__card-text">
+              Develop leadership, communication, and teamwork skills through
+              hands-on activities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+      <div class="container">
+        <div class="stats__grid" data-stagger>
+          <div class="stats__item">
+            <div class="stats__number" data-count="10">0</div>
+            <div class="stats__label">Active Clubs</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number" data-count="500">0</div>
+            <div class="stats__label">Members</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number" data-count="50">0</div>
+            <div class="stats__label">Events Yearly</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number" data-count="100">0</div>
+            <div class="stats__label">Success Rate %</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Clubs Section -->
+    <section class="clubs section" id="clubs">
+      <div class="container">
+        <div class="clubs__header" data-reveal>
+          <div class="clubs__header-text">
+            <span class="about__label">Our Clubs</span>
+            <h2 class="about__title">Find Your Passion</h2>
+            <p>
+              Join one of our diverse clubs and start your creative journey
+              today.
+            </p>
+          </div>
+          <a href="#contact" class="btn btn--secondary">View All</a>
+        </div>
+
+        <div class="clubs__grid" data-stagger>
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18V5l12-2v13" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="16" r="3" />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Music Club</h3>
+            <p class="club-card__desc">
+              Create, perform, and share your musical talents with fellow
+              enthusiasts.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Debate Club</h3>
+            <p class="club-card__desc">
+              Sharpen your critical thinking and public speaking skills.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="4" r="2" />
+                <path d="M12 6v4M8 22l2-8M16 22l-2-8" />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Dance Club</h3>
+            <p class="club-card__desc">
+              Express yourself through movement and choreography.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="13.5" cy="6.5" r="0.5" fill="currentColor" />
+                <circle cx="17.5" cy="10.5" r="0.5" fill="currentColor" />
+                <circle cx="8.5" cy="7.5" r="0.5" fill="currentColor" />
+                <path
+                  d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.555C21.965 6.012 17.461 2 12 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Art Club</h3>
+            <p class="club-card__desc">
+              Unleash your creativity through visual arts and design.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path
+                  d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+                />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Literature Club</h3>
+            <p class="club-card__desc">
+              Explore the world of words, poetry, and storytelling.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+
+          <article class="club-card">
+            <div class="club-card__icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"
+                />
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+              </svg>
+            </div>
+            <h3 class="club-card__title">Environment Club</h3>
+            <p class="club-card__desc">
+              Make a positive impact on our planet through action.
+            </p>
+            <div class="club-card__arrow">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team section" id="team">
+      <div class="container">
+        <div class="team__header" data-reveal>
+          <span class="about__label">Leadership</span>
+          <h2 class="about__title">Meet Our Team</h2>
+          <p>The passionate individuals driving our community forward.</p>
+        </div>
+
+        <div class="team__grid" data-stagger>
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face"
+                alt="Tilashma Neupane"
+              />
+            </div>
+            <h3 class="team-card__name">Tilashma Neupane</h3>
+            <p class="team-card__role">Director</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+                alt="Shreyas Poudel"
+              />
+            </div>
+            <h3 class="team-card__name">Shreyas Poudel</h3>
+            <p class="team-card__role">President</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+                alt="Aakirti Luitel"
+              />
+            </div>
+            <h3 class="team-card__name">Aakirti Luitel</h3>
+            <p class="team-card__role">Manager</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+                alt="Bijal Sakhya"
+              />
+            </div>
+            <h3 class="team-card__name">Bijal Sakhya</h3>
+            <p class="team-card__role">Secretary</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+                alt="Soham Gautam"
+              />
+            </div>
+            <h3 class="team-card__name">Soham Gautam</h3>
+            <p class="team-card__role">Treasurer</p>
+          </article>
+
+          <article class="team-card">
+            <div class="team-card__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face"
+                alt="Allan Khanal"
+              />
+            </div>
+            <h3 class="team-card__name">Allan Khanal</h3>
+            <p class="team-card__role">IT Head</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+      <div class="cta__bg-pattern"></div>
+      <div class="container">
+        <div class="cta__content" data-reveal="scale">
+          <h2 class="cta__title">Ready to Start Your Journey?</h2>
+          <p class="cta__text">
+            Join hundreds of students who are already discovering their passion
+            and building meaningful connections.
+          </p>
+          <a href="#contact" class="btn btn--primary">Join Unified Nexus</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section" id="contact">
+      <div class="container">
+        <div class="contact__grid">
+          <div class="contact__info" data-reveal="left">
+            <span class="about__label">Contact</span>
+            <h2 class="contact__title">Get In Touch</h2>
+            <p class="contact__text">
+              Have questions? We'd love to hear from you. Send us a message and
+              we'll respond as soon as possible.
+            </p>
+
+            <div class="contact__methods">
+              <a href="mailto:contact@unifiednexus.com" class="contact__method">
+                <div class="contact__method-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact__method-label">Email</span>
+                  <span class="contact__method-value"
+                    >contact@unifiednexus.com</span
+                  >
+                </div>
+              </a>
+
+              <a
+                href="https://instagram.com/unifiednexus"
+                target="_blank"
+                class="contact__method"
+              >
+                <div class="contact__method-icon">
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="contact__method-label">Instagram</span>
+                  <span class="contact__method-value">@unifiednexus</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <form
+            class="contact__form"
+            data-reveal="right"
+            action="#"
+            method="POST"
+          >
+            <div class="form__group">
+              <label for="name" class="form__label">Full Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form__input"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="form__group">
+              <label for="email" class="form__label">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form__input"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="form__group">
+              <label for="club" class="form__label">Interested Club</label>
+              <select id="club" name="club" class="form__select">
+                <option value="">Select a club (optional)</option>
+                <option value="music">Music Club</option>
+                <option value="debate">Debate Club</option>
+                <option value="dance">Dance Club</option>
+                <option value="art">Art Club</option>
+                <option value="literature">Literature Club</option>
+                <option value="environment">Environment Club</option>
+              </select>
+            </div>
+
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form__textarea"
+                placeholder="Tell us about yourself..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width: 100%">
+              Send Message
+              <svg
+                class="btn__icon"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__brand">
+            <a href="#" class="footer__logo">
+              <img
+                src="../assets/images/logos/logo-icon.png"
+                alt="Unified Nexus"
+              />
+              <span>Unified Nexus</span>
+            </a>
+            <p class="footer__desc">
+              A vibrant student-led platform celebrating creativity, expression,
+              and collaboration.
+            </p>
+          </div>
+
+          <div>
+            <h4 class="footer__heading">Quick Links</h4>
+            <ul class="footer__links">
+              <li><a href="#about" class="footer__link">About Us</a></li>
+              <li><a href="#clubs" class="footer__link">Our Clubs</a></li>
+              <li><a href="#team" class="footer__link">Team</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer__heading">Clubs</h4>
+            <ul class="footer__links">
+              <li><a href="#" class="footer__link">Music Club</a></li>
+              <li><a href="#" class="footer__link">Debate Club</a></li>
+              <li><a href="#" class="footer__link">Dance Club</a></li>
+              <li><a href="#" class="footer__link">Art Club</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 class="footer__heading">Connect</h4>
+            <ul class="footer__links">
+              <li>
+                <a
+                  href="https://instagram.com/unifiednexus"
+                  class="footer__link"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a href="https://facebook.com/unifiednexus" class="footer__link"
+                  >Facebook</a
+                >
+              </li>
+              <li>
+                <a href="mailto:contact@unifiednexus.com" class="footer__link"
+                  >Email Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <p>&copy; 2024 Unified Nexus. All rights reserved.</p>
+          <div class="footer__social">
+            <a
+              href="https://instagram.com/unifiednexus"
+              target="_blank"
+              aria-label="Instagram"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a
+              href="https://facebook.com/unifiednexus"
+              target="_blank"
+              aria-label="Facebook"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                />
+              </svg>
             </a>
           </div>
         </div>
-
-        <form class="contact__form" data-reveal="right" action="#" method="POST">
-          <div class="form__group">
-            <label for="name" class="form__label">Full Name</label>
-            <input type="text" id="name" name="name" class="form__input" placeholder="Enter your name" required>
-          </div>
-
-          <div class="form__group">
-            <label for="email" class="form__label">Email Address</label>
-            <input type="email" id="email" name="email" class="form__input" placeholder="Enter your email" required>
-          </div>
-
-          <div class="form__group">
-            <label for="club" class="form__label">Interested Club</label>
-            <select id="club" name="club" class="form__select">
-              <option value="">Select a club (optional)</option>
-              <option value="music">Music Club</option>
-              <option value="debate">Debate Club</option>
-              <option value="dance">Dance Club</option>
-              <option value="art">Art Club</option>
-              <option value="literature">Literature Club</option>
-              <option value="environment">Environment Club</option>
-            </select>
-          </div>
-
-          <div class="form__group">
-            <label for="message" class="form__label">Message</label>
-            <textarea id="message" name="message" class="form__textarea" placeholder="Tell us about yourself..." required></textarea>
-          </div>
-
-          <button type="submit" class="btn btn--primary" style="width: 100%;">
-            Send Message
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-          </button>
-        </form>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div class="footer__brand">
-          <a href="#" class="footer__logo">
-            <img src="../assets/images/logos/logo-icon.png" alt="Unified Nexus">
-            <span>Unified Nexus</span>
-          </a>
-          <p class="footer__desc">A vibrant student-led platform celebrating creativity, expression, and collaboration.</p>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Quick Links</h4>
-          <ul class="footer__links">
-            <li><a href="#about" class="footer__link">About Us</a></li>
-            <li><a href="#clubs" class="footer__link">Our Clubs</a></li>
-            <li><a href="#team" class="footer__link">Team</a></li>
-            <li><a href="#contact" class="footer__link">Contact</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Clubs</h4>
-          <ul class="footer__links">
-            <li><a href="#" class="footer__link">Music Club</a></li>
-            <li><a href="#" class="footer__link">Debate Club</a></li>
-            <li><a href="#" class="footer__link">Dance Club</a></li>
-            <li><a href="#" class="footer__link">Art Club</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer__heading">Connect</h4>
-          <ul class="footer__links">
-            <li><a href="https://instagram.com/unifiednexus" class="footer__link">Instagram</a></li>
-            <li><a href="https://facebook.com/unifiednexus" class="footer__link">Facebook</a></li>
-            <li><a href="mailto:contact@unifiednexus.com" class="footer__link">Email Us</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer__bottom">
-        <p>&copy; 2024 Unified Nexus. All rights reserved.</p>
-        <div class="footer__social">
-          <a href="https://instagram.com/unifiednexus" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="2" width="20" height="20" rx="5"/>
-              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-            </svg>
-          </a>
-          <a href="https://facebook.com/unifiednexus" target="_blank" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="js/app.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+  </body>
 </html>

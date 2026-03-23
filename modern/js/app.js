@@ -3,7 +3,7 @@
    Clean, performant, and engaging interactions
    ========================================================================== */
 
-(function() {
+(function () {
   'use strict';
 
   /* --------------------------------------------------------------------------
@@ -213,15 +213,15 @@
       if (!this.toggle || !this.menu) return;
 
       this.toggle.addEventListener('click', () => {
-        this.menu.classList.toggle('navbar__menu--active');
-        this.toggle.classList.toggle('navbar__toggle--active');
+        this.menu.classList.toggle('active');
+        this.toggle.classList.toggle('active');
       });
 
       // Close menu on link click
       this.menu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-          this.menu.classList.remove('navbar__menu--active');
-          this.toggle.classList.remove('navbar__toggle--active');
+          this.menu.classList.remove('active');
+          this.toggle.classList.remove('active');
         });
       });
     }
@@ -383,7 +383,7 @@
         if (iteration >= finalText.length) {
           clearInterval(interval);
         }
-        iteration += 1/2;
+        iteration += 1 / 2;
       }, 30);
     }
   }
