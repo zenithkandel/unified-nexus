@@ -100,6 +100,20 @@ body.loading .main-content {
   visibility: hidden;
 }
 
+/* Prevent blank space at bottom of page */
+.main-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure fixed elements don't affect layout */
+.particles-container,
+.scroll-progress,
+.cursor-trail-dot,
+.cursor {
+  position: fixed !important;
+}
+
 img,
 picture,
 video,
