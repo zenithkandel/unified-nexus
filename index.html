@@ -23,7 +23,7 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar anim-slide-down" id="navbar">
       <div class="container">
         <a href="#" class="nav-brand">
           <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
@@ -32,7 +32,7 @@
           <li><a href="#about" class="nav-link">Story</a></li>
           <li><a href="#clubs" class="nav-link">Clubs</a></li>
           <li><a href="#leadership" class="nav-link">Leadership</a></li>
-          <li><a href="#contact" class="nav-link donate-link">Join Us</a></li>
+          <li><a href="#contact" class="btn btn-primary">Join Us</a></li>
         </ul>
       </div>
     </nav>
@@ -47,14 +47,14 @@
           style="justify-content: center; color: var(--c-7F2B3E)"
           >EST. 2026</span
         >
-        <h1 class="hero-title-large">Unified<br />Nexus</h1>
-        <p class="hero-subtitle">
+        <h1 class="hero-title-large anim-float-up-2">Unified<br />Nexus</h1>
+        <p class="hero-subtitle anim-float-up-3">
           A collective space converging talent, expression, and intellect.
           Exploring the boundaries of retro aesthetics and modern web. We work,
           we win.
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center">
-          <a href="#contact" class="nav-link donate-link">Get Involved</a>
+          <a href="#contact" class="btn btn-primary">Get Involved</a>
           <a
             href="#clubs"
             class="nav-link"
@@ -205,15 +205,7 @@
               />
             </div>
 
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                placeholder="+1234567890"
-              />
-            </div>
+            
 
             <div class="form-group">
               <label for="clubId">Select Club</label>
@@ -474,7 +466,6 @@
           const payload = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
             clubId: Number(document.getElementById("clubId").value),
             message: document.getElementById("message").value,
           };
