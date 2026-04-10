@@ -1,0 +1,36 @@
+:root,
+html[data-theme="light"] {
+	--surface-0: #f8f7f6;
+	--surface-1: #efeded;
+	--surface-2: var(--color-base-4);
+	--text-strong: #1e1d1f;
+	--text-muted: var(--color-base-1);
+	--border-color: var(--color-base-3);
+	--accent: var(--color-accent-1);
+	--accent-strong: var(--color-accent-2);
+	--success: #355f43;
+	--error: #8a1f2f;
+}
+
+html[data-theme="dark"] {
+	--surface-0: #1f1d22;
+	--surface-1: #2c2930;
+	--surface-2: #3b383f;
+	--text-strong: #f4f3f1;
+	--text-muted: #d2d0d3;
+	--border-color: #57545b;
+	--accent: #b36a7a;
+	--accent-strong: #d18d9d;
+	--success: #6eb083;
+	--error: #d87a89;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+	transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
