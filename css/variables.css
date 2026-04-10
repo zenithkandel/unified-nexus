@@ -1,29 +1,20 @@
 :root {
     --color-white: #ffffff;
-    --color-black: #04131a;
+    --color-black: #111111;
+    --color-base-1: #57545b;
+    --color-base-2: #716f75;
+    --color-base-3: #959294;
+    --color-base-4: #aaaaaa;
+    --color-accent-1: #7f2b3e;
+    --color-accent-2: #661b28;
 
-    --color-base-1: #0f3644;
-    --color-base-2: #1e5363;
-    --color-base-3: #4f7d8f;
-    --color-base-4: #95afbb;
+    --radius-sm: 2px;
+    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.09);
+    --shadow-card: 0 14px 34px rgba(25, 19, 22, 0.08);
 
-    --color-accent-1: #0b8b92;
-    --color-accent-2: #0c6f74;
-    --color-accent-3: #f0b35d;
-
-    --radius-xs: 8px;
-    --radius-sm: 12px;
-    --radius-md: 18px;
-    --radius-lg: 26px;
-    --radius-pill: 999px;
-
-    --shadow-subtle: 0 8px 24px rgba(12, 47, 59, 0.08);
-    --shadow-card: 0 18px 48px rgba(8, 43, 56, 0.14);
-    --shadow-strong: 0 28px 72px rgba(6, 39, 52, 0.2);
-
-    --font-primary: "Sora", "Avenir Next", "Segoe UI", sans-serif;
-    --font-secondary: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-    --font-mono: "JetBrains Mono", "Consolas", monospace;
+    --font-primary: "Playfair Display", "Garamond", "Palatino Linotype", serif;
+    --font-secondary: "Source Serif 4", "Book Antiqua", "Trebuchet MS", serif;
+    --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -32,8 +23,8 @@
     --space-5: 1.5rem;
     --space-6: 2rem;
     --space-7: 3rem;
-    --space-8: 4.5rem;
-    --space-9: 6rem;
+    --space-8: 4rem;
+    --space-9: 5rem;
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
@@ -41,12 +32,9 @@
     --text-lg: 1.125rem;
     --text-xl: 1.5rem;
     --text-2xl: 2rem;
-    --text-3xl: 3rem;
+    --text-3xl: 2.75rem;
 
-    --gradient-brand: linear-gradient(132deg, #0e6f73 0%, #119ba3 46%, #e6ad55 100%);
-    --gradient-soft: linear-gradient(180deg, rgba(17, 155, 163, 0.08) 0%, rgba(240, 179, 93, 0.08) 100%);
-
-    --transition-fast: 160ms cubic-bezier(0.2, 0.6, 0.2, 1);
-    --transition-base: 260ms cubic-bezier(0.2, 0.6, 0.2, 1);
-    --transition-smooth: 520ms cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-fast: 180ms ease;
+    --transition-base: 280ms ease;
+    --transition-smooth: 560ms cubic-bezier(0.4, 0, 0.2, 1);
 }

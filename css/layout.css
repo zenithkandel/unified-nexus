@@ -1,15 +1,14 @@
 .container {
-    width: min(1180px, 92vw);
+    width: min(1100px, 92vw);
     margin: 0 auto;
 }
 
 .section {
     padding: var(--space-8) 0;
-    position: relative;
 }
 
 .section-alt {
-    background: linear-gradient(180deg, color-mix(in srgb, var(--surface-1) 88%, transparent), color-mix(in srgb, var(--surface-0) 92%, transparent));
+    background: var(--surface-1);
     border-top: 1px solid var(--line-soft);
     border-bottom: 1px solid var(--line-soft);
 }
@@ -17,15 +16,15 @@
 .site-header {
     position: sticky;
     top: 0;
-    z-index: 40;
-    background: color-mix(in srgb, var(--surface-overlay) 95%, transparent);
-    backdrop-filter: blur(14px) saturate(1.12);
+    z-index: 30;
+    background: color-mix(in srgb, var(--surface-panel) 91%, transparent);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
-    transition: background-color var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
 }
 
 .site-header.scrolled {
-    background: color-mix(in srgb, var(--surface-overlay) 98%, transparent);
+    background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
     box-shadow: var(--shadow-subtle);
 }
 
@@ -33,56 +32,46 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-3);
-    padding: 0.95rem 0 0.7rem;
+    padding: var(--space-3) 0 var(--space-2);
 }
 
 .main-nav {
     display: flex;
     gap: var(--space-3);
     overflow-x: auto;
-    padding: 0 0 0.85rem;
-    scrollbar-width: none;
-}
-
-.main-nav::-webkit-scrollbar {
-    display: none;
+    padding: 0 0 var(--space-3);
 }
 
 .main-nav a {
     font-size: var(--text-xs);
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-faint);
-    border: 1px solid transparent;
-    border-radius: var(--radius-pill);
-    padding: 0.38rem 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    border-bottom: 1px solid transparent;
+    padding: var(--space-1) 0;
     position: relative;
 }
 
 .main-nav a::after {
     content: "";
     position: absolute;
-    left: 0.7rem;
-    bottom: 0.18rem;
-    width: calc(100% - 1.4rem);
+    left: 0;
+    bottom: -1px;
+    width: 0;
     height: 2px;
-    transform: scaleX(0);
-    transform-origin: left;
-    background: var(--gradient-brand);
-    transition: transform var(--transition-base);
+    background: var(--accent);
+    transition: width var(--transition-base);
 }
 
 .main-nav a:hover::after,
 .main-nav a.is-active::after {
-    transform: scaleX(1);
+    width: 100%;
 }
 
 .main-nav a.is-active {
     color: var(--text-strong);
-    border-color: color-mix(in srgb, var(--accent) 24%, transparent);
-    background: color-mix(in srgb, var(--surface-panel) 84%, transparent);
+    border-color: transparent;
 }
 
 .section-head {
@@ -96,7 +85,7 @@
     font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    color: var(--accent-strong);
+    color: var(--accent);
     margin-bottom: var(--space-2);
 }
 
@@ -109,9 +98,9 @@
 
 .hero-panel {
     border: 1px solid var(--line-soft);
-    background: color-mix(in srgb, var(--surface-panel) 88%, transparent);
+    background: color-mix(in srgb, var(--surface-panel) 92%, transparent);
     padding: var(--space-5);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     box-shadow: var(--shadow-card);
 }
 
@@ -127,9 +116,7 @@
 }
 
 .site-footer {
-    background:
-        radial-gradient(circle at 80% -30%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 48%),
-        color-mix(in srgb, var(--surface-2) 78%, var(--surface-0));
+    background: color-mix(in srgb, var(--surface-2) 70%, var(--surface-0));
     border-top: 1px solid var(--line-soft);
     padding: var(--space-7) 0;
 }
@@ -150,7 +137,7 @@
 
 .footer-tagline,
 .footer-item {
-    color: var(--text-faint);
+    color: var(--text-muted);
     margin-bottom: var(--space-2);
 }
 
