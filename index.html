@@ -22,6 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
   <body>
+    <div id="canvas-container"></div>
     <!-- Navigation -->
     <nav class="navbar anim-slide-down" id="navbar">
       <div class="container">
@@ -39,8 +40,6 @@
 
     <!-- Redone Hero Section -->
     <section class="hero" id="hero">
-      <div id="canvas-container"></div>
-
       <div class="container hero-content reveal">
         <span
           class="section-label"
@@ -388,6 +387,15 @@
         } else {
           nav.classList.remove("scrolled");
         }
+
+        const canvasContainer = document.getElementById("canvas-container");
+        if (canvasContainer) {
+          if (window.scrollY > window.innerHeight * 0.4) {
+            canvasContainer.classList.add("scrolled-bg");
+          } else {
+            canvasContainer.classList.remove("scrolled-bg");
+          }
+        }
       });
 
       /* --- 3. Dynamic Data Fetching --- */
@@ -433,10 +441,11 @@
                 <div class="leader-item reveal">
                   <div class="leader-image-wrapper">
                     <img src="${exec.photo_path || "images/leadership/placeholder.png"}" alt="${exec.full_name}" class="leader-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" />
-                    <div class="leader-image-overlay"></div>
                   </div>
-                  <span class="leader-name">${exec.full_name}</span>
-                  <span class="leader-role">${exec.role_title}</span>
+                  <div class="leader-info">
+                    <span class="leader-name">${exec.full_name}</span>
+                    <span class="leader-role">${exec.role_title}</span>
+                  </div>
                 </div>
               `;
             });
