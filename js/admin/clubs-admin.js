@@ -1,13 +1,12 @@
 import { adminJsonRequest } from './auth.js';
+import { closeModal, openModal } from './modal.js';
 
 export function initClubsAdmin() {
-    const form = document.getElementById('clubForm');
     const tableBody = document.getElementById('clubsTableBody');
     const status = document.getElementById('clubStatus');
-    const resetBtn = document.getElementById('clubResetBtn');
-    const submitBtn = document.getElementById('clubSubmitBtn');
+    const addBtn = document.getElementById('clubAddBtn');
 
-    if (!form || !tableBody || !status || !resetBtn || !submitBtn) {
+    if (!tableBody || !status || !addBtn) {
         return { refresh: async () => { } };
     }
 
@@ -17,28 +16,145 @@ export function initClubsAdmin() {
         if (type) status.classList.add(type);
     };
 
-    const resetForm = () => {
-        form.reset();
-        document.getElementById('clubId').value = '';
-        document.getElementById('clubActive').checked = true;
-        submitBtn.textContent = 'Create Club';
+    const setLoadingRow = () => {
+        tableBody.innerHTML = '<tr class="table-empty"><td colspan="5">Loading clubs...</td></tr>';
     };
 
-    const fillForm = (row) => {
-        document.getElementById('clubId').value = String(row.id);
-        document.getElementById('clubName').value = row.name || '';
-        document.getElementById('clubPresident').value = row.president_name || '';
-        document.getElementById('clubOrder').value = String(row.display_order ?? 0);
-        document.getElementById('clubImage').value = row.hero_image_path || '';
-        document.getElementById('clubDescription').value = row.description || '';
-        document.getElementById('clubMotive').value = row.theme_motive || '';
-        document.getElementById('clubActive').checked = Number(row.is_active) === 1;
-        submitBtn.textContent = 'Update Club';
+    const buildFormHtml = (row = null) => {
+        const isUpdate = row !== null;
+        return `
+            <form id="clubForm" class="admin-form" novalidate>
+                <input type="hidden" id="clubId" name="id" value="${isUpdate ? escapeAttr(String(row.id || '')) : ''}" />
+                <div>
+                    <label for="clubName">Name</label>
+                    <input id="clubName" name="name" type="text" required value="${isUpdate ? escapeAttr(row.name || '') : ''}" />
+                </div>
+                <div>
+                    <label for="clubPresident">President</label>
+                    <input id="clubPresident" name="president_name" type="text" required value="${isUpdate ? escapeAttr(row.president_name || '') : ''}" />
+                </div>
+                <div>
+                    <label for="clubOrder">Display Order</label>
+                    <input id="clubOrder" name="display_order" type="number" required value="${isUpdate ? escapeAttr(String(row.display_order ?? 0)) : '1'}" />
+                </div>
+                <div>
+                    <label for="clubImage">Hero Image Path (optional)</label>
+                    <input id="clubImage" name="hero_image_path" type="text" value="${isUpdate ? escapeAttr(row.hero_image_path || '') : ''}" />
+                </div>
+                <div>
+                    <label for="clubDescription">Description</label>
+                    <textarea id="clubDescription" name="description" required>${isUpdate ? escapeHtml(row.description || '') : ''}</textarea>
+                </div>
+                <div>
+                    <label for="clubMotive">Theme/Motive</label>
+                    <textarea id="clubMotive" name="theme_motive" required>${isUpdate ? escapeHtml(row.theme_motive || '') : ''}</textarea>
+                </div>
+                <div>
+                    <label class="check-row">
+                        <input id="clubActive" name="is_active" type="checkbox" ${isUpdate ? (Number(row.is_active) === 1 ? 'checked' : '') : 'checked'} />
+                        Active
+                    </label>
+                </div>
+                <div class="modal-actions">
+                    <button class="admin-btn" type="submit">${isUpdate ? 'Update Club' : 'Create Club'}</button>
+                    <button class="row-btn" type="button" data-action="close">Cancel</button>
+                </div>
+                <p id="clubFormStatus" class="status" aria-live="polite"></p>
+            </form>
+        `;
+    };
+
+    const bindFormSubmit = (isUpdate) => {
+        const form = document.getElementById('clubForm');
+        const formStatus = document.getElementById('clubFormStatus');
+        if (!form || !formStatus) return;
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const payload = {
+                id: document.getElementById('clubId').value,
+                name: document.getElementById('clubName').value,
+                president_name: document.getElementById('clubPresident').value,
+                display_order: Number(document.getElementById('clubOrder').value),
+                hero_image_path: document.getElementById('clubImage').value,
+                description: document.getElementById('clubDescription').value,
+                theme_motive: document.getElementById('clubMotive').value,
+                is_active: document.getElementById('clubActive').checked
+            };
+
+            try {
+                await adminJsonRequest(
+                    isUpdate ? 'api/admin/clubs-update.php' : 'api/admin/clubs-create.php',
+                    'POST',
+                    payload
+                );
+                setStatus(isUpdate ? 'Club updated successfully.' : 'Club created successfully.', 'success');
+                closeModal();
+                await refresh();
+            } catch (error) {
+                formStatus.textContent = error.message;
+                formStatus.classList.add('error');
+            }
+        });
+    };
+
+    const openCreateModal = () => {
+        openModal({
+            title: 'Add Club',
+            content: buildFormHtml()
+        });
+        bindFormSubmit(false);
+    };
+
+    const openEditModal = (row) => {
+        openModal({
+            title: 'Edit Club',
+            content: buildFormHtml(row)
+        });
+        bindFormSubmit(true);
+    };
+
+    const openDeleteModal = (id) => {
+        openModal({
+            title: 'Delete Club',
+            content: `
+                <p>This action will permanently remove this club.</p>
+                <div class="modal-actions">
+                    <button id="confirmClubDelete" class="admin-btn" type="button">Delete</button>
+                    <button class="row-btn" type="button" data-action="close">Cancel</button>
+                </div>
+                <p id="clubDeleteStatus" class="status" aria-live="polite"></p>
+            `
+        });
+
+        const confirmBtn = document.getElementById('confirmClubDelete');
+        const deleteStatus = document.getElementById('clubDeleteStatus');
+
+        confirmBtn?.addEventListener('click', async () => {
+            try {
+                await adminJsonRequest('api/admin/clubs-delete.php', 'POST', { id });
+                setStatus('Club deleted successfully.', 'success');
+                closeModal();
+                await refresh();
+            } catch (error) {
+                if (deleteStatus) {
+                    deleteStatus.textContent = error.message;
+                    deleteStatus.classList.add('error');
+                }
+            }
+        });
     };
 
     const refresh = async () => {
+        setLoadingRow();
         try {
             const rows = await adminJsonRequest('api/admin/clubs-list.php');
+            if (!Array.isArray(rows) || rows.length === 0) {
+                tableBody.innerHTML = '<tr class="table-empty"><td colspan="5">No clubs yet. Use Add Club to create one.</td></tr>';
+                return;
+            }
+
             tableBody.innerHTML = rows.map((row) => `
 				<tr>
 					<td>${escapeHtml(String(row.display_order ?? ''))}</td>
@@ -58,62 +174,24 @@ export function initClubsAdmin() {
                 button.addEventListener('click', () => {
                     const id = Number(button.getAttribute('data-id'));
                     const selected = rows.find((r) => Number(r.id) === id);
-                    if (selected) fillForm(selected);
+                    if (selected) openEditModal(selected);
                 });
             });
 
             tableBody.querySelectorAll('button[data-action="delete"]').forEach((button) => {
-                button.addEventListener('click', async () => {
+                button.addEventListener('click', () => {
                     const id = Number(button.getAttribute('data-id'));
-                    if (!window.confirm('Delete this club?')) return;
-                    try {
-                        await adminJsonRequest('api/admin/clubs-delete.php', 'POST', { id });
-                        setStatus('Club deleted successfully.', 'success');
-                        await refresh();
-                    } catch (error) {
-                        setStatus(error.message, 'error');
-                    }
+                    openDeleteModal(id);
                 });
             });
         } catch (error) {
             setStatus(error.message, 'error');
+            tableBody.innerHTML = '<tr class="table-empty"><td colspan="5">Unable to load clubs right now.</td></tr>';
         }
     };
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const payload = {
-            id: document.getElementById('clubId').value,
-            name: document.getElementById('clubName').value,
-            president_name: document.getElementById('clubPresident').value,
-            display_order: Number(document.getElementById('clubOrder').value),
-            hero_image_path: document.getElementById('clubImage').value,
-            description: document.getElementById('clubDescription').value,
-            theme_motive: document.getElementById('clubMotive').value,
-            is_active: document.getElementById('clubActive').checked
-        };
+    addBtn.addEventListener('click', openCreateModal);
 
-        const isUpdate = payload.id !== '';
-        try {
-            await adminJsonRequest(
-                isUpdate ? 'api/admin/clubs-update.php' : 'api/admin/clubs-create.php',
-                'POST',
-                payload
-            );
-            setStatus(isUpdate ? 'Club updated successfully.' : 'Club created successfully.', 'success');
-            resetForm();
-            await refresh();
-        } catch (error) {
-            setStatus(error.message, 'error');
-        }
-    });
-
-    resetBtn.addEventListener('click', () => {
-        resetForm();
-        setStatus('');
-    });
-
-    resetForm();
     return { refresh };
 }
 
@@ -124,5 +202,9 @@ function escapeHtml(value) {
         .replaceAll('>', '&gt;')
         .replaceAll('"', '&quot;')
         .replaceAll("'", '&#039;');
+}
+
+function escapeAttr(value) {
+    return escapeHtml(value).replaceAll('`', '&#096;');
 }
 

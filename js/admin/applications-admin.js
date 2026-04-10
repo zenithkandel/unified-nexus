@@ -1,4 +1,5 @@
 import { adminJsonRequest } from './auth.js';
+import { closeModal, openModal } from './modal.js';
 
 export function initApplicationsAdmin() {
     const tableBody = document.getElementById('applicationsTableBody');
@@ -14,9 +15,49 @@ export function initApplicationsAdmin() {
         if (type) status.classList.add(type);
     };
 
+    const setLoadingRow = () => {
+        tableBody.innerHTML = '<tr class="table-empty"><td colspan="6">Loading applications...</td></tr>';
+    };
+
+    const openDeleteModal = (id) => {
+        openModal({
+            title: 'Delete Application',
+            content: `
+                <p>This action will permanently remove this application.</p>
+                <div class="modal-actions">
+                    <button id="confirmApplicationDelete" class="admin-btn" type="button">Delete</button>
+                    <button class="row-btn" type="button" data-action="close">Cancel</button>
+                </div>
+                <p id="applicationDeleteStatus" class="status" aria-live="polite"></p>
+            `
+        });
+
+        const confirmBtn = document.getElementById('confirmApplicationDelete');
+        const deleteStatus = document.getElementById('applicationDeleteStatus');
+        confirmBtn?.addEventListener('click', async () => {
+            try {
+                await adminJsonRequest('api/admin/applications-delete.php', 'POST', { id });
+                setStatus('Application deleted successfully.', 'success');
+                closeModal();
+                await refresh();
+            } catch (error) {
+                if (deleteStatus) {
+                    deleteStatus.textContent = error.message;
+                    deleteStatus.classList.add('error');
+                }
+            }
+        });
+    };
+
     const refresh = async () => {
+        setLoadingRow();
         try {
             const rows = await adminJsonRequest('api/admin/applications-list.php');
+            if (!Array.isArray(rows) || rows.length === 0) {
+                tableBody.innerHTML = '<tr class="table-empty"><td colspan="6">No applications yet.</td></tr>';
+                return;
+            }
+
             tableBody.innerHTML = rows.map((row) => `
 				<tr>
 					<td>${escapeHtml(row.submitted_at || '')}</td>
@@ -31,20 +72,14 @@ export function initApplicationsAdmin() {
 			`).join('');
 
             tableBody.querySelectorAll('button[data-action="delete"]').forEach((button) => {
-                button.addEventListener('click', async () => {
+                button.addEventListener('click', () => {
                     const id = Number(button.getAttribute('data-id'));
-                    if (!window.confirm('Delete this application?')) return;
-                    try {
-                        await adminJsonRequest('api/admin/applications-delete.php', 'POST', { id });
-                        setStatus('Application deleted successfully.', 'success');
-                        await refresh();
-                    } catch (error) {
-                        setStatus(error.message, 'error');
-                    }
+                    openDeleteModal(id);
                 });
             });
         } catch (error) {
             setStatus(error.message, 'error');
+            tableBody.innerHTML = '<tr class="table-empty"><td colspan="6">Unable to load applications right now.</td></tr>';
         }
     };
 
