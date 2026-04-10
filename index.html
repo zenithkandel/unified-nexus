@@ -1,151 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Unified Nexus - We Work We Win" />
     <title>Unified Nexus | We Work We Win</title>
-    <link rel="stylesheet" href="css/variables.css" />
-    <link rel="stylesheet" href="css/themes.css" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
-    <link rel="stylesheet" href="css/sections.css" />
+    <meta name="description" content="Unified Nexus is a vibrant student-led platform celebrating creativity, expression, and collaboration." />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/app.css">
 </head>
-<body>
-    <header class="site-header">
-        <div class="container header-container">
-            <a class="brand" href="#hero">
-                <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" height="50">
-            </a>
-            <nav class="main-nav">
-                <a href="#hero">Opening</a>
-                <a href="#about">Story</a>
-                <a href="#clubs">Clubs</a>
-                <a href="#executive">Team</a>
-                <a href="#apply" class="btn btn-donate">Join Now</a>
-            </nav>
+<body class="bg-black text-white antialiased">
+    <!-- Navigation -->
+    <nav class="nav-container glass">
+        <div class="nav-content">
+            <a href="#" class="nav-brand font-semibold tracking-tight">UNIFIED NEXUS</a>
+            <div class="nav-links">
+                <a href="#about" class="nav-link text-sm">About</a>
+                <a href="#clubs" class="nav-link text-sm">Clubs</a>
+                <a href="#leadership" class="nav-link text-sm">Leadership</a>
+                <a href="#benefits" class="nav-link text-sm hidden-mobile">Benefits</a>
+            </div>
+            <a href="mailto:unifiednexus1@gmail.com" class="nav-cta text-sm">Join Us</a>
         </div>
-    </header>
+    </nav>
 
-    <main>
-        <section id="hero" class="hero-kap-style">
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80" alt="Students collaborating" class="hero-bg">
-            <div class="hero-content">
-                <p class="section-label">SCENE 01</p>
-                <h1>We Do Not Build Events.<br/>We Stage Movements.</h1>
-                <p class="lead">Unified Nexus is a student-led narrative where ideas become performances, projects become impact, and leadership becomes lived practice.</p>
-                <div class="hero-actions">
-                    <a class="btn btn-donate" href="#apply" style="margin-right: 1rem;">ENTER THE COLLECTIVE</a>
-                    <a href="#clubs" style="color: white; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none;">VIEW CLUB STORIES &rarr;</a>
+    <!-- Hero Section -->
+    <section class="hero-section flex-center text-center">
+        <div class="container hero-container animate-fade-in-up">
+            <span class="tagline uppercase tracking-widest text-xs font-semibold mb-4 inline-block text-gray-400">we work we win</span>
+            <h1 class="hero-title font-bold tracking-tighter col-span-12">Discover.<br>Express. Thrive.</h1>
+            <p class="hero-subtitle text-gray-400 mt-6 mx-auto leading-relaxed">
+                A vibrant student-led platform that celebrates creativity, expression, and collaboration. 
+                Whether you're into music, literature, dance, or social service, Unified Nexus welcomes all students.
+            </p>
+            <div class="hero-actions mt-10 space-x-4">
+                <a href="#clubs" class="btn btn-primary">Explore Clubs</a>
+                <a href="#about" class="btn btn-secondary">Our Vision</a>
+            </div>
+        </div>
+        
+        <!-- Hero Background Elements -->
+        <div class="hero-glow-1"></div>
+        <div class="hero-glow-2"></div>
+    </section>
+
+    <!-- Vision Section -->
+    <section id="about" class="section py-24">
+        <div class="container grid md-grid-2 gap-12 items-center">
+            <div class="reveal-fade-up">
+                <h2 class="text-4xl font-bold tracking-tight mb-6">A space where<br>creativity thrives.</h2>
+                <p class="text-gray-400 leading-relaxed text-lg">
+                    We aim to create a unified space where creativity thrives, individuality is respected, and students are inspired to make a meaningful impact—both personally and socially. 
+                </p>
+            </div>
+            <div class="vision-cards grid grid-2 gap-6 reveal-fade-up-delay">
+                <div class="card p-8 rounded-2xl bg-gray-900 border border-gray-800">
+                    <h3 class="text-xl font-semibold mb-2">Connect</h3>
+                    <p class="text-gray-400 text-sm">Bring together students from diverse interests and backgrounds.</p>
+                </div>
+                <div class="card p-8 rounded-2xl bg-gray-900 border border-gray-800 translate-y-6">
+                    <h3 class="text-xl font-semibold mb-2">Impact</h3>
+                    <p class="text-gray-400 text-sm">Make a meaningful difference, both personally and in society.</p>
                 </div>
             </div>
-            <div class="scroll-prompt">SCROLL TO EXPLORE &darr;</div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about" class="section about-section">
-            <div class="container about-container">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Creative student group">
-                    <p class="caption">The Student Collective, Foundation</p>
+    <!-- Clubs Grid -->
+    <section id="clubs" class="section py-24 bg-gray-950">
+        <div class="container">
+            <div class="text-center mb-16 reveal-fade-up">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Clubs & Activities</h2>
+                <p class="text-gray-400">Discover your passion among our diverse offerings.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 club-grid">
+                <!-- Club Cards -->
+                <div class="club-card group">
+                    <h3 class="club-title">Music Club</h3>
+                    <p class="club-desc">A platform to learn, create, and excel through music. Perfect for all music lovers.</p>
                 </div>
-                <div class="about-content">
-                    <span class="subheading">SCENE 02 &bull; STORY</span>
-                    <h2>The Story We Are Writing Together</h2>
-                    <p>This is not a static club page. It is a growing story of students who transform curiosity into craft and ambition into social contribution.</p>
-                    <p>We believe in pushing boundaries, organizing cultural events, and engaging our community in impactful conservation and technological efforts. Every project we launch, every event we host, tells a story of resilience and ambition.</p>
-                    <p>Our work goes beyond mere participation. We're rebuilding connections—between disciplines, between communities, and between the present and the future. Through Unified Nexus, we ensure that student voices are amplified and ideas are realized.</p>
-                    <div class="signature">&mdash; Unified Nexus Editorial</div>
+                <div class="club-card group">
+                    <h3 class="club-title">Debate Club</h3>
+                    <p class="club-desc">For aspiring speakers and critical thinkers. Sharpen your voice, lead through dialogue.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Charity Club</h3>
+                    <p class="club-desc">Committed to service, driven by compassion, creating meaningful impact in the community.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Art & Culture</h3>
+                    <p class="club-desc">Celebrating creativity, heritage, and expression through art and culture.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Drama Club</h3>
+                    <p class="club-desc">For expressive actors and creative storytellers. Where imagination transforms into performance.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Research</h3>
+                    <p class="club-desc">Transforming research into insight and presentations into massive impact.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Student Council</h3>
+                    <p class="club-desc">Empowering student voices to lead, represent, and create change within our body.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Environment</h3>
+                    <p class="club-desc">For eco-conscious minds ready to protect and preserve our planet for a greener tomorrow.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Literature</h3>
+                    <p class="club-desc">For wordsmiths and thoughtful minds. Where words weave worlds and ideas leave a lasting echo.</p>
+                </div>
+                <div class="club-card group">
+                    <h3 class="club-title">Dance Club</h3>
+                    <p class="club-desc">A platform where elegance meets energy and movement becomes poetry.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="clubs" class="section events-section">
-            <div class="container">
-                <div class="section-header text-center">
-                    <span class="subheading">SCENE 03 &bull; CLUBS</span>
-                    <h2>Club Chapters</h2>
-                    <p>Each club is an active chapter with its own voice, motive, and atmosphere.</p>
+    <!-- Leadership Section -->
+    <section id="leadership" class="section py-24">
+        <div class="container">
+            <div class="text-center mb-16 reveal-fade-up">
+                <h2 class="text-4xl font-bold tracking-tight mb-4">Leadership Team</h2>
+                <p class="text-gray-400">The minds driving the Unified Nexus vision forward.</p>
+            </div>
+            
+            <div class="leader-grid">
+                <div class="leader-item">
+                    <span class="leader-name">Shreyas Poudel</span>
+                    <span class="leader-role">President</span>
                 </div>
-                <div class="events-grid" id="clubsGrid">
-                    <!-- Tech Club -->
-                    <article class="event-card">
-                        <div class="event-image">
-                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Tech Club">
-                            <div class="event-badge badge-upcoming">ACTIVE</div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-meta">
-                                <span class="tag">TECHNOLOGY</span>
-                            </div>
-                            <h3>Nexus Tech</h3>
-                            <p>Exploring the frontiers of software development, AI, and digital innovation through hands-on projects and hackathons.</p>
-                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
-                        </div>
-                    </article>
-                    
-                    <!-- Arts Club -->
-                    <article class="event-card">
-                        <div class="event-image">
-                            <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80" alt="Arts Club">
-                            <div class="event-badge badge-open">RECRUITING</div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-meta">
-                                <span class="tag">CREATIVE ARTS</span>
-                            </div>
-                            <h3>The Canvas Collective</h3>
-                            <p>A space for traditional and digital artists to collaborate, share masterpieces, and host creative workshops.</p>
-                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
-                        </div>
-                    </article>
-
-                    <!-- Literature Club -->
-                    <article class="event-card">
-                        <div class="event-image">
-                            <img src="https://images.unsplash.com/photo-1533158307587-828f0a76ef46?auto=format&fit=crop&w=600&q=80" alt="Literature Club">
-                            <div class="event-badge badge-soon">NEW CHAPTER</div>
-                        </div>
-                        <div class="event-info">
-                            <div class="event-meta">
-                                <span class="tag">LITERATURE & DEBATE</span>
-                            </div>
-                            <h3>Words & Wisdom</h3>
-                            <p>Fostering critical thinking, poetry readings, and debate tournaments. A home for the articulate and profound.</p>
-                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
-                        </div>
-                    </article>
+                <div class="leader-item">
+                    <span class="leader-name">Tilashma Neupane</span>
+                    <span class="leader-role">Director</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Aakirti Luitel</span>
+                    <span class="leader-role">Manager in Gen.</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Bijal Sakhya</span>
+                    <span class="leader-role">Secretary</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Soham Gautam</span>
+                    <span class="leader-role">Treasurer</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Allan Khanal</span>
+                    <span class="leader-role">IT Head</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Arunex Shrestha</span>
+                    <span class="leader-role">Head of Operation</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Arushi Shah</span>
+                    <span class="leader-role">Head of Discipline & Ethics</span>
+                </div>
+                <div class="leader-item">
+                    <span class="leader-name">Vaibauh Dahal</span>
+                    <span class="leader-role">Club Ambassador</span>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="executive" class="section gallery-section">
-            <div class="container text-center">
-                <span class="subheading">SCENE 04 &bull; TEAM</span>
-                <h2>Faces Behind Direction</h2>
-                <p>Editorially framed leadership focused on role, alignment, and accountability.</p>
-                <div class="polaroid-grid" id="executiveGrid">
-                    <!-- Sample Polaroids for Executives -->
-                    <div class="polaroid p1">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Member 1">
-                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">President</p>
-                    </div>
-                    <div class="polaroid p2">
-                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80" alt="Member 2">
-                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">VP</p>
-                    </div>
-                    <div class="polaroid p3">
-                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" alt="Member 3">
-                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">Tech Lead</p>
-                    </div>
-                    <div class="polaroid p4">
-                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Member 4">
-                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">Design Lead</p>
-                    </div>
+    <!-- Benefits / Footer -->
+    <section id="benefits" class="section py-24 border-t border-gray-900 bg-black">
+        <div class="container text-center reveal-fade-up">
+            <h2 class="text-3xl font-bold tracking-tight mb-8">Ready to grow with us?</h2>
+            <div class="flex flex-wrap justify-center gap-3 mb-10 max-w-3xl mx-auto">
+                <span class="pill">Leadership Skills</span>
+                <span class="pill">Self-Confidence</span>
+                <span class="pill">Communication</span>
+                <span class="pill">Teamwork</span>
+                <span class="pill">Discipline</span>
+                <span class="pill">Time Management</span>
+                <span class="pill">Decision-Making</span>
+                <span class="pill">Public Speaking</span>
+                <span class="pill">Creativity</span>
+            </div>
+            
+            <a href="mailto:unifiednexus1@gmail.com" class="btn btn-primary inline-flex">Join Unified Nexus</a>
+            
+            <div class="mt-20 pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Unified Nexus. Open for all students.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="https://instagram.com/unified__nexus" class="hover:text-white transition-colors">Instagram</a>
+                    <a href="mailto:unifiednexus1@gmail.com" class="hover:text-white transition-colors">Email</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
+    <script>
+        // Simple reveal animation observer
+        const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll(".reveal-fade-up, .reveal-fade-up-delay, .club-card, .leader-item").forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
