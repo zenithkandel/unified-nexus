@@ -1,9 +1,9 @@
 export function renderAbout(target) {
-    if (!target) {
-        return;
-    }
+	if (!target) {
+		return;
+	}
 
-    target.innerHTML = `
+	target.innerHTML = `
 		<div class="about-story">
 			<div class="about-chapter" data-reveal>
 				<h3>Beginning</h3>
