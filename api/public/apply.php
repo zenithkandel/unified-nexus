@@ -6,14 +6,14 @@ require_once __DIR__ . '/../../php/repositories/clubs-repository.php';
 require_once __DIR__ . '/../../php/repositories/applications-repository.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	json_error('Method not allowed.', [], 405);
+    json_error('Method not allowed.', [], 405);
 }
 
 $raw = file_get_contents('php://input');
 $payload = json_decode($raw ?: '{}', true);
 
 if (!is_array($payload)) {
-	json_error('Invalid JSON payload.', ['Malformed request body.'], 422);
+    json_error('Invalid JSON payload.', ['Malformed request body.'], 422);
 }
 
 $name = sanitize_text($payload['name'] ?? '');
@@ -35,30 +35,30 @@ validate_max_length('Message', $message, 1500, $errors);
 $validatedClubId = validate_integer_id('Selected club', $clubId, $errors);
 
 if ($errors !== []) {
-	json_error('Validation failed.', $errors, 422);
+    json_error('Validation failed.', $errors, 422);
 }
 
 try {
-	$pdo = app_db();
-	if ($validatedClubId === null || !clubs_exists($pdo, $validatedClubId)) {
-		json_error('Validation failed.', ['Selected club is invalid.'], 422);
-	}
+    $pdo = app_db();
+    if ($validatedClubId === null || !clubs_exists($pdo, $validatedClubId)) {
+        json_error('Validation failed.', ['Selected club is invalid.'], 422);
+    }
 
-	$ipAddress = $_SERVER['REMOTE_ADDR'] ?? '';
-	$ipHash = $ipAddress !== '' ? hash('sha256', $ipAddress) : null;
+    $ipAddress = $_SERVER['REMOTE_ADDR'] ?? '';
+    $ipHash = $ipAddress !== '' ? hash('sha256', $ipAddress) : null;
 
-	$applicationId = applications_create($pdo, [
-		'applicant_name' => $name,
-		'contact_email' => $email,
-		'contact_phone' => $phone !== '' ? $phone : null,
-		'selected_club_id' => $validatedClubId,
-		'message' => $message,
-		'status' => 'new',
-		'ip_hash' => $ipHash,
-	]);
+    $applicationId = applications_create($pdo, [
+        'applicant_name' => $name,
+        'contact_email' => $email,
+        'contact_phone' => $phone !== '' ? $phone : null,
+        'selected_club_id' => $validatedClubId,
+        'message' => $message,
+        'status' => 'new',
+        'ip_hash' => $ipHash,
+    ]);
 
-	json_success('Application submitted successfully.', ['id' => $applicationId], 201);
+    json_success('Application submitted successfully.', ['id' => $applicationId], 201);
 } catch (Throwable $exception) {
-	json_error('Failed to submit application.', [$exception->getMessage()], 500);
+    json_error('Failed to submit application.', [$exception->getMessage()], 500);
 }
 
