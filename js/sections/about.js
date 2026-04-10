@@ -4,22 +4,20 @@ export function renderAbout(target) {
     }
 
     target.innerHTML = `
-		<div class="about-grid">
-			<div>
-				<p>Unified Nexus is a vibrant student-led platform that celebrates creativity, expression, and collaboration. It brings together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment.</p>
-				<p>Whether you are into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment where everyone thrives together.</p>
-				<p><strong>Vision:</strong> To create a unified space where creativity thrives, individuality is respected, and students are inspired to make a meaningful impact, both personally and socially.</p>
-				<ul class="pillar-list">
-					<li>Leadership Skills and Confidence</li>
-					<li>Communication and Public Speaking</li>
-					<li>Teamwork and Decision-Making</li>
-					<li>Creativity, Discipline, and Growth</li>
-				</ul>
+		<div class="about-story">
+			<div class="about-chapter" data-reveal>
+				<h3>Beginning</h3>
+				<p>Unified Nexus emerged as a student response to silence between talent and opportunity. We created one platform where arts, ideas, and social purpose can meet in real time.</p>
 			</div>
-			<div class="card">
-				<h3>Why Join</h3>
-				<p class="meta">Leadership, confidence, communication, teamwork, discipline, and critical thinking development.</p>
-				<p class="meta">Open for all students.</p>
+			<div class="about-chapter" data-reveal data-reveal-delay="1">
+				<h3>Middle</h3>
+				<p>From literature to performance to service, our chapters are designed to turn participants into contributors. Students are not spectators here; they build the stage.</p>
+			</div>
+			<div class="about-keys" data-reveal data-reveal-delay="2">
+				<div class="about-key"><strong>Leadership and Confidence</strong><span>Outcome</span></div>
+				<div class="about-key"><strong>Communication and Teamwork</strong><span>Outcome</span></div>
+				<div class="about-key"><strong>Discipline and Creative Growth</strong><span>Outcome</span></div>
+				<div class="about-key"><strong>Open to Every Student</strong><span>Access</span></div>
 			</div>
 		</div>
 	`;
