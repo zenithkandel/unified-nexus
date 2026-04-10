@@ -46,3 +46,12 @@
     font-size: var(--text-sm);
     z-index: 2;
 }
+
+@keyframes floatY {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-18px);
+    }
+}

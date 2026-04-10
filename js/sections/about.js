@@ -1,9 +1,9 @@
 export function renderAbout(target) {
-	if (!target) {
-		return;
-	}
+    if (!target) {
+        return;
+    }
 
-	target.innerHTML = `
+    target.innerHTML = `
 		<div class="about-grid">
 			<div>
 				<p>Unified Nexus is a vibrant student-led platform that celebrates creativity, expression, and collaboration. It brings together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment.</p>
