@@ -26,100 +26,148 @@
           <span class="brand-mark">UN</span>
           <span class="brand-text">
             <strong>Unified Nexus</strong>
-            <small>We Work We Win</small>
+            <small>Editorial Student Collective</small>
           </span>
         </a>
-        <button
-          id="themeToggle"
-          class="btn btn-ghost"
-          type="button"
-          aria-label="Toggle theme"
-        >
-          Theme
-        </button>
+        <div class="header-actions">
+          <nav class="main-nav" aria-label="Primary navigation">
+            <a href="#hero">Opening</a>
+            <a href="#about">Story</a>
+            <a href="#clubs">Clubs</a>
+            <a href="#executive">Team</a>
+            <a href="#apply">Join</a>
+          </nav>
+          <button
+            id="themeToggle"
+            class="btn btn-ghost"
+            type="button"
+            aria-label="Toggle theme"
+          >
+            Theme
+          </button>
+        </div>
       </div>
-      <nav class="main-nav container" aria-label="Primary navigation">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#clubs">Clubs</a>
-        <a href="#executive">Leadership</a>
-        <a href="#apply">Apply</a>
-      </nav>
     </header>
 
     <main>
-      <section id="hero" class="section hero-section">
+      <section id="hero" class="section hero-section scene-intro">
         <div class="hero-backdrop" aria-hidden="true">
           <div id="particles" class="particles-layer"></div>
         </div>
         <div class="container hero-grid">
           <div class="hero-content" data-reveal>
-            <p class="section-label">Student-Led Creative Platform</p>
-            <h1>We Work We Win</h1>
+            <p class="section-label">Scene 01</p>
+            <h1>
+              We Do Not Build Events.<br />
+              We Stage Movements.
+            </h1>
             <p class="lead">
-              Unified Nexus fosters creativity, collaboration, expression,
-              leadership, and social impact.
+              Unified Nexus is a student-led narrative where ideas become
+              performances, projects become impact, and leadership becomes
+              lived practice.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-accent" href="#apply">Join Unified Nexus</a>
-              <a class="btn" href="#clubs">Explore Clubs</a>
+              <a class="btn btn-accent" href="#apply">Enter the Collective</a>
+              <a class="btn" href="#clubs">View Club Stories</a>
             </div>
           </div>
-          <aside
-            class="hero-panel"
-            aria-label="Unified Nexus pillars"
-            data-reveal
-            data-reveal-delay="1"
-          >
-            <h3>What Makes Us Different</h3>
-            <ul class="pillar-list">
-              <li>Creativity across multiple clubs</li>
-              <li>Leadership with real responsibility</li>
-              <li>Social impact through collaboration</li>
-              <li>Open and supportive student culture</li>
-            </ul>
-            <p class="meta">Open for all students</p>
-          </aside>
+          <div class="hero-visual-stack" data-reveal data-reveal-delay="1">
+            <figure class="hero-visual hero-visual-main">
+              <img
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80"
+                alt="Students collaborating at an event"
+                loading="eager"
+              />
+            </figure>
+            <figure class="hero-visual hero-visual-side">
+              <img
+                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
+                alt="Student team discussing ideas"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        </div>
+        <div class="hero-marquee" aria-hidden="true">
+          <span>Creativity</span><span>Leadership</span><span>Expression</span
+          ><span>Impact</span><span>Unity</span>
         </div>
       </section>
 
-      <section id="about" class="section">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <p class="section-label">Identity</p>
-            <h2>About Unified Nexus</h2>
+      <section id="about" class="section story-section">
+        <div class="container story-layout">
+          <div class="story-intro" data-reveal>
+            <p class="section-label">Scene 02</p>
+            <h2>The Story We Are Writing Together</h2>
+            <p>
+              This is not a static club page. It is a growing story of students
+              who transform curiosity into craft and ambition into social
+              contribution.
+            </p>
+          </div>
+          <div class="story-image" data-reveal data-reveal-delay="1">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+              alt="Creative student group working together"
+              loading="lazy"
+            />
           </div>
           <div id="aboutContent"></div>
         </div>
       </section>
 
-      <section id="clubs" class="section section-alt">
+      <section id="clubs" class="section section-alt clubs-scene">
         <div class="container">
-          <div class="section-head" data-reveal>
-            <p class="section-label">Communities</p>
-            <h2>Clubs and Activities</h2>
+          <div class="scene-head" data-reveal>
+            <p class="section-label">Scene 03</p>
+            <h2>Club Chapters</h2>
+            <p>
+              Each club is an active chapter with its own voice, motive, and
+              atmosphere.
+            </p>
           </div>
-          <div id="clubsGrid" class="card-grid"></div>
+          <div id="clubsGrid" class="clubs-rail"></div>
         </div>
       </section>
 
-      <section id="executive" class="section">
+      <section id="executive" class="section executive-scene">
         <div class="container">
-          <div class="section-head" data-reveal>
-            <p class="section-label">Leadership</p>
-            <h2>Executive Team</h2>
+          <div class="scene-head" data-reveal>
+            <p class="section-label">Scene 04</p>
+            <h2>Faces Behind Direction</h2>
+            <p>
+              Editorially framed leadership focused on role, alignment, and
+              accountability.
+            </p>
           </div>
-          <div id="executiveGrid" class="card-grid"></div>
+          <div id="executiveGrid" class="executive-editorial"></div>
         </div>
       </section>
 
-      <section id="apply" class="section section-alt">
-        <div class="container">
-          <div class="section-head" data-reveal>
-            <p class="section-label">Membership</p>
-            <h2>Apply to Join</h2>
+      <section id="apply" class="section section-alt apply-scene">
+        <div class="container apply-layout">
+          <div class="apply-copy" data-reveal>
+            <p class="section-label">Final Scene</p>
+            <h2>Start Your Chapter</h2>
+            <p>
+              We are open to every student ready to work with intent, create
+              with discipline, and contribute with empathy.
+            </p>
+            <figure class="apply-image">
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1100&q=80"
+                alt="Students in discussion session"
+                loading="lazy"
+              />
+            </figure>
           </div>
+
           <form id="applyForm" class="form-panel" novalidate data-reveal>
+            <div class="form-head">
+              <p class="form-kicker">Application</p>
+              <h3>Join Unified Nexus</h3>
+            </div>
+
             <div class="form-grid">
               <div class="field">
                 <label for="name">Name</label>
