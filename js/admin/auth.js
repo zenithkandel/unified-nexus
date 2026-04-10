@@ -1,3 +1,9 @@
+/**
+ * auth.js
+ * 
+ * Admin authentication management. Issues login/logout requests,
+ * manages local sessionStorage tokens, and protects restricted views.
+ */
 let csrfToken = '';
 
 async function parseResponse(response) {

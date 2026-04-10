@@ -1,3 +1,9 @@
+/**
+ * executive.js
+ * 
+ * Fetches and renders the Leadership/Executive team member cards within the 
+ * 'Direction' section of the public site.
+ */
 export function renderExecutive(target, members) {
     if (!target) {
         return;

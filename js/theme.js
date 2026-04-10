@@ -1,3 +1,9 @@
+/**
+ * theme.js
+ * 
+ * Manages dark/light mode toggles. Checks user system preferences,
+ * stores overrides in localStorage, and applies the correct data-theme attributes.
+ */
 const STORAGE_KEY = 'unified_nexus_theme';
 
 export function initTheme() {

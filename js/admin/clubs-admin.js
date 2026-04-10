@@ -1,3 +1,9 @@
+/**
+ * clubs-admin.js
+ * 
+ * Controller for the admin Clubs panel. Provides workflows (create, update, delete)
+ * to alter the dynamic list of clubs rendered on the main site.
+ */
 import { adminFormRequest, adminJsonRequest } from './auth.js';
 import { closeModal, openModal } from './modal.js';
 

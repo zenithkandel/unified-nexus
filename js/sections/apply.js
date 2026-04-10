@@ -1,3 +1,9 @@
+/**
+ * apply.js
+ * 
+ * Front-end handler for the student join/apply form interactions, intercepting
+ * form submits and triggering api-client requests.
+ */
 import { submitApplication } from '../api-client.js';
 import { validateApplicationForm } from '../validators.js';
 

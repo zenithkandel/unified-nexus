@@ -1,3 +1,9 @@
+/**
+ * modal.js
+ * 
+ * Reusable modal dialogue control for the admin panel. Used for edit forms, 
+ * destructive action confirmations, and extended data display.
+ */
 const modalRoot = document.getElementById('adminModal');
 const modalTitle = document.getElementById('modalTitle');
 const modalBody = document.getElementById('modalBody');

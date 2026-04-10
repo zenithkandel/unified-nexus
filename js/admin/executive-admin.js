@@ -1,3 +1,9 @@
+/**
+ * executive-admin.js
+ * 
+ * Controller for the admin Executive Team panel. Enables creating, editing,
+ * and deleting leadership members and their roles.
+ */
 import { adminFormRequest, adminJsonRequest } from './auth.js';
 import { closeModal, openModal } from './modal.js';
 

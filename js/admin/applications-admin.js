@@ -1,3 +1,9 @@
+/**
+ * applications-admin.js
+ * 
+ * Logic for the admin Applications panel. Fetches user applications, populates the table,
+ * handles approval/rejection actions, and toggles applicant details modals.
+ */
 import { adminJsonRequest } from './auth.js';
 import { closeModal, openModal } from './modal.js';
 

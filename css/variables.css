@@ -1,40 +1,41 @@
+/** 
+ * variables.css
+ * 
+ * Defines the core design tokens: fonts, breakpoints, shadows, borders,
+ * and exact hex color palettes used via CSS custom properties.
+ */
 :root {
-    --color-white: #ffffff;
-    --color-black: #111111;
-    --color-base-1: #57545b;
-    --color-base-2: #716f75;
-    --color-base-3: #959294;
-    --color-base-4: #aaaaaa;
-    --color-accent-1: #7f2b3e;
-    --color-accent-2: #661b28;
-
-    --radius-sm: 2px;
-    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.09);
-    --shadow-card: 0 14px 34px rgba(25, 19, 22, 0.08);
-
-    --font-primary: "Playfair Display", "Garamond", "Palatino Linotype", serif;
-    --font-secondary: "Source Serif 4", "Book Antiqua", "Trebuchet MS", serif;
-    --font-mono: "IBM Plex Mono", "Courier New", monospace;
-
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-5: 1.5rem;
-    --space-6: 2rem;
-    --space-7: 3rem;
-    --space-8: 4rem;
-    --space-9: 5rem;
-
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-md: 1rem;
-    --text-lg: 1.125rem;
-    --text-xl: 1.5rem;
-    --text-2xl: 2rem;
-    --text-3xl: 2.75rem;
-
-    --transition-fast: 180ms ease;
-    --transition-base: 280ms ease;
-    --transition-smooth: 560ms cubic-bezier(0.4, 0, 0.2, 1);
+  --color-white: #ffffff;
+  --color-black: #111111;
+  --color-base-1: #57545b;
+  --color-base-2: #716f75;
+  --color-base-3: #959294;
+  --color-base-4: #aaaaaa;
+  --color-accent-1: #7f2b3e;
+  --color-accent-2: #661b28;
+  --radius-sm: 2px;
+  --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.09);
+  --shadow-card: 0 14px 34px rgba(25, 19, 22, 0.08);
+  --font-primary: "Playfair Display", "Garamond", "Palatino Linotype", serif;
+  --font-secondary: "Source Serif 4", "Book Antiqua", "Trebuchet MS", serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 5rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --transition-fast: 180ms ease;
+  --transition-base: 280ms ease;
+  --transition-smooth: 560ms cubic-bezier(0.4, 0, 0.2, 1);
 }

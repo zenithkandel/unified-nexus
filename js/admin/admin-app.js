@@ -1,3 +1,10 @@
+/**
+ * admin-app.js
+ * 
+ * Primary entry module for the Unified Nexus Administrator dashboard.
+ * Handles auth verification, dashboard mounting, toggling management views,
+ * and delegating crud events to sub-modules.
+ */
 import { adminLogin, adminLogout, adminJsonRequest, setCsrfToken } from './auth.js';
 import { initClubsAdmin } from './clubs-admin.js';
 import { initExecutiveAdmin } from './executive-admin.js';

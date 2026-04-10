@@ -1,3 +1,9 @@
+/**
+ * particles.js
+ * 
+ * Three.js integration script that renders the interactive 3D particle mesh
+ * animating continuously in the background of index.html.
+ */
 export function initParticles() {
     const layer = document.getElementById('particles');
     if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {

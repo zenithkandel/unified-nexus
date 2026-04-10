@@ -1,3 +1,9 @@
+/**
+ * clubs.js
+ * 
+ * Fetches club data from the backend and dynamically generates the Club Cards 
+ * matrix within the public frontend.
+ */
 export function renderClubs(target, clubs) {
     if (!target) {
         return;

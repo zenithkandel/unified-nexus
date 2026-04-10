@@ -1,3 +1,9 @@
+/**
+ * api-client.js
+ * 
+ * Provides the core ApiClient utility to make HTTP fetch requests to the PHP backend.
+ * Handles request configurations, JSON/FormData payloads, and unified error handling.
+ */
 const defaultHeaders = {
     'Content-Type': 'application/json'
 };

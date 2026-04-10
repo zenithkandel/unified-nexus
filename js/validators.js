@@ -1,3 +1,9 @@
+/**
+ * validators.js
+ * 
+ * Front-end field validation functions for the contact/application forms. 
+ * Checks emails, required fields, and sanitizes before dispatching to ApiClient.
+ */
 export function validateApplicationForm(payload) {
     const errors = [];
 

@@ -1,3 +1,9 @@
+/**
+ * router.js
+ * 
+ * Minimalistic hash-based or history API-based client-side router 
+ * switching views/content without triggering full page reloads.
+ */
 export function initRouter() {
     const navLinks = Array.from(document.querySelectorAll('.main-nav a'));
     const sections = navLinks

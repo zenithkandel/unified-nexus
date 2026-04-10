@@ -1,67 +1,71 @@
+/** 
+ * base.css
+ * 
+ * Foundational CSS resets, responsive HTML/body base structures,
+ * typography resets, and utility classes shared across the admin panel.
+ */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap');
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
-    background: var(--surface-0);
-    color: var(--text-strong);
-    font-family: var(--font-secondary);
-    font-size: var(--text-md);
-    line-height: 1.68;
-    position: relative;
+  margin: 0;
+  background: var(--surface-0);
+  color: var(--text-strong);
+  font-family: var(--font-secondary);
+  font-size: var(--text-md);
+  line-height: 1.68;
+  position: relative;
 }
 
 body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background:
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
         radial-gradient(circle at 8% 12%, var(--ambient-glow), transparent 26%),
         radial-gradient(circle at 92% 78%, color-mix(in srgb, var(--accent-strong) 14%, transparent), transparent 34%),
         repeating-linear-gradient(0deg, transparent, transparent 2px, color-mix(in srgb, var(--text-muted) 4%, transparent) 2px, color-mix(in srgb, var(--text-muted) 4%, transparent) 3px);
 }
 
-h1,
-h2,
-h3 {
-    font-family: var(--font-primary);
-    line-height: 1.2;
-    letter-spacing: 0.01em;
-    margin: 0 0 var(--space-4);
+h1, h2, h3 {
+  font-family: var(--font-primary);
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--space-4);
 }
 
 h1 {
-    font-size: clamp(2rem, 8vw, 3.25rem);
+  font-size: clamp(2rem, 8vw, 3.25rem);
 }
 
 h2 {
-    font-size: clamp(1.6rem, 6vw, 2.35rem);
+  font-size: clamp(1.6rem, 6vw, 2.35rem);
 }
 
 p {
-    margin: 0 0 var(--space-4);
+  margin: 0 0 var(--space-4);
 }
 
 ::selection {
-    background: color-mix(in srgb, var(--accent) 72%, var(--color-white));
-    color: var(--color-black);
+  background: color-mix(in srgb, var(--accent) 72%, var(--color-white));
+  color: var(--color-black);
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 img {
-    max-width: 100%;
-    display: block;
+  max-width: 100%;
+  display: block;
 }

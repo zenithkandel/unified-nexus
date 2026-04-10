@@ -1,3 +1,9 @@
+/**
+ * app.js
+ * 
+ * Global client-side application logic for the Unified Nexus public-facing site.
+ * Handles initializing the 3D canvas, routing, themes, section animations, and state.
+ */
 import { state } from './state.js';
 import { fetchClubs, fetchExecutive } from './api-client.js';
 import { initTheme, bindThemeToggle } from './theme.js';

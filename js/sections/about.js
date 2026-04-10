@@ -1,3 +1,8 @@
+/**
+ * about.js
+ * 
+ * Specific logic/animations bridging the 'About/Vision' section on the frontend.
+ */
 export function renderAbout(target) {
 	if (!target) {
 		return;
