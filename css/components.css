@@ -61,11 +61,13 @@
     border-radius: var(--radius-sm);
     padding: 0.58rem var(--space-4);
     font-size: var(--text-sm);
-    font-family: var(--font-secondary);
-    letter-spacing: 0.02em;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     cursor: pointer;
     background: var(--surface-panel);
     color: var(--text-strong);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 .btn-accent {
@@ -76,6 +78,8 @@
 
 .btn:hover {
     border-color: var(--accent);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-subtle);
 }
 
 .btn-ghost {
@@ -95,6 +99,7 @@
     padding: var(--space-5);
     box-shadow: var(--shadow-card);
     position: relative;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 
 .card::before {
@@ -207,4 +212,10 @@ textarea {
     .hero-content {
         padding-left: var(--space-4);
     }
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(25, 19, 22, 0.12);
+    border-color: color-mix(in srgb, var(--accent) 36%, var(--line-soft));
 }

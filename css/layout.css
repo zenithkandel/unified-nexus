@@ -20,6 +20,12 @@
     background: color-mix(in srgb, var(--surface-panel) 91%, transparent);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-base), box-shadow var(--transition-base), padding var(--transition-base);
+}
+
+.site-header.scrolled {
+    background: color-mix(in srgb, var(--surface-panel) 96%, transparent);
+    box-shadow: var(--shadow-subtle);
 }
 
 .header-content {
@@ -37,21 +43,50 @@
 }
 
 .main-nav a {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: var(--text-muted);
     border-bottom: 1px solid transparent;
     padding: var(--space-1) 0;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width var(--transition-base);
+}
+
+.main-nav a:hover::after,
+.main-nav a.is-active::after {
+    width: 100%;
 }
 
 .main-nav a.is-active {
     color: var(--text-strong);
-    border-color: var(--accent);
+    border-color: transparent;
 }
 
 .section-head {
     margin-bottom: var(--space-6);
     padding-bottom: var(--space-3);
     border-bottom: 1px solid var(--line-soft);
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    margin-bottom: var(--space-2);
 }
 
 .hero-grid {
@@ -80,6 +115,32 @@
     gap: var(--space-2);
 }
 
+.site-footer {
+    background: color-mix(in srgb, var(--surface-2) 70%, var(--surface-0));
+    border-top: 1px solid var(--line-soft);
+    padding: var(--space-7) 0;
+}
+
+.footer-grid {
+    display: grid;
+    gap: var(--space-5);
+}
+
+.footer-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: var(--space-3);
+    color: var(--text-muted);
+}
+
+.footer-tagline,
+.footer-item {
+    color: var(--text-muted);
+    margin-bottom: var(--space-2);
+}
+
 @media (min-width: 768px) {
     .main-nav {
         justify-content: flex-end;
@@ -88,6 +149,10 @@
     .hero-grid {
         grid-template-columns: 1.35fr 1fr;
         align-items: center;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1.4fr 1fr;
     }
 }
 
