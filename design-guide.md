@@ -141,4 +141,6 @@ clubs and details and presidents of clubs
 executive members and their images and posts
 recieved messages/request for joining clubs
 
-thats about all that our backend will handle. also
+thats about all that our backend will handle. also make sure eveyrthing is very secure and every input is sanitized and all.
+
+feel free to ask any questions if you have any doubts before doing the work.
