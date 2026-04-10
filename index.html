@@ -1,213 +1,192 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Unified Nexus is a student-led collective for creativity, leadership, and social impact."
-    />
+    <meta name="description" content="Unified Nexus - We Work We Win" />
     <title>Unified Nexus | We Work We Win</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/sections.css" />
     <link rel="stylesheet" href="css/animations.css" />
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header" id="top">
-        <div class="container header-row">
-          <a class="brand" href="#hero" aria-label="Unified Nexus home">
-            <span class="brand-mark">UN</span>
-            <span class="brand-meta">
-              <strong>Unified Nexus</strong>
-              <small>We Work We Win</small>
-            </span>
-          </a>
-          <button
-            id="menuToggle"
-            class="button button-ghost menu-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="mainNav"
-          >
-            Menu
-          </button>
-        </div>
-        <nav
-          id="mainNav"
-          class="main-nav container"
-          aria-label="Main navigation"
-        >
-          <a href="#hero">Home</a>
-          <a href="#about">About</a>
-          <a href="#clubs">Clubs</a>
-          <a href="#executive">Executive</a>
-          <a href="#apply">Apply</a>
-        </nav>
-      </header>
-
-      <main>
-        <section id="hero" class="hero-section">
-          <div class="hero-lines" aria-hidden="true">
-            <canvas id="particles" class="lines-canvas"></canvas>
-          </div>
-          <div class="container hero-grid">
-            <div class="hero-copy" data-reveal>
-              <p class="kicker">Student Collective</p>
-              <h1>Crafting Culture Through Student-Led Leadership</h1>
-              <p class="lead">
-                Unified Nexus brings ambitious students together across
-                creative, service, and performance clubs to build work that
-                matters.
-              </p>
-              <div class="hero-actions">
-                <a class="button button-accent" href="#apply"
-                  >Join Unified Nexus</a
-                >
-                <a class="button" href="#clubs">Explore Clubs</a>
-              </div>
-            </div>
-            <aside class="hero-aside" data-reveal>
-              <p class="kicker">Core Principles</p>
-              <ul>
-                <li>Creativity with accountability</li>
-                <li>Leadership through contribution</li>
-                <li>Inclusive student collaboration</li>
-                <li>Visible community impact</li>
-              </ul>
-            </aside>
-          </div>
-        </section>
-
-        <section id="about" class="section">
-          <div class="container">
-            <div class="section-head" data-reveal>
-              <p class="kicker">About</p>
-              <h2>A Platform Built for Expression and Responsibility</h2>
-            </div>
-            <div id="aboutContent" class="about-layout" data-reveal></div>
-          </div>
-        </section>
-
-        <section id="clubs" class="section section-muted">
-          <div class="container">
-            <div class="section-head" data-reveal>
-              <p class="kicker">Clubs</p>
-              <h2>Distinct Communities, One Shared Ethos</h2>
-            </div>
-            <div id="clubsExperience" class="clubs-experience" data-reveal>
-              <div class="loading-block">Loading club structure...</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="executive" class="section">
-          <div class="container">
-            <div class="section-head" data-reveal>
-              <p class="kicker">Executive Team</p>
-              <h2>People Who Set the Tone</h2>
-            </div>
-            <div id="executiveShowcase" class="executive-showcase" data-reveal>
-              <div class="loading-block">Loading executive lineup...</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="apply" class="section section-muted">
-          <div class="container">
-            <div class="section-head" data-reveal>
-              <p class="kicker">Membership Application</p>
-              <h2>Apply with Intent</h2>
-            </div>
-            <form
-              id="applyForm"
-              class="application-form"
-              novalidate
-              data-reveal
-            >
-              <div class="form-grid">
-                <label class="field">
-                  <span>Name</span>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    maxlength="120"
-                    required
-                  />
-                </label>
-                <label class="field">
-                  <span>Email</span>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    maxlength="150"
-                    required
-                  />
-                </label>
-                <label class="field">
-                  <span>Phone (optional)</span>
-                  <input id="phone" name="phone" type="text" maxlength="30" />
-                </label>
-                <label class="field">
-                  <span>Club</span>
-                  <select id="clubId" name="clubId" required>
-                    <option value="">Choose a club</option>
-                  </select>
-                </label>
-                <label class="field field-wide">
-                  <span>Why do you want to join?</span>
-                  <textarea
-                    id="message"
-                    name="message"
-                    maxlength="1500"
-                    placeholder="Share your intent, interests, and what you hope to contribute."
-                    required
-                  ></textarea>
-                </label>
-              </div>
-              <div class="form-actions">
-                <button
-                  id="applySubmit"
-                  class="button button-accent"
-                  type="submit"
-                >
-                  Submit Application
-                </button>
-                <p id="formStatus" class="form-status" aria-live="polite"></p>
-              </div>
-            </form>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <div class="container footer-grid">
-          <div>
-            <p class="kicker">Unified Nexus</p>
-            <p>
-              A student-led ecosystem where expression, leadership, and social
-              value are built together.
-            </p>
-          </div>
-          <div>
-            <p class="footer-title">Contact</p>
-            <p>Instagram: @unified__nexus</p>
-            <p>Gmail: unifiednexus1@gmail.com</p>
-          </div>
-        </div>
-      </footer>
+    <div id="loader" class="loader" aria-live="polite">
+      <div class="loader-curtain loader-curtain-left"></div>
+      <div class="loader-curtain loader-curtain-right"></div>
+      <p class="loader-text">Unified Nexus</p>
     </div>
+
+    <header class="site-header" id="top">
+      <div class="container header-content">
+        <a class="brand" href="#hero">
+          <span class="brand-mark">UN</span>
+          <span class="brand-text">
+            <strong>Unified Nexus</strong>
+            <small>We Work We Win</small>
+          </span>
+        </a>
+        <button
+          id="themeToggle"
+          class="btn btn-ghost"
+          type="button"
+          aria-label="Toggle theme"
+        >
+          Theme
+        </button>
+      </div>
+      <nav class="main-nav container" aria-label="Primary navigation">
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#clubs">Clubs</a>
+        <a href="#executive">Leadership</a>
+        <a href="#apply">Apply</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="section hero-section">
+        <div class="hero-backdrop" aria-hidden="true">
+          <div id="particles" class="particles-layer"></div>
+        </div>
+        <div class="container hero-grid">
+          <div class="hero-content" data-reveal>
+            <p class="section-label">Student-Led Creative Platform</p>
+            <h1>We Work We Win</h1>
+            <p class="lead">
+              Unified Nexus fosters creativity, collaboration, expression,
+              leadership, and social impact.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-accent" href="#apply">Join Unified Nexus</a>
+              <a class="btn" href="#clubs">Explore Clubs</a>
+            </div>
+          </div>
+          <aside
+            class="hero-panel"
+            aria-label="Unified Nexus pillars"
+            data-reveal
+            data-reveal-delay="1"
+          >
+            <h3>What Makes Us Different</h3>
+            <ul class="pillar-list">
+              <li>Creativity across multiple clubs</li>
+              <li>Leadership with real responsibility</li>
+              <li>Social impact through collaboration</li>
+              <li>Open and supportive student culture</li>
+            </ul>
+            <p class="meta">Open for all students</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="section-label">Identity</p>
+            <h2>About Unified Nexus</h2>
+          </div>
+          <div id="aboutContent"></div>
+        </div>
+      </section>
+
+      <section id="clubs" class="section section-alt">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="section-label">Communities</p>
+            <h2>Clubs and Activities</h2>
+          </div>
+          <div id="clubsGrid" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section id="executive" class="section">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="section-label">Leadership</p>
+            <h2>Executive Team</h2>
+          </div>
+          <div id="executiveGrid" class="card-grid"></div>
+        </div>
+      </section>
+
+      <section id="apply" class="section section-alt">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <p class="section-label">Membership</p>
+            <h2>Apply to Join</h2>
+          </div>
+          <form id="applyForm" class="form-panel" novalidate data-reveal>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  maxlength="120"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  maxlength="150"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" type="text" maxlength="30" />
+              </div>
+              <div class="field">
+                <label for="clubId">Select Club</label>
+                <select id="clubId" name="clubId" required>
+                  <option value="">Choose a club</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  maxlength="1500"
+                  required
+                ></textarea>
+              </div>
+            </div>
+
+            <button class="btn btn-accent" type="submit">
+              Submit Application
+            </button>
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <p class="section-label">Unified Nexus</p>
+          <p class="footer-tagline">
+            A student-led platform for creativity, leadership, and social
+            impact.
+          </p>
+        </div>
+        <div>
+          <p class="footer-title">Connect</p>
+          <p class="footer-item">Instagram: @unified__nexus</p>
+          <p class="footer-item">Gmail: unifiednexus1@gmail.com</p>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="js/app.js"></script>
   </body>

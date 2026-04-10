@@ -1,49 +1,40 @@
 :root {
-    --neutral-0: #ffffff;
-    --neutral-1: #f7f7f7;
-    --neutral-2: #ecebec;
-    --neutral-3: #d8d7d9;
-    --neutral-4: #aaaaaa;
-    --neutral-5: #959294;
-    --neutral-6: #716f75;
-    --neutral-7: #57545b;
-    --accent-1: #7f2b3e;
-    --accent-2: #661b28;
-
-    --bg: var(--neutral-0);
-    --bg-soft: var(--neutral-1);
-    --surface: var(--neutral-0);
-    --surface-alt: var(--neutral-2);
-    --line: var(--neutral-3);
-    --line-strong: var(--neutral-5);
-    --text: #1c1b1f;
-    --text-soft: var(--neutral-7);
-    --text-muted: var(--neutral-6);
-    --accent: var(--accent-1);
-    --accent-strong: var(--accent-2);
+    --color-white: #ffffff;
+    --color-black: #111111;
+    --color-base-1: #57545b;
+    --color-base-2: #716f75;
+    --color-base-3: #959294;
+    --color-base-4: #aaaaaa;
+    --color-accent-1: #7f2b3e;
+    --color-accent-2: #661b28;
 
     --radius-sm: 2px;
-    --shadow-soft: 0 8px 30px rgba(87, 84, 91, 0.08);
+    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.09);
+    --shadow-card: 0 14px 34px rgba(25, 19, 22, 0.08);
 
-    --font-heading: "Fraunces", "Times New Roman", serif;
-    --font-body: "Manrope", "Segoe UI", sans-serif;
+    --font-primary: "Playfair Display", "Garamond", "Palatino Linotype", serif;
+    --font-secondary: "Source Serif 4", "Book Antiqua", "Trebuchet MS", serif;
+    --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
-    --space-1: 0.5rem;
-    --space-2: 1rem;
-    --space-3: 1.5rem;
-    --space-4: 2rem;
-    --space-5: 2.5rem;
-    --space-6: 3rem;
-    --space-7: 4rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.5rem;
+    --space-6: 2rem;
+    --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 5rem;
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
     --text-md: 1rem;
-    --text-lg: 1.25rem;
-    --text-xl: 1.7rem;
-    --text-2xl: 2.25rem;
-    --text-3xl: 3rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.5rem;
+    --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
 
-    --fast: 180ms ease;
-    --base: 300ms ease;
+    --transition-fast: 180ms ease;
+    --transition-base: 280ms ease;
+    --transition-smooth: 560ms cubic-bezier(0.4, 0, 0.2, 1);
 }

@@ -1,185 +1,232 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Unified Nexus Admin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/themes.css" />
     <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/admin.css" />
   </head>
   <body>
-    <main>
-      <section id="loginSection" class="admin-login">
-        <div class="admin-login-card">
-          <p class="kicker">Unified Nexus</p>
-          <h1>Admin Console</h1>
-          <p class="muted">Secure access for internal content operations.</p>
-          <form id="loginForm" class="stack" novalidate>
-            <label class="field">
-              <span>Password</span>
-              <input
-                id="adminPassword"
-                name="password"
-                type="password"
-                required
-              />
-            </label>
-            <button class="button button-accent" type="submit">Login</button>
-            <p id="loginStatus" class="status" aria-live="polite"></p>
-          </form>
-        </div>
+    <main class="admin-shell">
+      <section id="loginSection" class="panel auth-panel">
+        <h1>Unified Nexus Admin</h1>
+        <p class="muted">Authorized access only.</p>
+        <form id="loginForm" class="admin-form" novalidate>
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" name="password" type="password" required />
+          <button class="admin-btn" type="submit">Login</button>
+          <p id="loginStatus" class="status" aria-live="polite"></p>
+        </form>
       </section>
 
-      <section id="dashboardSection" class="admin-shell hidden">
-        <aside
-          id="adminSidebar"
-          class="admin-sidebar"
-          aria-label="Admin navigation"
-        >
-          <div class="sidebar-head">
-            <p class="kicker">Control</p>
-            <strong>Unified Nexus</strong>
+      <section id="dashboardSection" class="dashboard hidden">
+        <header class="dashboard-head panel">
+          <div>
+            <h2>Content Management</h2>
+            <p class="muted">Manage clubs, leadership, and applications.</p>
           </div>
-          <nav class="sidebar-nav">
-            <button
-              type="button"
-              class="nav-item is-active"
-              data-target="clubsWorkspace"
-            >
-              Clubs Management
-            </button>
-            <button
-              type="button"
-              class="nav-item"
-              data-target="executiveWorkspace"
-            >
-              Executive Members
-            </button>
-            <button
-              type="button"
-              class="nav-item"
-              data-target="applicationsWorkspace"
-            >
-              Applications
-            </button>
-          </nav>
           <button
-            id="sidebarCollapseBtn"
-            class="button button-ghost"
+            id="logoutBtn"
+            class="admin-btn admin-btn-secondary"
             type="button"
           >
-            Collapse
+            Logout
           </button>
-        </aside>
+        </header>
 
-        <section class="admin-main">
-          <header class="admin-topbar">
+        <section class="panel">
+          <h3>Clubs</h3>
+          <form id="clubForm" class="admin-form grid-2" novalidate>
+            <input type="hidden" id="clubId" name="id" />
             <div>
-              <p class="kicker">Operations</p>
-              <h2 id="workspaceTitle">Clubs Management</h2>
+              <label for="clubName">Name</label>
+              <input id="clubName" name="name" type="text" required />
             </div>
-            <div class="topbar-actions">
-              <p id="globalStatus" class="status" aria-live="polite"></p>
-              <button id="logoutBtn" class="button" type="button">
-                Logout
+            <div>
+              <label for="clubPresident">President</label>
+              <input
+                id="clubPresident"
+                name="president_name"
+                type="text"
+                required
+              />
+            </div>
+            <div>
+              <label for="clubOrder">Display Order</label>
+              <input
+                id="clubOrder"
+                name="display_order"
+                type="number"
+                required
+              />
+            </div>
+            <div>
+              <label for="clubImage">Hero Image Path (optional)</label>
+              <input id="clubImage" name="hero_image_path" type="text" />
+            </div>
+            <div class="span-2">
+              <label for="clubDescription">Description</label>
+              <textarea
+                id="clubDescription"
+                name="description"
+                required
+              ></textarea>
+            </div>
+            <div class="span-2">
+              <label for="clubMotive">Theme/Motive</label>
+              <textarea id="clubMotive" name="theme_motive" required></textarea>
+            </div>
+            <div>
+              <label class="check-row"
+                ><input
+                  id="clubActive"
+                  name="is_active"
+                  type="checkbox"
+                  checked
+                />
+                Active</label
+              >
+            </div>
+            <div class="actions">
+              <button id="clubSubmitBtn" class="admin-btn" type="submit">
+                Create Club
               </button>
-            </div>
-          </header>
-
-          <section id="clubsWorkspace" class="workspace is-active">
-            <div class="workspace-header">
-              <div>
-                <h3>Clubs</h3>
-                <p class="muted">
-                  Manage active communities and their identity.
-                </p>
-              </div>
               <button
-                id="openCreateClub"
-                class="button button-accent"
+                id="clubResetBtn"
+                class="admin-btn admin-btn-secondary"
                 type="button"
               >
-                Add Club
+                Reset
               </button>
             </div>
-            <div class="table-card">
-              <table class="data-table">
-                <thead>
-                  <tr>
-                    <th>Order</th>
-                    <th>Name</th>
-                    <th>President</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="clubsTableBody"></tbody>
-              </table>
-              <div id="clubsEmpty" class="empty-state hidden">
-                No clubs available yet.
-              </div>
-            </div>
-          </section>
+            <p id="clubStatus" class="status span-2" aria-live="polite"></p>
+          </form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Name</th>
+                  <th>President</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clubsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
 
-          <section id="executiveWorkspace" class="workspace hidden">
-            <div class="workspace-header">
-              <div>
-                <h3>Executive Members</h3>
-                <p class="muted">
-                  Maintain order, profile data, and visibility.
-                </p>
-              </div>
+        <section class="panel">
+          <h3>Executive Team</h3>
+          <form
+            id="executiveForm"
+            class="admin-form grid-2"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <input type="hidden" id="executiveId" name="id" />
+            <input type="hidden" id="executivePhotoPath" name="photo_path" />
+            <div>
+              <label for="executiveName">Full Name</label>
+              <input id="executiveName" name="full_name" type="text" required />
+            </div>
+            <div>
+              <label for="executiveRole">Role</label>
+              <input
+                id="executiveRole"
+                name="role_title"
+                type="text"
+                required
+              />
+            </div>
+            <div>
+              <label for="executiveOrder">Display Order</label>
+              <input
+                id="executiveOrder"
+                name="display_order"
+                type="number"
+                required
+              />
+            </div>
+            <div>
+              <label for="executivePhoto">Photo</label>
+              <input
+                id="executivePhoto"
+                name="photo"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+              />
+            </div>
+            <div>
+              <label class="check-row"
+                ><input
+                  id="executiveActive"
+                  name="is_active"
+                  type="checkbox"
+                  checked
+                />
+                Active</label
+              >
+            </div>
+            <div class="actions">
+              <button id="executiveSubmitBtn" class="admin-btn" type="submit">
+                Create Member
+              </button>
               <button
-                id="openCreateExecutive"
-                class="button button-accent"
+                id="executiveResetBtn"
+                class="admin-btn admin-btn-secondary"
                 type="button"
               >
-                Add Member
+                Reset
               </button>
             </div>
-            <div id="executiveList" class="executive-admin-grid"></div>
-            <div id="executiveEmpty" class="empty-state hidden">
-              No executive members available yet.
-            </div>
-          </section>
+            <p
+              id="executiveStatus"
+              class="status span-2"
+              aria-live="polite"
+            ></p>
+          </form>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Order</th>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Photo</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="executiveTableBody"></tbody>
+            </table>
+          </div>
+        </section>
 
-          <section id="applicationsWorkspace" class="workspace hidden">
-            <div class="workspace-header">
-              <div>
-                <h3>Applications</h3>
-                <p class="muted">Review submitted applications in one pass.</p>
-              </div>
-            </div>
-            <div class="table-card">
-              <table class="data-table applications-table">
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Club</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody id="applicationsTableBody"></tbody>
-              </table>
-              <div id="applicationsEmpty" class="empty-state hidden">
-                No applications submitted yet.
-              </div>
-            </div>
-          </section>
+        <section class="panel">
+          <h3>Applications</h3>
+          <p id="applicationsStatus" class="status" aria-live="polite"></p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Club</th>
+                  <th>Message</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="applicationsTableBody"></tbody>
+            </table>
+          </div>
         </section>
       </section>
-
-      <div id="modalHost" class="modal-host hidden" aria-live="polite"></div>
     </main>
 
     <script type="module" src="js/admin/admin-app.js"></script>

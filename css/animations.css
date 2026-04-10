@@ -1,34 +1,3 @@
-[data-reveal] {
-    transition: opacity var(--base), transform var(--base);
-}
-
-.modal-host {
-    animation: backdropIn var(--fast);
-}
-
-.modal {
-    animation: modalIn var(--base);
-}
-
-@keyframes backdropIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes modalIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 .loader {
     position: fixed;
     inset: 0;
