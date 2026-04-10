@@ -25,7 +25,12 @@
           <form id="loginForm" class="stack" novalidate>
             <label class="field">
               <span>Password</span>
-              <input id="adminPassword" name="password" type="password" required />
+              <input
+                id="adminPassword"
+                name="password"
+                type="password"
+                required
+              />
             </label>
             <button class="button button-accent" type="submit">Login</button>
             <p id="loginStatus" class="status" aria-live="polite"></p>
@@ -34,23 +39,43 @@
       </section>
 
       <section id="dashboardSection" class="admin-shell hidden">
-        <aside id="adminSidebar" class="admin-sidebar" aria-label="Admin navigation">
+        <aside
+          id="adminSidebar"
+          class="admin-sidebar"
+          aria-label="Admin navigation"
+        >
           <div class="sidebar-head">
             <p class="kicker">Control</p>
             <strong>Unified Nexus</strong>
           </div>
           <nav class="sidebar-nav">
-            <button type="button" class="nav-item is-active" data-target="clubsWorkspace">
+            <button
+              type="button"
+              class="nav-item is-active"
+              data-target="clubsWorkspace"
+            >
               Clubs Management
             </button>
-            <button type="button" class="nav-item" data-target="executiveWorkspace">
+            <button
+              type="button"
+              class="nav-item"
+              data-target="executiveWorkspace"
+            >
               Executive Members
             </button>
-            <button type="button" class="nav-item" data-target="applicationsWorkspace">
+            <button
+              type="button"
+              class="nav-item"
+              data-target="applicationsWorkspace"
+            >
               Applications
             </button>
           </nav>
-          <button id="sidebarCollapseBtn" class="button button-ghost" type="button">
+          <button
+            id="sidebarCollapseBtn"
+            class="button button-ghost"
+            type="button"
+          >
             Collapse
           </button>
         </aside>
@@ -63,7 +88,9 @@
             </div>
             <div class="topbar-actions">
               <p id="globalStatus" class="status" aria-live="polite"></p>
-              <button id="logoutBtn" class="button" type="button">Logout</button>
+              <button id="logoutBtn" class="button" type="button">
+                Logout
+              </button>
             </div>
           </header>
 
@@ -71,9 +98,15 @@
             <div class="workspace-header">
               <div>
                 <h3>Clubs</h3>
-                <p class="muted">Manage active communities and their identity.</p>
+                <p class="muted">
+                  Manage active communities and their identity.
+                </p>
               </div>
-              <button id="openCreateClub" class="button button-accent" type="button">
+              <button
+                id="openCreateClub"
+                class="button button-accent"
+                type="button"
+              >
                 Add Club
               </button>
             </div>
@@ -90,7 +123,9 @@
                 </thead>
                 <tbody id="clubsTableBody"></tbody>
               </table>
-              <div id="clubsEmpty" class="empty-state hidden">No clubs available yet.</div>
+              <div id="clubsEmpty" class="empty-state hidden">
+                No clubs available yet.
+              </div>
             </div>
           </section>
 
@@ -98,7 +133,9 @@
             <div class="workspace-header">
               <div>
                 <h3>Executive Members</h3>
-                <p class="muted">Maintain order, profile data, and visibility.</p>
+                <p class="muted">
+                  Maintain order, profile data, and visibility.
+                </p>
               </div>
               <button
                 id="openCreateExecutive"
