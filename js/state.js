@@ -1,6 +1,6 @@
 export const state = {
-	clubs: [],
-	executive: [],
-	theme: 'light'
+    clubs: [],
+    executive: [],
+    theme: 'light'
 };
 

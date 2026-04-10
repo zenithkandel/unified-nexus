@@ -1,49 +1,48 @@
 .loader {
-	position: fixed;
-	inset: 0;
-	z-index: 100;
-	display: grid;
-	place-items: center;
-	background: var(--surface-0);
-	transition: opacity 420ms ease, visibility 420ms ease;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    background: var(--surface-0);
+    transition: opacity 420ms ease, visibility 420ms ease;
 }
 
 .loader.hidden {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .loader-curtain {
-	position: absolute;
-	top: 0;
-	width: 50%;
-	height: 100%;
-	background: var(--color-base-1);
-	transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--color-base-1);
+    transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .loader-curtain-left {
-	left: 0;
+    left: 0;
 }
 
 .loader-curtain-right {
-	right: 0;
+    right: 0;
 }
 
 .loader.hidden .loader-curtain-left {
-	transform: translateX(-102%);
+    transform: translateX(-102%);
 }
 
 .loader.hidden .loader-curtain-right {
-	transform: translateX(102%);
+    transform: translateX(102%);
 }
 
 .loader-text {
-	color: #ffffff;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
-	font-size: var(--text-sm);
-	z-index: 2;
+    color: #ffffff;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: var(--text-sm);
+    z-index: 2;
 }
-

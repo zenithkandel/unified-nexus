@@ -1,0 +1,41 @@
+export function renderClubs(target, clubs) {
+	if (!target) {
+		return;
+	}
+
+	if (!clubs || clubs.length === 0) {
+		target.innerHTML = '<p>No clubs available right now.</p>';
+		return;
+	}
+
+	target.innerHTML = clubs.map((club) => `
+		<article class="card">
+			<h3>${escapeHtml(club.name)}</h3>
+			<p>${escapeHtml(club.description)}</p>
+			<p class="meta"><strong>Theme:</strong> ${escapeHtml(club.theme_motive)}</p>
+			<p class="meta"><strong>President:</strong> ${escapeHtml(club.president_name || 'TBD')}</p>
+		</article>
+	`).join('');
+}
+
+export function populateClubSelect(target, clubs) {
+	if (!target) {
+		return;
+	}
+
+	const options = clubs.map((club) => `
+		<option value="${String(club.id)}">${escapeHtml(club.name)}</option>
+	`).join('');
+
+	target.innerHTML = '<option value="">Choose a club</option>' + options;
+}
+
+function escapeHtml(value) {
+	return String(value ?? '')
+		.replaceAll('&', '&amp;')
+		.replaceAll('<', '&lt;')
+		.replaceAll('>', '&gt;')
+		.replaceAll('"', '&quot;')
+		.replaceAll("'", '&#039;');
+}
+

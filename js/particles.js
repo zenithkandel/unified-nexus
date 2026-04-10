@@ -1,34 +1,19 @@
 export function initParticles() {
-	const layer = document.getElementById('particles');
-	if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-		return;
-	}
+    const layer = document.getElementById('particles');
+    if (!layer || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
 
-	const count = 14;
-	for (let i = 0; i < count; i += 1) {
-		const dot = document.createElement('span');
-		dot.style.position = 'absolute';
-		dot.style.width = '6px';
-		dot.style.height = '6px';
-		dot.style.borderRadius = '2px';
-		dot.style.background = 'var(--accent)';
-		dot.style.opacity = '0.2';
-		dot.style.left = `${Math.random() * 100}%`;
-		dot.style.top = `${Math.random() * 100}%`;
-		dot.style.animation = `floatY ${6 + Math.random() * 8}s ease-in-out ${Math.random() * 3}s infinite alternate`;
-		layer.appendChild(dot);
-	}
+    const positions = [
+        'p-1', 'p-2', 'p-3', 'p-4', 'p-5', 'p-6', 'p-7',
+        'p-8', 'p-9', 'p-10', 'p-11', 'p-12', 'p-13', 'p-14'
+    ];
+    const count = positions.length;
 
-	if (!document.getElementById('particles-style')) {
-		const style = document.createElement('style');
-		style.id = 'particles-style';
-		style.textContent = `
-			@keyframes floatY {
-				from { transform: translateY(0px); }
-				to { transform: translateY(-20px); }
-			}
-		`;
-		document.head.appendChild(style);
-	}
+    for (let i = 0; i < count; i += 1) {
+        const dot = document.createElement('span');
+        dot.className = `particle ${positions[i]}`;
+        layer.appendChild(dot);
+    }
 }
 
