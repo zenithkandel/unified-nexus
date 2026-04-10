@@ -45,7 +45,7 @@
         <span
           class="section-label"
           style="justify-content: center; color: var(--c-7F2B3E)"
-          >EST. 2026</span
+          >We Work, We Win</span
         >
         <h1 class="hero-title-large anim-float-up-2">Unified<br />Nexus</h1>
         <p class="hero-subtitle anim-float-up-3">
@@ -205,8 +205,6 @@
               />
             </div>
 
-            
-
             <div class="form-group">
               <label for="clubId">Select Club</label>
               <select id="clubId" name="clubId" required>
@@ -269,8 +267,6 @@
       </div>
     </footer>
 
-
-
     <script>
       /* --- 1. Three.js Hero Geometry (Particles & Wireframes) --- */
       function initThreeJS() {
@@ -295,7 +291,7 @@
         container.appendChild(renderer.domElement);
 
         // Strict Palette Colors for geometry: #716F75, #959294, #AAAAAA, #7F2B3E, #661B28
-        const colors = [0x352732, 0x8B7485, 0xD1C2CC, 0xBA7883, 0x2A1D25];
+        const colors = [0x352732, 0x8b7485, 0xd1c2cc, 0xba7883, 0x2a1d25];
         const geometries = [
           new THREE.TetrahedronGeometry(0.8), // Triangle like
           new THREE.BoxGeometry(0.8, 0.8, 0.8), // Rectangle
@@ -406,7 +402,10 @@
             clubsData.data.forEach((club) => {
               grid.innerHTML += `
                 <div class="club-card reveal">
-                  <img src="${club.hero_image_path || "images/clubs/placeholder.jpg"}" alt="${club.name}" class="club-image" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80'" />
+                  <div class="club-image-wrapper">
+                    <img src="${club.hero_image_path || "images/clubs/placeholder.jpg"}" alt="${club.name}" class="club-image" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80'" />
+                    <div class="club-image-overlay"></div>
+                  </div>
                   <div class="club-content">
                     <span class="section-label" style="font-size: 0.75rem;">${club.theme_motive || "Creative Arts"}</span>
                     <h3>${club.name}</h3>
