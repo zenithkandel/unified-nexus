@@ -4,21 +4,21 @@
 }
 
 .section {
-    padding: var(--space-7) 0;
+    padding: var(--space-8) 0;
 }
 
 .section-alt {
     background: var(--surface-1);
-    border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    border-top: 1px solid var(--line-soft);
+    border-bottom: 1px solid var(--line-soft);
 }
 
 .site-header {
     position: sticky;
     top: 0;
     z-index: 30;
-    background: color-mix(in srgb, var(--surface-0) 88%, transparent);
-    backdrop-filter: blur(4px);
+    background: color-mix(in srgb, var(--surface-panel) 91%, transparent);
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -26,20 +26,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-3) 0;
+    padding: var(--space-3) 0 var(--space-2);
 }
 
 .main-nav {
     display: flex;
     gap: var(--space-3);
     overflow-x: auto;
-    padding-bottom: var(--space-3);
+    padding: 0 0 var(--space-3);
 }
 
 .main-nav a {
     font-size: var(--text-sm);
     color: var(--text-muted);
     border-bottom: 1px solid transparent;
+    padding: var(--space-1) 0;
 }
 
 .main-nav a.is-active {
@@ -47,8 +48,51 @@
     border-color: var(--accent);
 }
 
+.section-head {
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--line-soft);
+}
+
+.hero-grid {
+    display: grid;
+    gap: var(--space-5);
+    position: relative;
+    z-index: 1;
+}
+
+.hero-panel {
+    border: 1px solid var(--line-soft);
+    background: color-mix(in srgb, var(--surface-panel) 92%, transparent);
+    padding: var(--space-5);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-card);
+}
+
+.hero-panel h3 {
+    margin-bottom: var(--space-3);
+}
+
+.pillar-list {
+    margin: 0;
+    padding-left: 1.1rem;
+    display: grid;
+    gap: var(--space-2);
+}
+
 @media (min-width: 768px) {
     .main-nav {
         justify-content: flex-end;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1.35fr 1fr;
+        align-items: center;
+    }
+}
+
+@media (min-width: 1080px) {
+    .section {
+        padding: var(--space-9) 0;
     }
 }
