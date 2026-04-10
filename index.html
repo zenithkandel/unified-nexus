@@ -431,7 +431,10 @@
             execData.data.forEach((exec) => {
               grid.innerHTML += `
                 <div class="leader-item reveal">
-                  <img src="${exec.photo_path || "images/leadership/placeholder.png"}" alt="${exec.full_name}" class="leader-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" />
+                  <div class="leader-image-wrapper">
+                    <img src="${exec.photo_path || "images/leadership/placeholder.png"}" alt="${exec.full_name}" class="leader-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" />
+                    <div class="leader-image-overlay"></div>
+                  </div>
                   <span class="leader-name">${exec.full_name}</span>
                   <span class="leader-role">${exec.role_title}</span>
                 </div>
