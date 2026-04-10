@@ -5,7 +5,7 @@ require_once __DIR__ . '/../../php/bootstrap.php';
 require_once __DIR__ . '/../../php/repositories/executive-repository.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-	json_error('Method not allowed.', [], 405);
+    json_error('Method not allowed.', [], 405);
 }
 
 auth_start_session(app_config());
@@ -23,41 +23,41 @@ $photoPath = sanitize_text($_POST['photo_path'] ?? '');
 validate_required('Full name', $fullName, $errors);
 validate_required('Role title', $roleTitle, $errors);
 if ($displayOrder === false) {
-	$errors[] = 'Display order must be an integer.';
+    $errors[] = 'Display order must be an integer.';
 }
 
 if (isset($_FILES['photo']) && (int) ($_FILES['photo']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
-	$validation = upload_validate_image($_FILES['photo'], app_config()['uploads']);
-	if (!$validation['ok']) {
-		$errors = array_merge($errors, $validation['errors']);
-	}
+    $validation = upload_validate_image($_FILES['photo'], app_config()['uploads']);
+    if (!$validation['ok']) {
+        $errors = array_merge($errors, $validation['errors']);
+    }
 }
 
 if ($errors !== []) {
-	json_error('Validation failed.', $errors, 422);
+    json_error('Validation failed.', $errors, 422);
 }
 
 try {
-	if (isset($_FILES['photo']) && (int) ($_FILES['photo']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
-		$uploadDir = __DIR__ . '/../../images/uploads';
-		$fileName = upload_store_file($_FILES['photo'], $uploadDir, 'exec_');
-		$photoPath = 'images/uploads/' . $fileName;
-	}
+    if (isset($_FILES['photo']) && (int) ($_FILES['photo']['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_NO_FILE) {
+        $uploadDir = __DIR__ . '/../../images/uploads';
+        $fileName = upload_store_file($_FILES['photo'], $uploadDir, 'exec_');
+        $photoPath = 'images/uploads/' . $fileName;
+    }
 
-	$updated = executive_update(app_db(), (int) $memberId, [
-		'full_name' => $fullName,
-		'role_title' => $roleTitle,
-		'photo_path' => $photoPath,
-		'display_order' => (int) $displayOrder,
-		'is_active' => $isActive,
-	]);
+    $updated = executive_update(app_db(), (int) $memberId, [
+        'full_name' => $fullName,
+        'role_title' => $roleTitle,
+        'photo_path' => $photoPath,
+        'display_order' => (int) $displayOrder,
+        'is_active' => $isActive,
+    ]);
 
-	if (!$updated) {
-		json_error('Update failed.', ['Executive member not found or no changes made.'], 404);
-	}
+    if (!$updated) {
+        json_error('Update failed.', ['Executive member not found or no changes made.'], 404);
+    }
 
-	json_success('Executive member updated successfully.', ['photo_path' => $photoPath]);
+    json_success('Executive member updated successfully.', ['photo_path' => $photoPath]);
 } catch (Throwable $exception) {
-	json_error('Failed to update executive member.', [$exception->getMessage()], 500);
+    json_error('Failed to update executive member.', [$exception->getMessage()], 500);
 }
 
