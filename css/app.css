@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    Unified Nexus - Strict Palette Theme
    Strict Palette: #57545B, #716F75, #959294, #AAAAAA, #7F2B3E, #661B28
 ========================================= */
@@ -6,17 +6,17 @@
 
 :root {
     /* STRICT PALETTE */
-    --c-57545B: #57545B;
+    --c-57545B: #2E222A;
     /* Dark background */
-    --c-716F75: #716F75;
+    --c-716F75: #352732;
     /* Borders / dark elements */
-    --c-959294: #959294;
+    --c-959294: #8B7485;
     /* Secondary text */
-    --c-AAAAAA: #AAAAAA;
+    --c-AAAAAA: #D1C2CC;
     /* Primary text / Light */
-    --c-7F2B3E: #7F2B3E;
+    --c-7F2B3E: #BA7883;
     /* Accent Primary */
-    --c-661B28: #661B28;
+    --c-661B28: #2A1D25;
     /* Accent Secondary / Darker */
 
     --color-bg-base: var(--c-57545B);
@@ -114,7 +114,7 @@ ul {
 }
 
 .navbar.scrolled {
-    background-color: rgba(87, 84, 91, 0.9);
+    background-color: rgba(53, 39, 50, 0.9);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--c-716F75);
     padding: 0.75rem 0;
