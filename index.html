@@ -392,8 +392,18 @@
         if (canvasContainer) {
           if (window.scrollY > window.innerHeight * 0.4) {
             canvasContainer.classList.add("scrolled-bg");
+            if (window.globalParticlesArray) {
+              window.globalParticlesArray.forEach((p, i) => {
+                if (i % 2 === 0) p.visible = false;
+              });
+            }
           } else {
             canvasContainer.classList.remove("scrolled-bg");
+            if (window.globalParticlesArray) {
+              window.globalParticlesArray.forEach((p, i) => {
+                 p.visible = true;
+              });
+            }
           }
         }
       });
