@@ -15,14 +15,17 @@
   </head>
   <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <div class="container">
-        <a href="#" class="nav-brand">Unified Nexus</a>
+        <a href="#" class="nav-brand">
+          <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
+          Unified Nexus
+        </a>
         <ul class="nav-menu">
           <li><a href="#about" class="nav-link">Story</a></li>
           <li><a href="#clubs" class="nav-link">Clubs</a></li>
           <li><a href="#leadership" class="nav-link">Leadership</a></li>
-          <li><a href="mailto:unifiednexus1@gmail.com" class="nav-link donate-link">Join Us</a></li>
+          <li><a href="#contact" class="nav-link donate-link">Join Us</a></li>
         </ul>
       </div>
     </nav>
@@ -33,7 +36,7 @@
         <span class="section-label">Opening Chapter</span>
         <h1>We work, we win.</h1>
         <p>A vibrant student-led platform that celebrates creativity, expression, and collaboration. Bringing together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment.</p>
-        <a href="#clubs" class="nav-link donate-link" style="margin-top: 2rem; display: inline-block;">Discover Our Clubs</a>
+        <a href="#contact" class="nav-link donate-link" style="margin-top: 2rem; display: inline-block;">Join The Movement</a>
       </div>
     </section>
 
@@ -48,116 +51,83 @@
       </div>
     </section>
 
-    <!-- Clubs Grid -->
+    <!-- Dynamic Clubs Grid -->
     <section class="section" id="clubs" style="background-color: var(--color-bg-base);">
       <div class="container">
         <div class="text-center reveal">
-          <span class="section-label">Discover Passions</span>
+          <span class="section-label" style="justify-content:center;">Discover Passions</span>
           <h2 class="section-title">Clubs & Activities</h2>
           <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">Whether you are into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment.</p>
         </div>
 
-        <div class="clubs-grid">
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Creative Arts</span>
-            <h3>Music Club</h3>
-            <p>A platform to learn, create, and excel through music. Perfect for all music lovers who want to explore their musical talents.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Literature & Debate</span>
-            <h3>Debate Club</h3>
-            <p>For aspiring speakers and critical thinkers. Sharpen your voice, strengthen your ideas, and lead through dialogue.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Social Impact</span>
-            <h3>Charity Club</h3>
-            <p>For volunteers with a heart to serve. Committed to service, driven by compassion, creating meaningful impact in the community.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Creative Arts</span>
-            <h3>Art and Culture Club</h3>
-            <p>For artists and cultural enthusiasts. Celebrating creativity, heritage, and expression through art and culture.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Performance</span>
-            <h3>Drama Club</h3>
-            <p>For expressive actors and creative storytellers. A platform where imagination transforms into powerful performance.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Academic</span>
-            <h3>Research & Presentation</h3>
-            <p>For curious minds ready to research, present, and inspire. Transforming research into insight and presentations into impact.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Body</span>
-            <h3>Student Council</h3>
-            <p>Empowering student voices to lead, represent, and create change within the student body and beyond.</p>
-          </div>
-          <div class="club-card reveal">
-            <span class="section-label" style="font-size: 0.75rem;">Social Impact</span>
-            <h3>Environment Club</h3>
-            <p>For eco-conscious minds ready to protect and preserve our planet. Working together for a greener, more sustainable tomorrow.</p>
-          </div>
+        <div class="clubs-grid" id="clubs-grid-dynamic">
+          <p style="text-align:center; width:100%;">Loading clubs...</p>
         </div>
       </div>
     </section>
 
-    <!-- Leadership Section -->
+    <!-- Dynamic Leadership Section -->
     <section class="section mission" id="leadership" style="background-color: var(--color-cream);">
       <div class="container">
         <div class="text-center reveal">
-          <span class="section-label">Direction</span>
+          <span class="section-label" style="justify-content:center;">Direction</span>
           <h2 class="section-title">Leadership Team</h2>
           <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">The dedicated individuals steering our collective narrative forward.</p>
         </div>
 
-        <div class="leader-grid">
-          <div class="leader-item reveal">
-            <span class="leader-name">Shreyas Poudel</span>
-            <span class="leader-role">President</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Tilashma Neupane</span>
-            <span class="leader-role">Director</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Aakirti Luitel</span>
-            <span class="leader-role">Manager in General</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Bijal Sakhya</span>
-            <span class="leader-role">Secretary</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Soham Gautam</span>
-            <span class="leader-role">Treasurer</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Allan Khanal</span>
-            <span class="leader-role">IT Head</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Arunex Shrestha</span>
-            <span class="leader-role">Head of Operation</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Arushi Shah</span>
-            <span class="leader-role">Head of Discipline & Ethics</span>
-          </div>
-          <div class="leader-item reveal">
-            <span class="leader-name">Vaibauh Dahal</span>
-            <span class="leader-role">Club Ambassador</span>
-          </div>
+        <div class="leader-grid" id="leader-grid-dynamic">
+          <p style="text-align:center; width:100%;">Loading team...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="section" id="contact" style="background-color: var(--color-bg-base);">
+      <div class="container reveal text-center">
+        <span class="section-label" style="justify-content:center;">Get Involved</span>
+        <h2 class="section-title">Join Unified Nexus</h2>
+        <p style="font-family: var(--font-body); color: var(--color-text-secondary); margin-bottom: 3rem;">Ready to be a part of the platform? Submit your application.</p>
+
+        <div class="form-container">
+          <form id="join-form">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required placeholder="Shreyas Poudel">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="youremail@example.com">
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1234567890">
+            </div>
+            
+            <div class="form-group">
+              <label for="clubId">Select Club *</label>
+              <select id="clubId" name="clubId" required>
+                <option value="">-- Choose a Club --</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Why do you want to join? *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell us about yourself and your passions..."></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit" id="submit-btn">Submit Application</button>
+            <div id="form-msg" class="form-message"></div>
+          </form>
         </div>
       </div>
     </section>
 
     <!-- Benefits / Footer -->
-    <section class="section" id="benefits" style="background-color: var(--color-bg-base); text-align:center;">
+    <section class="section" id="benefits" style="background-color: var(--color-cream); text-align:center;">
       <div class="container reveal">
-        <span class="section-label" style="text-align:center; justify-content:center;">Benefits of Joining</span>
         <h2 class="section-title" style="margin-bottom: 2rem;">Grow With Us</h2>
-        
         <div class="benefits-pills">
           <span class="pill">Leadership Skills</span>
           <span class="pill">Self-Confidence</span>
@@ -170,22 +140,22 @@
           <span class="pill">Creativity</span>
           <span class="pill">Platform for Talent</span>
         </div>
-
-        <p style="font-family: var(--font-body); color: var(--color-text-secondary); margin-bottom:2rem;">Unified Nexus is open for all students. Express your unique talents and be part of a creative community that supports your growth.</p>
-
-        <a href="mailto:unifiednexus1@gmail.com" class="nav-link donate-link" style="display:inline-block;">Join Unified Nexus</a>
       </div>
     </section>
 
     <footer class="footer">
       <div class="container">
-        <div class="footer-logo">Unified Nexus</div>
+        <div class="footer-logo">
+          <img src="images/branding/logo-icon.png" alt="Unified Nexus" />
+          Unified Nexus
+        </div>
         <p style="font-family: var(--font-mono); font-size:0.875rem; letter-spacing:0.05em; color:var(--color-sepia); margin-bottom: 1rem;">WE WORK WE WIN</p>
         <p style="color:var(--color-dust-gray);">Instagram: @unified__nexus | Gmail: unifiednexus1@gmail.com</p>
       </div>
     </footer>
 
     <script>
+      // 1. Scroll Animations
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -196,6 +166,119 @@
       }, { threshold: 0.1 });
       
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+      // Navbar shrink on scroll
+      window.addEventListener("scroll", () => {
+        const nav = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          nav.style.padding = "0.5rem 0";
+        } else {
+          nav.style.padding = "1rem 0";
+        }
+      });
+
+      // 2. Fetch Data from API
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          // Fetch Clubs
+          const clubsRes = await fetch("api/public/clubs.php");
+          const clubsData = await clubsRes.json();
+          if (clubsData.success) {
+            const grid = document.getElementById("clubs-grid-dynamic");
+            const select = document.getElementById("clubId");
+            grid.innerHTML = "";
+            
+            clubsData.data.forEach(club => {
+              // Add to Grid
+              grid.innerHTML += `
+                <div class="club-card reveal">
+                  <img src="${club.hero_image_path || "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80"}" alt="${club.name}" class="club-image" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80'" />
+                  <div class="club-content">
+                    <span class="section-label" style="font-size: 0.75rem;">${club.theme_motive || "Creative"}</span>
+                    <h3>${club.name}</h3>
+                    <p>${club.description}</p>
+                  </div>
+                </div>
+              `;
+              
+              // Add to Select Dropdown
+              const option = document.createElement("option");
+              option.value = club.id;
+              option.textContent = club.name;
+              select.appendChild(option);
+            });
+            // Re-bind observer for dynamically added items
+            document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+          }
+
+          // Fetch Executives
+          const execRes = await fetch("api/public/executive.php");
+          const execData = await execRes.json();
+          if (execData.success) {
+            const grid = document.getElementById("leader-grid-dynamic");
+            grid.innerHTML = "";
+            
+            execData.data.forEach(exec => {
+              grid.innerHTML += `
+                <div class="leader-item reveal">
+                  <img src="${exec.photo_path || "images/leadership/placeholder.png"}" alt="${exec.full_name}" class="leader-image" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'" />
+                  <span class="leader-name">${exec.full_name}</span>
+                  <span class="leader-role">${exec.role_title}</span>
+                </div>
+              `;
+            });
+            document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+          }
+        } catch (error) {
+          console.error("Failed to load data:", error);
+          document.getElementById("clubs-grid-dynamic").innerHTML = "<p>Could not load clubs.</p>";
+          document.getElementById("leader-grid-dynamic").innerHTML = "<p>Could not load executives.</p>";
+        }
+      });
+
+      // 3. Handle Form Submission
+      document.getElementById("join-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        const btn = document.getElementById("submit-btn");
+        const msgBox = document.getElementById("form-msg");
+        btn.textContent = "Submitting...";
+        btn.disabled = true;
+        msgBox.className = "form-message";
+        msgBox.textContent = "";
+
+        const payload = {
+          name: document.getElementById("name").value,
+          email: document.getElementById("email").value,
+          phone: document.getElementById("phone").value,
+          clubId: Number(document.getElementById("clubId").value),
+          message: document.getElementById("message").value
+        };
+
+        try {
+          const res = await fetch("api/public/apply.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+
+          if (res.ok && data.success) {
+            msgBox.classList.add("success");
+            msgBox.textContent = "Application submitted successfully! We will be in touch.";
+            e.target.reset();
+          } else {
+            msgBox.classList.add("error");
+            msgBox.textContent = data.message || "Failed to submit application. Please check the fields.";
+          }
+        } catch (err) {
+          msgBox.classList.add("error");
+          msgBox.textContent = "A network error occurred. Try again later.";
+        } finally {
+          btn.textContent = "Submit Application";
+          btn.disabled = false;
+        }
+      });
     </script>
   </body>
 </html>
