@@ -12,14 +12,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="css/app.css" />
+    
+    <!-- Three.js for Hero Section geometry graphics -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   </head>
   <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="container">
         <a href="#" class="nav-brand">
-          <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
-          Unified Nexus
+          <!-- Text removed, logo inverted to dark since bg is light -->
+          <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" class="logo-invert" />
         </a>
         <ul class="nav-menu">
           <li><a href="#about" class="nav-link">Story</a></li>
@@ -32,11 +35,14 @@
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+      <!-- Absolute Three.js Container -->
+      <div id="canvas-container"></div>
+      
       <div class="container hero-content reveal">
-        <span class="section-label">Opening Chapter</span>
-        <h1>We work, we win.</h1>
-        <p>A vibrant student-led platform that celebrates creativity, expression, and collaboration. Bringing together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment.</p>
-        <a href="#contact" class="nav-link donate-link" style="margin-top: 2rem; display: inline-block;">Join The Movement</a>
+        <span class="section-label" style="justify-content: flex-start; color: var(--color-accent-terracotta);">EST. 2026</span>
+        <h1 class="hero-title-large">Unified<br>Nexus</h1>
+        <p class="hero-subtitle">A vibrant student-led platform that celebrates creativity, expression, and collaboration. We work, we win.</p>
+        <a href="#contact" class="nav-link donate-link" style="margin-top: 1rem; display: inline-block;">Discover More</a>
       </div>
     </section>
 
@@ -57,7 +63,7 @@
         <div class="text-center reveal">
           <span class="section-label" style="justify-content:center;">Discover Passions</span>
           <h2 class="section-title">Clubs & Activities</h2>
-          <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">Whether you are into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment.</p>
+          <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; font-size:1.125rem;">Whether you are into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment.</p>
         </div>
 
         <div class="clubs-grid" id="clubs-grid-dynamic">
@@ -72,7 +78,7 @@
         <div class="text-center reveal">
           <span class="section-label" style="justify-content:center;">Direction</span>
           <h2 class="section-title">Leadership Team</h2>
-          <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">The dedicated individuals steering our collective narrative forward.</p>
+          <p style="font-family: var(--font-body); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto; font-size:1.125rem;">The dedicated individuals steering our collective narrative forward.</p>
         </div>
 
         <div class="leader-grid" id="leader-grid-dynamic">
@@ -86,17 +92,17 @@
       <div class="container reveal text-center">
         <span class="section-label" style="justify-content:center;">Get Involved</span>
         <h2 class="section-title">Join Unified Nexus</h2>
-        <p style="font-family: var(--font-body); color: var(--color-text-secondary); margin-bottom: 3rem;">Ready to be a part of the platform? Submit your application.</p>
+        <p style="font-family: var(--font-body); color: var(--color-text-secondary); margin-bottom: 4rem; font-size:1.125rem;">Ready to be a part of the platform? Submit your application.</p>
 
         <div class="form-container">
           <form id="join-form">
             <div class="form-group">
-              <label for="name">Full Name *</label>
+              <label for="name">Full Name</label>
               <input type="text" id="name" name="name" required placeholder="Shreyas Poudel">
             </div>
             
             <div class="form-group">
-              <label for="email">Email Address *</label>
+              <label for="email">Email Address</label>
               <input type="email" id="email" name="email" required placeholder="youremail@example.com">
             </div>
             
@@ -106,15 +112,15 @@
             </div>
             
             <div class="form-group">
-              <label for="clubId">Select Club *</label>
+              <label for="clubId">Select Club</label>
               <select id="clubId" name="clubId" required>
                 <option value="">-- Choose a Club --</option>
               </select>
             </div>
             
             <div class="form-group">
-              <label for="message">Why do you want to join? *</label>
-              <textarea id="message" name="message" rows="4" required placeholder="Tell us about yourself and your passions..."></textarea>
+              <label for="message">Why do you want to join?</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tell us about yourself and your passions..."></textarea>
             </div>
             
             <button type="submit" class="form-submit" id="submit-btn">Submit Application</button>
@@ -127,7 +133,7 @@
     <!-- Benefits / Footer -->
     <section class="section" id="benefits" style="background-color: var(--color-cream); text-align:center;">
       <div class="container reveal">
-        <h2 class="section-title" style="margin-bottom: 2rem;">Grow With Us</h2>
+        <h2 class="section-title" style="margin-bottom: 3rem;">Grow With Us</h2>
         <div class="benefits-pills">
           <span class="pill">Leadership Skills</span>
           <span class="pill">Self-Confidence</span>
@@ -146,16 +152,61 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-logo">
+          <!-- Foot is charcoal (#57545B) colored bg, logo stays pure white for high contrast -->
           <img src="images/branding/logo-icon.png" alt="Unified Nexus" />
-          Unified Nexus
         </div>
-        <p style="font-family: var(--font-mono); font-size:0.875rem; letter-spacing:0.05em; color:var(--color-sepia); margin-bottom: 1rem;">WE WORK WE WIN</p>
-        <p style="color:var(--color-dust-gray);">Instagram: @unified__nexus | Gmail: unifiednexus1@gmail.com</p>
+        <p style="font-family: var(--font-mono); font-size:0.875rem; letter-spacing:0.1em; color:var(--color-dust-gray); margin-bottom: 1.5rem; text-transform: uppercase;">WE WORK WE WIN</p>
+        <p style="color:var(--color-dust-gray); font-family: var(--font-mono); font-size: 0.875rem;">Instagram: @unified__nexus &nbsp;|&nbsp; Gmail: unifiednexus1@gmail.com</p>
       </div>
     </footer>
 
     <script>
-      // 1. Scroll Animations
+      /* --- 1. Three.js Hero Geometry (Wireframe Sphere/Icosahedron) --- */
+      function initThreeJS() {
+        const container = document.getElementById("canvas-container");
+        if (!container) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.z = 5;
+        camera.position.x = 1.5; // Offset to right
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Using colors from the strict palette
+        // We use the accent dark (#661B28) or medium gray (#716F75) for wireframe
+        const geometry = new THREE.IcosahedronGeometry(2.2, 1); // 1 = detail level to look like a geometric sphere
+        const material = new THREE.MeshBasicMaterial({ 
+          color: 0x716F75, // #716F75 from strict palette 
+          wireframe: true,
+          transparent: true,
+          opacity: 0.4
+        });
+        
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        function animate() {
+          requestAnimationFrame(animate);
+          mesh.rotation.x += 0.001;
+          mesh.rotation.y += 0.002;
+          renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener("resize", () => {
+          if (!container) return;
+          camera.aspect = container.clientWidth / container.clientHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+      }
+      initThreeJS();
+
+      /* --- 2. Scroll Animations & Navbar --- */
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -167,17 +218,16 @@
       
       document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-      // Navbar shrink on scroll
       window.addEventListener("scroll", () => {
         const nav = document.getElementById("navbar");
         if (window.scrollY > 50) {
-          nav.style.padding = "0.5rem 0";
+          nav.style.padding = "0.75rem 0";
         } else {
-          nav.style.padding = "1rem 0";
+          nav.style.padding = "1.5rem 0";
         }
       });
 
-      // 2. Fetch Data from API
+      /* --- 3. Dynamic Data Fetching --- */
       document.addEventListener("DOMContentLoaded", async () => {
         try {
           // Fetch Clubs
@@ -189,25 +239,22 @@
             grid.innerHTML = "";
             
             clubsData.data.forEach(club => {
-              // Add to Grid
               grid.innerHTML += `
                 <div class="club-card reveal">
-                  <img src="${club.hero_image_path || "https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80"}" alt="${club.name}" class="club-image" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80'" />
+                  <img src="${club.hero_image_path || "images/clubs/placeholder.jpg"}" alt="${club.name}" class="club-image" onerror="this.src='https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80'" />
                   <div class="club-content">
-                    <span class="section-label" style="font-size: 0.75rem;">${club.theme_motive || "Creative"}</span>
+                    <span class="section-label" style="font-size: 0.75rem;">${club.theme_motive || "Creative Arts"}</span>
                     <h3>${club.name}</h3>
                     <p>${club.description}</p>
                   </div>
                 </div>
               `;
               
-              // Add to Select Dropdown
               const option = document.createElement("option");
               option.value = club.id;
               option.textContent = club.name;
               select.appendChild(option);
             });
-            // Re-bind observer for dynamically added items
             document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
           }
 
@@ -236,7 +283,7 @@
         }
       });
 
-      // 3. Handle Form Submission
+      /* --- 4. Handle Application Submit --- */
       document.getElementById("join-form").addEventListener("submit", async (e) => {
         e.preventDefault();
         
@@ -265,15 +312,15 @@
 
           if (res.ok && data.success) {
             msgBox.classList.add("success");
-            msgBox.textContent = "Application submitted successfully! We will be in touch.";
+            msgBox.textContent = "Application submitted! Welcome to the movement.";
             e.target.reset();
           } else {
             msgBox.classList.add("error");
-            msgBox.textContent = data.message || "Failed to submit application. Please check the fields.";
+            msgBox.textContent = data.message || "Failed to submit. Please check your inputs.";
           }
         } catch (err) {
           msgBox.classList.add("error");
-          msgBox.textContent = "A network error occurred. Try again later.";
+          msgBox.textContent = "A network error occurred. Please try again.";
         } finally {
           btn.textContent = "Submit Application";
           btn.disabled = false;
