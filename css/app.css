@@ -6,17 +6,17 @@
 
 :root {
     /* STRICT PALETTE */
-    --c-57545B: #0F172A;
+    --c-57545B: #2E222A;
     /* Dark background */
-    --c-716F75: #1E293B;
+    --c-716F75: #352732;
     /* Borders / dark elements */
-    --c-959294: #475569;
+    --c-959294: #8B7485;
     /* Secondary text */
-    --c-AAAAAA: #CBD5E1;
+    --c-AAAAAA: #D1C2CC;
     /* Primary text / Light */
-    --c-7F2B3E: #3B82F6;
+    --c-7F2B3E: #BA7883;
     /* Accent Primary */
-    --c-661B28: #1D4ED8;
+    --c-661B28: #2A1D25;
     /* Accent Secondary / Darker */
 
     --color-bg-base: var(--c-57545B);
@@ -378,7 +378,7 @@ ul {
     background: var(--c-57545B);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(127, 43, 62, 0.3);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     overflow: hidden;
     display: flex;
@@ -390,14 +390,14 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(127, 43, 62, 0.05), transparent);
     z-index: 0;
     pointer-events: none;
 }
 
 .club-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 12px 30px rgba(127, 43, 62, 0.3);
     border-color: var(--c-7F2B3E);
 }
 
@@ -467,69 +467,21 @@ ul {
 
 .leader-item {
     text-align: center;
-    padding: 2.5rem 1.5rem;
-    background: var(--c-57545B);
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(149, 146, 148, 0.2);
-    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
-    position: relative;
-    overflow: hidden;
-}
-
-.leader-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(149, 146, 148, 0.05), transparent);
-    z-index: 0;
-    pointer-events: none;
-}
-
-.leader-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--c-959294);
-}
-
-.leader-image-wrapper {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 1.5rem;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: var(--c-716F75);
-    border: 3px solid var(--c-959294);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .leader-image {
-    width: 100%;
-    height: 100%;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
     object-fit: cover;
-    display: block;
-    mix-blend-mode: luminosity;
-    opacity: 0.85;
-    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    margin: 0 auto 1.5rem;
+    border: 2px solid var(--c-7F2B3E);
+    filter: grayscale(100%) opacity(0.8);
+    transition: filter var(--transition-base);
 }
 
 .leader-item:hover .leader-image {
-    transform: scale(1.1);
-}
-
-.leader-image-overlay {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    background-color: var(--c-57545B);
-    mix-blend-mode: multiply;
-    opacity: 0.6;
-    transition: opacity var(--transition-base);
-}
-
-.leader-item:hover .leader-image-overlay {
-    opacity: 0.2;
+    filter: grayscale(0%) opacity(1);
 }
 
 .leader-name {
@@ -537,25 +489,16 @@ ul {
     display: block;
     font-size: 1.25rem;
     font-weight: 600;
-    color: #FFFFFF;
-    margin-bottom: 0.5rem;
-    position: relative;
-    z-index: 1;
+    color: var(--c-AAAAAA);
+    margin-bottom: 0.25rem;
 }
 
 .leader-role {
     font-family: var(--font-mono);
-    display: inline-block;
-    font-size: 0.75rem;
-    color: var(--c-AAAAAA);
+    font-size: 0.875rem;
+    color: var(--c-959294);
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    background: var(--c-716F75);
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    position: relative;
-    z-index: 1;
-    border: 1px solid var(--c-959294);
 }
 
 /* Contact Form */
