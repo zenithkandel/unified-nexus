@@ -22,7 +22,13 @@
 
     <header class="site-header" id="top">
       <div class="container header-content">
-        <a class="brand" href="#hero">Unified Nexus</a>
+        <a class="brand" href="#hero">
+          <span class="brand-mark">UN</span>
+          <span class="brand-text">
+            <strong>Unified Nexus</strong>
+            <small>We Work We Win</small>
+          </span>
+        </a>
         <button
           id="themeToggle"
           class="btn btn-ghost"
@@ -46,69 +52,104 @@
         <div class="hero-backdrop" aria-hidden="true">
           <div id="particles" class="particles-layer"></div>
         </div>
-        <div class="container hero-content">
-          <p class="eyebrow">Student-Led Creative Platform</p>
-          <h1>We Work We Win</h1>
-          <p class="lead">
-            Unified Nexus fosters creativity, collaboration, expression,
-            leadership, and social impact.
-          </p>
-          <a class="btn btn-accent" href="#apply">Join Unified Nexus</a>
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Student-Led Creative Platform</p>
+            <h1>We Work We Win</h1>
+            <p class="lead">
+              Unified Nexus fosters creativity, collaboration, expression,
+              leadership, and social impact.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-accent" href="#apply">Join Unified Nexus</a>
+              <a class="btn" href="#clubs">Explore Clubs</a>
+            </div>
+          </div>
+          <aside class="hero-panel" aria-label="Unified Nexus pillars">
+            <h3>What Makes Us Different</h3>
+            <ul class="pillar-list">
+              <li>Creativity across multiple clubs</li>
+              <li>Leadership with real responsibility</li>
+              <li>Social impact through collaboration</li>
+              <li>Open and supportive student culture</li>
+            </ul>
+            <p class="meta">Open for all students</p>
+          </aside>
         </div>
       </section>
 
       <section id="about" class="section">
         <div class="container">
-          <h2>About Unified Nexus</h2>
+          <div class="section-head">
+            <p class="eyebrow">Identity</p>
+            <h2>About Unified Nexus</h2>
+          </div>
           <div id="aboutContent"></div>
         </div>
       </section>
 
       <section id="clubs" class="section section-alt">
         <div class="container">
-          <h2>Clubs and Activities</h2>
+          <div class="section-head">
+            <p class="eyebrow">Communities</p>
+            <h2>Clubs and Activities</h2>
+          </div>
           <div id="clubsGrid" class="card-grid"></div>
         </div>
       </section>
 
       <section id="executive" class="section">
         <div class="container">
-          <h2>Executive Team</h2>
+          <div class="section-head">
+            <p class="eyebrow">Leadership</p>
+            <h2>Executive Team</h2>
+          </div>
           <div id="executiveGrid" class="card-grid"></div>
         </div>
       </section>
 
       <section id="apply" class="section section-alt">
         <div class="container">
-          <h2>Apply to Join</h2>
+          <div class="section-head">
+            <p class="eyebrow">Membership</p>
+            <h2>Apply to Join</h2>
+          </div>
           <form id="applyForm" class="form-panel" novalidate>
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" maxlength="120" required />
-
-            <label for="email">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              maxlength="150"
-              required
-            />
-
-            <label for="phone">Phone (optional)</label>
-            <input id="phone" name="phone" type="text" maxlength="30" />
-
-            <label for="clubId">Select Club</label>
-            <select id="clubId" name="clubId" required>
-              <option value="">Choose a club</option>
-            </select>
-
-            <label for="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              maxlength="1500"
-              required
-            ></textarea>
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" maxlength="120" required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  maxlength="150"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" type="text" maxlength="30" />
+              </div>
+              <div class="field">
+                <label for="clubId">Select Club</label>
+                <select id="clubId" name="clubId" required>
+                  <option value="">Choose a club</option>
+                </select>
+              </div>
+              <div class="field field-full">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  maxlength="1500"
+                  required
+                ></textarea>
+              </div>
+            </div>
 
             <button class="btn btn-accent" type="submit">
               Submit Application

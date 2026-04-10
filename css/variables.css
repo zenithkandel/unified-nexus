@@ -1,5 +1,6 @@
 :root {
     --color-white: #ffffff;
+    --color-black: #111111;
     --color-base-1: #57545b;
     --color-base-2: #716f75;
     --color-base-3: #959294;
@@ -8,10 +9,11 @@
     --color-accent-2: #661b28;
 
     --radius-sm: 2px;
-    --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-subtle: 0 4px 16px rgba(0, 0, 0, 0.09);
+    --shadow-card: 0 14px 34px rgba(25, 19, 22, 0.08);
 
-    --font-primary: "Georgia", "Times New Roman", serif;
-    --font-secondary: "Trebuchet MS", "Segoe UI", sans-serif;
+    --font-primary: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+    --font-secondary: "Franklin Gothic Book", "Gill Sans", "Trebuchet MS", sans-serif;
 
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -20,6 +22,8 @@
     --space-5: 1.5rem;
     --space-6: 2rem;
     --space-7: 3rem;
+    --space-8: 4rem;
+    --space-9: 5rem;
 
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
@@ -27,4 +31,5 @@
     --text-lg: 1.125rem;
     --text-xl: 1.5rem;
     --text-2xl: 2rem;
+    --text-3xl: 2.75rem;
 }
