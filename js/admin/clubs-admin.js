@@ -1,4 +1,4 @@
-import { adminJsonRequest } from './auth.js';
+import { adminFormRequest, adminJsonRequest } from './auth.js';
 import { closeModal, openModal } from './modal.js';
 
 export function initClubsAdmin() {
@@ -23,8 +23,9 @@ export function initClubsAdmin() {
     const buildFormHtml = (row = null) => {
         const isUpdate = row !== null;
         return `
-            <form id="clubForm" class="admin-form" novalidate>
+            <form id="clubForm" class="admin-form" enctype="multipart/form-data" novalidate>
                 <input type="hidden" id="clubId" name="id" value="${isUpdate ? escapeAttr(String(row.id || '')) : ''}" />
+                <input type="hidden" id="clubImagePath" name="hero_image_path" value="${isUpdate ? escapeAttr(row.hero_image_path || '') : ''}" />
                 <div>
                     <label for="clubName">Name</label>
                     <input id="clubName" name="name" type="text" required value="${isUpdate ? escapeAttr(row.name || '') : ''}" />
@@ -38,8 +39,8 @@ export function initClubsAdmin() {
                     <input id="clubOrder" name="display_order" type="number" required value="${isUpdate ? escapeAttr(String(row.display_order ?? 0)) : '1'}" />
                 </div>
                 <div>
-                    <label for="clubImage">Hero Image Path (optional)</label>
-                    <input id="clubImage" name="hero_image_path" type="text" value="${isUpdate ? escapeAttr(row.hero_image_path || '') : ''}" />
+                    <label for="clubImage">Hero Image ${isUpdate ? '(optional for update)' : '(optional)'}</label>
+                    <input id="clubImage" name="hero_image" type="file" accept="image/png,image/jpeg,image/webp" />
                 </div>
                 <div>
                     <label for="clubDescription">Description</label>
@@ -72,22 +73,12 @@ export function initClubsAdmin() {
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            const payload = {
-                id: document.getElementById('clubId').value,
-                name: document.getElementById('clubName').value,
-                president_name: document.getElementById('clubPresident').value,
-                display_order: Number(document.getElementById('clubOrder').value),
-                hero_image_path: document.getElementById('clubImage').value,
-                description: document.getElementById('clubDescription').value,
-                theme_motive: document.getElementById('clubMotive').value,
-                is_active: document.getElementById('clubActive').checked
-            };
+            const formData = new FormData(form);
 
             try {
-                await adminJsonRequest(
+                await adminFormRequest(
                     isUpdate ? 'api/admin/clubs-update.php' : 'api/admin/clubs-create.php',
-                    'POST',
-                    payload
+                    formData
                 );
                 setStatus(isUpdate ? 'Club updated successfully.' : 'Club created successfully.', 'success');
                 closeModal();
