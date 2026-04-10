@@ -12,8 +12,8 @@ To create a unified space where creativity thrives, individuality is respected, 
 
 | Position                      | Name             |
 | ----------------------------- | ---------------- |
-| Director                      | Tilashma Neupane |
 | President                     | Shreyas Poudel   |
+| Director                      | Tilashma Neupane |
 | Manager in General            | Aakirti Luitel   |
 | Secretary                     | Bijal Sakhya     |
 | Treasurer                     | Soham Gautam     |
