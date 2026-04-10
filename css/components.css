@@ -31,7 +31,7 @@
 .btn-accent {
     background: var(--accent);
     border-color: var(--accent);
-    color: #ffffff;
+    color: var(--color-white);
 }
 
 .btn-ghost {

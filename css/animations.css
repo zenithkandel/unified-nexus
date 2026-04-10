@@ -40,7 +40,7 @@
 }
 
 .loader-text {
-    color: #ffffff;
+    color: var(--color-white);
     letter-spacing: 0.16em;
     text-transform: uppercase;
     font-size: var(--text-sm);
@@ -51,6 +51,7 @@
     from {
         transform: translateY(0px);
     }
+
     to {
         transform: translateY(-18px);
     }
