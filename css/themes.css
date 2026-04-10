@@ -1,34 +1,48 @@
 :root,
 html[data-theme="light"] {
-    --surface-0: #f4f2f1;
-    --surface-1: #ebe8e7;
-    --surface-2: #e0dcdb;
-    --surface-panel: #fbfaf9;
-    --text-strong: #1e1d1f;
-    --text-muted: #4d4a50;
-    --border-color: #b0abaf;
-    --line-soft: #c9c4c7;
+    --surface-0: #f2f8fa;
+    --surface-1: #e7f1f5;
+    --surface-2: #d7e8ee;
+    --surface-panel: #ffffff;
+    --surface-overlay: rgba(255, 255, 255, 0.78);
+
+    --text-strong: #0d2a36;
+    --text-muted: #4a6671;
+    --text-faint: #6e8791;
+
+    --border-color: #abc4cc;
+    --line-soft: #cfe0e6;
+
     --accent: var(--color-accent-1);
     --accent-strong: var(--color-accent-2);
-    --success: #355f43;
-    --error: #8a1f2f;
-    --ambient-glow: rgba(127, 43, 62, 0.08);
+    --accent-warm: var(--color-accent-3);
+
+    --success: #1d8a5c;
+    --error: #be3f43;
+    --ambient-glow: rgba(17, 151, 161, 0.18);
 }
 
 html[data-theme="dark"] {
-    --surface-0: #18171b;
-    --surface-1: #222026;
-    --surface-2: #2e2b33;
-    --surface-panel: #242129;
-    --text-strong: #f3f0ed;
-    --text-muted: #cbc4cc;
-    --border-color: #5b5660;
-    --line-soft: #4c4750;
-    --accent: #a76071;
-    --accent-strong: #ca8a99;
-    --success: #6eb083;
-    --error: #d87a89;
-    --ambient-glow: rgba(167, 96, 113, 0.15);
+    --surface-0: #08161d;
+    --surface-1: #10232d;
+    --surface-2: #15303d;
+    --surface-panel: #132a35;
+    --surface-overlay: rgba(10, 25, 33, 0.78);
+
+    --text-strong: #e8f5f9;
+    --text-muted: #b4d0d9;
+    --text-faint: #8bb0bc;
+
+    --border-color: #315363;
+    --line-soft: #294755;
+
+    --accent: #3fc5cb;
+    --accent-strong: #2babb2;
+    --accent-warm: #ffc879;
+
+    --success: #5fd1a0;
+    --error: #f2878b;
+    --ambient-glow: rgba(63, 197, 203, 0.22);
 }
 
 html,
@@ -36,6 +50,8 @@ body,
 button,
 input,
 select,
-textarea {
-    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+textarea,
+.card,
+.panel {
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, box-shadow 240ms ease;
 }
