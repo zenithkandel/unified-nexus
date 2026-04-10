@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -11,7 +13,8 @@ body {
     background: var(--surface-0);
     color: var(--text-strong);
     font-family: var(--font-secondary);
-    line-height: 1.55;
+    font-size: var(--text-md);
+    line-height: 1.68;
     position: relative;
 }
 
@@ -23,7 +26,8 @@ body::before {
     z-index: -1;
     background:
         radial-gradient(circle at 8% 12%, var(--ambient-glow), transparent 26%),
-        radial-gradient(circle at 92% 78%, color-mix(in srgb, var(--accent-strong) 14%, transparent), transparent 34%);
+        radial-gradient(circle at 92% 78%, color-mix(in srgb, var(--accent-strong) 14%, transparent), transparent 34%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, color-mix(in srgb, var(--text-muted) 4%, transparent) 2px, color-mix(in srgb, var(--text-muted) 4%, transparent) 3px);
 }
 
 h1,
@@ -31,6 +35,7 @@ h2,
 h3 {
     font-family: var(--font-primary);
     line-height: 1.2;
+    letter-spacing: 0.01em;
     margin: 0 0 var(--space-4);
 }
 
@@ -44,6 +49,11 @@ h2 {
 
 p {
     margin: 0 0 var(--space-4);
+}
+
+::selection {
+    background: color-mix(in srgb, var(--accent) 72%, var(--color-white));
+    color: var(--color-black);
 }
 
 a {
