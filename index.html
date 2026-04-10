@@ -25,11 +25,14 @@
     <div id="canvas-container"></div>
     <!-- Navigation -->
     <nav class="navbar anim-slide-down" id="navbar">
-      <div class="container">
+      <div class="container nav-container">
         <a href="#" class="nav-brand">
           <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
         </a>
-        <ul class="nav-menu">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
           <li><a href="#about" class="nav-link">Story</a></li>
           <li><a href="#clubs" class="nav-link">Clubs</a></li>
           <li><a href="#leadership" class="nav-link">Leadership</a></li>
@@ -517,6 +520,29 @@
             btn.disabled = false;
           }
         });
+
+      /* --- Mobile Menu Logic --- */
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const navMenu = document.getElementById('navMenu');
+      const navLinks = document.querySelectorAll('.nav-link, .btn');
+      
+      if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileMenuBtn.classList.toggle('active');
+          navMenu.classList.toggle('active');
+        });
+      }
+      
+      if (navLinks) {
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (mobileMenuBtn && mobileMenuBtn.classList.contains('active')) {
+              mobileMenuBtn.classList.remove('active');
+              navMenu.classList.remove('active');
+            }
+          });
+        });
+      }
     </script>
   </body>
 </html>
