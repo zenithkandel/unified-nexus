@@ -1,0 +1,38 @@
+.hero-section {
+	position: relative;
+	min-height: 74vh;
+	display: grid;
+	align-items: center;
+	overflow: hidden;
+}
+
+.hero-backdrop {
+	position: absolute;
+	inset: 0;
+	background:
+		radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 34%),
+		radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--color-base-2) 22%, transparent), transparent 36%),
+		linear-gradient(180deg, var(--surface-1), var(--surface-0));
+}
+
+.particles-layer {
+	position: absolute;
+	inset: 0;
+}
+
+.hero-content {
+	position: relative;
+	z-index: 1;
+}
+
+.about-grid {
+	display: grid;
+	gap: var(--space-4);
+}
+
+@media (min-width: 900px) {
+	.about-grid {
+		grid-template-columns: 1.3fr 1fr;
+	}
+}
+
