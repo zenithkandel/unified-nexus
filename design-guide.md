@@ -1,146 +1,239 @@
-make a website for unified nexus which is a student led platform. atfirst, here is a short detail about unified nexus (UN)
+You are a senior-level full-stack engineer, UI/UX designer, and system architect.
 
-```
-# Unified Nexus
+Your task is to design and build a production-grade, scalable, and modular SPA website for a real-world student-led organization called Unified Nexus (UN).
 
-# tagline: we work we win
+You MUST follow every instruction strictly and completely.
+Do NOT skip, simplify, or ignore any requirement.
 
-## About
+🧠 1. PROJECT CONTEXT
+Organization: Unified Nexus
 
-**Unified Nexus** is a vibrant student-led platform that celebrates creativity, expression, and collaboration. It brings together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment. Whether you're into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment where everyone thrives together.
+Tagline: We Work We Win
 
-## Vision
+Unified Nexus is a student-led creative platform that fosters:
 
-To create a unified space where creativity thrives, individuality is respected, and students are inspired to make a meaningful impact—both personally and socially.
+Creativity
+Collaboration
+Expression
+Leadership
+Social impact
 
-## Leadership Team
+It includes multiple clubs (music, debate, charity, etc.) and a leadership team.
 
-| Position                      | Name             |
-| ----------------------------- | ---------------- |
-| President                     | Shreyas Poudel   |
-| Director                      | Tilashma Neupane |
-| Manager in General            | Aakirti Luitel   |
-| Secretary                     | Bijal Sakhya     |
-| Treasurer                     | Soham Gautam     |
-| IT Head                       | Allan Khanal     |
-| Head of Operation             | Arunex Shrestha  |
-| Head of Discipline and Ethics | Arushi Shah      |
-| Club Ambassador               | Vaibauh Dahal    |
+👉 You MUST incorporate ALL provided content meaningfully into the UI.
 
-## Clubs and Activities
+🎯 2. OBJECTIVE
 
-Unified Nexus offers a diverse range of clubs catering to various interests and talents:
+Build a fully functional website (frontend + backend) with:
 
-### Music Club
+SPA architecture
+Professional, premium feel
+Mobile-first UX
+Clean, modular, scalable codebase
+Real backend (PHP + MySQL)
 
-A platform to learn, create, and excel through music. Perfect for all music lovers who want to explore their musical talents.
+This is a real-world production project, NOT a demo.
 
-### Debate Club
+🧱 3. TECH STACK (STRICT)
 
-For aspiring speakers and critical thinkers. Sharpen your voice, strengthen your ideas, and lead through dialogue.
+You MUST use:
 
-### Charity Club
+HTML5
+CSS3 (NO inline CSS)
+Vanilla JavaScript (or lightweight libraries if necessary)
+PHP (backend)
+MySQL (database)
 
-For volunteers with a heart to serve. Committed to service, driven by compassion, creating meaningful impact in the community.
+Allowed:
 
-### Art and Culture Club
+Libraries (ONLY if justified and lightweight)
+No heavy frameworks unless absolutely necessary
+🎨 4. DESIGN SYSTEM (VERY STRICT)
+🎨 Color Palette (MANDATORY USE)
 
-For artists and cultural enthusiasts. Celebrating creativity, heritage, and expression through art and culture.
+You MUST use these colors and derive shades:
 
-### Drama Club
-
-For expressive actors and creative storytellers. A platform where imagination transforms into powerful performance.
-
-### Research and Presentation Club
-
-For curious minds ready to research, present, and inspire. Transforming research into insight and presentations into impact.
-
-### Student Council
-
-Empowering student voices to lead, represent, and create change within the student body and beyond.
-
-### Environment Club
-
-For eco-conscious minds ready to protect and preserve our planet. Working together for a greener, more sustainable tomorrow.
-
-### Literature Club
-
-For wordsmiths, storytellers, and thoughtful minds. Where words weave worlds and ideas leave a lasting echo.
-
-### Dance Club
-
-For passionate dancers ready to move, express, and inspire. A platform where elegance meets energy and movement becomes poetry.
-
-## Benefits of Joining Unified Nexus
-
-Becoming a member of Unified Nexus offers numerous personal and professional development opportunities:
-
-- **Leadership Skills** - Develop and enhance your ability to lead others
-- **Self-Confidence** - Build confidence through participation and performance
-- **Communication Skills** - Improve verbal and written communication abilities
-- **Teamwork** - Learn to collaborate effectively with diverse groups
-- **Discipline** - Develop self-discipline and commitment
-- **Time Management** - Balance activities with academic responsibilities
-- **Decision-Making** - Build critical decision-making abilities
-- **Public Speaking** - Enhance presentation and speaking skills
-- **Creativity** - Explore and express your creative potential
-- **Platform for Talent** - Showcase your unique abilities and talents
-- **Academic Growth** - Support and complement your academic journey
-- **Presentation Skills** - Master the art of presenting ideas effectively
-- **Critical Thinking** - Develop analytical and problem-solving skills
-
-## Join Us
-
-Unified Nexus is **open for all students**. Express your unique talents and be part of a creative community that supports your growth.
-
-## Connect With Us
-
-Instagram: @unified\_\_nexus
-Gmail: unifiednexus1@gmail.com
-```
-
-so what we need is a dynamic professional website which is both frontend and backend made entierly in the stack of html css js and php. using libraries is accepted. what we need is a SPA with some crutial features and some strict guidelines. so at first lemme tell you the color theme, we need these colors in the site, i rn dont have much of a idea about which color to use as what or where but i need these colors and their shades and derivatives to be used.
 #57545B
 #716F75
 #959294
 #AAAAAA
 #7F2B3E
 #661B28
-now lets continue with other components. we need a professional and a classy website which has a professional look and feel to it. the edges for every button, input fields, boxes, containers and everything needs to be sharp and very mildly rounded, so mild round that it doesnot even look round, smth like border-radius:2px; and talking about other design rules, the website must not look like made by AI and lame, the design should feel humanly, the color theme is mute colors so, we prefer muted colors and basic and oldschool looking classic themes. try to keep things black and white and very flat colored with slight accent of the brighter and attractive colors here and there so that the website doesnot look dull but it should look professional and not like a childs project. it is a real deal and a real company so we need to be professional. we need a preety good use of images. the less we use image the less the site feels believable. thorugh out the site, we will be following a minimalistic and a clean and minimally perfect design, we dont use much design patterns and excessive and intensive design elements. we keep everything clean and simple with a professoinal feel rather than more elements.
+Rules:
+Define ALL colors as global CSS variables
+NEVER hardcode colors directly in components
+Use mostly:
+Muted tones
+Black/white base
+Subtle accent usage (especially maroon tones)
+🧩 Visual Style
 
-we know clearly that our main user base is in mobile devices and small screens so we focus the most on small screens. actually you should start designing from the small screen prespective initially. we make everything very much though out and a indepth detailed site. we need a professional looking and premium feeling site.
+STRICT requirements:
 
-make dark theme and dark theme both but make sure both feel very professional and there will be no contrasting issues while switching between the themes.the website should feel matt and premium, just looking at the website, the user needs to feel like WOW.
+Minimalistic
+Flat design (NO excessive gradients)
+Premium matte feel
+Classic / slightly old-school aesthetic
+Avoid “AI-generated” look
+Avoid flashy or childish UI
+UI Details:
+Border radius: ~2px (VERY subtle)
+Clean spacing
+Strong typography hierarchy
+Sharp edges
+Subtle shadows ONLY when necessary
+📱 UX PRIORITY (CRITICAL)
+Mobile-first design (START FROM SMALL SCREENS)
+Smooth navigation
+Clear user intent flows
+Primary User Goals:
+Understand what Unified Nexus is
+Explore clubs
+View leadership
+Apply to join
 
-now, not just the UI but we focus extensively on UX. just imagine once, why would a person come to our website? either to know what unified nexus is or to join the club or similar purposes. we need to toatally account for all of their goals and keep our thing clear and straight.
+👉 UX must directly support these goals.
 
-now lets talk about the website's technical carefulness guide.
-we need the thing to be totally scalable and understandable and professional. dont write thousands and thousands of code in a single file, break down files and components into various files and partitions. place css in a folder, js in a folder, json in a folder, images in another, php in another and everything and in every folder, make a readme.md file which contains the details for the every file and the purpose of that file. everything should be modular and clear. dont use hardcoded inline css anywhere. define the global css variables which can be called from everywhere. dont use hard coded color codes everywhere, prioritize the defined color variables. and do similar for the js and php and backend as well.
-the backend must be well thought out and a secure one which can handle thoudsands of requests simultaneously. clearly mark the usage of each API and work in a very systematic order. make a environment file .env where we will keep each and every environment variable which we need to change later. make everything secure and well thought through
+🌗 5. THEME SYSTEM
 
-now about the content the client has asked for these sections:
-loading screen: very well animated and a professional looking loading screen which opens like curtains on page load.
-hero section: hero section must contain the tagline and the hero section should have something realted to iamge. either a static image or a slider. the hero section should have a professional font choice and a good design thought. use various libraries to load particles and shapes and lines which move mildly so that the page never looks static.
+You MUST implement:
 
-about section:
-about section should have some paragraphs and some bullets and some images about the club and its history, origin, its meaning, etc
+Light mode
+Dark mode
 
-clubs section:
-unified nexus has various clubs, list those clubs in this section along with their motive and theme and a short description and a club president name as well
+Requirements:
 
-executives team section:
-the profile cards of executive team section in the order as mentioned in the details. it should contain image, name and the post.
+No contrast issues
+Maintain premium feel in BOTH modes
+Use CSS variables for theme switching
+Smooth transition between themes
+🧩 6. WEBSITE STRUCTURE (SPA)
 
-apply for club section:
-a form which lets the users apply for existing clubs along with their details and contact information.
+You MUST implement the following sections:
 
-thats the total list of sections, now lets talk about backend.
-the backend should be accessed via a password protected admin portal which will have a password which is modified via the env file. store the data in the database of MYSQL and phpmyadmin.
-from the backend, we should be able to perform Create Read Update and Delete all operations on the following factors
-clubs and details and presidents of clubs
-executive members and their images and posts
-recieved messages/request for joining clubs
+1. Loading Screen
+   Curtain-style opening animation
+   Smooth and premium
+   Not overdone
+2. Hero Section
+   Tagline: We Work We Win
+   Background:
+   Image OR slider
+   Include:
+   Subtle animated particles / shapes (slow movement)
+   Strong typography
+3. About Section
+   Organization description
+   Vision
+   Bullets + paragraphs
+   Include relevant imagery
+4. Clubs Section
 
-thats about all that our backend will handle. also make sure eveyrthing is very secure and every input is sanitized and all.
+For EACH club:
 
-feel free to ask any questions if you have any doubts before doing the work.
+Name
+Description
+Theme/motive
+Club President (dynamic from backend) 5. Executive Team Section
+Cards with:
+Image
+Name
+Position
+MUST follow given order 6. Apply Section
+Form with:
+Name
+Contact info
+Selected club
+Message
+Clean UX
+Validation required
+🛠️ 7. BACKEND SYSTEM (CRITICAL)
+Admin Panel (Password Protected)
+Password stored in .env
+Secure login system
+Database (MySQL)
+
+You MUST design schema properly.
+
+Required Tables:
+clubs
+executive_members
+applications
+Admin Features (FULL CRUD)
+
+Admin must be able to:
+
+Clubs:
+Create
+Read
+Update
+Delete
+Executive Team:
+Manage members (image, name, role)
+Applications:
+View submissions
+Delete if needed
+🔐 Security (STRICT)
+
+You MUST implement:
+
+Input sanitization
+Prepared statements (NO SQL injection)
+Secure file uploads
+Validation on both frontend + backend
+Environment-based configs (.env)
+📁 8. PROJECT STRUCTURE (MANDATORY)
+
+You MUST structure project like:
+
+/css
+/js
+/php
+/api
+/images
+/config
+
+Rules:
+
+No monolithic files
+Modular architecture
+Reusable components
+📄 Documentation Requirement
+
+Inside EVERY folder:
+
+Create README.md
+Explain:
+Purpose of each file
+How components interact
+⚙️ 9. CODE QUALITY RULES
+No inline CSS
+No hardcoded values (use variables/configs)
+Clean naming conventions
+Comment important logic ONLY (avoid clutter)
+Scalable structure
+🎯 10. OUTPUT REQUIREMENT
+
+You MUST:
+
+Plan architecture FIRST
+Show folder structure
+Then implement step-by-step:
+Frontend
+Backend
+Database schema
+Provide COMPLETE working code (copy-paste ready)
+Ensure everything integrates properly
+⚠️ 11. STRICT BEHAVIOR RULES
+DO NOT skip any section
+DO NOT simplify requirements
+DO NOT assume missing details — ask if unclear
+DO NOT produce low-quality UI
+DO NOT generate generic templates
+
+You must behave like a top-tier engineer delivering a real client project.
+
+❓ 12. BEFORE STARTING
+
+Ask questions IF AND ONLY IF something is unclear.
+Otherwise, proceed directly with full implementation.
