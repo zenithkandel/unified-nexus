@@ -277,7 +277,202 @@
       </div>
     </footer>
 
+    <!-- Theme Selector Widget -->
+    <div
+      id="theme-selector"
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 9999;
+        background: rgba(20, 20, 20, 0.85);
+        padding: 15px;
+        border-radius: 8px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        max-width: 250px;
+      "
+    >
+      <h4
+        style="
+          color: white;
+          font-family: var(--font-mono);
+          font-size: 0.75rem;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          text-align: center;
+        "
+      >
+        Muted Presets
+      </h4>
+      <div
+        id="theme-buttons"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          justify-content: center;
+        "
+      >
+        <!-- Buttons injected via JS -->
+      </div>
+    </div>
+
     <script>
+      /* --- 0. Theme Selector Script --- */
+      const themes = [
+        {
+          name: "Original Retro",
+          colors: [
+            "#57545B",
+            "#716F75",
+            "#959294",
+            "#AAAAAA",
+            "#7F2B3E",
+            "#661B28",
+          ],
+        },
+        {
+          name: "Ocean & Gold",
+          colors: [
+            "#1A2430",
+            "#2C3A4A",
+            "#7A8C9E",
+            "#BEC8D1",
+            "#C69C6D",
+            "#8C6C4A",
+          ],
+        },
+        {
+          name: "Forest & Brick",
+          colors: [
+            "#212822",
+            "#334035",
+            "#7F8C81",
+            "#C5CFC7",
+            "#B65C47",
+            "#7A3B2B",
+          ],
+        },
+        {
+          name: "Slate & Amber",
+          colors: [
+            "#2A2E35",
+            "#3C424C",
+            "#838A96",
+            "#C7CCD4",
+            "#D49A6A",
+            "#966742",
+          ],
+        },
+        {
+          name: "Aubergine Rose",
+          colors: [
+            "#2E222A",
+            "#41323C",
+            "#8B7485",
+            "#D1C2CC",
+            "#BA7883",
+            "#804D56",
+          ],
+        },
+        {
+          name: "Coffee Copper",
+          colors: [
+            "#292320",
+            "#403531",
+            "#8C7A72",
+            "#D1C8C4",
+            "#C27A59",
+            "#854D33",
+          ],
+        },
+        {
+          name: "Deep Teal Rust",
+          colors: [
+            "#172A2B",
+            "#233F42",
+            "#698789",
+            "#BACBCD",
+            "#C26A4A",
+            "#803D26",
+          ],
+        },
+        {
+          name: "Midnight Sage",
+          colors: [
+            "#191C24",
+            "#262B38",
+            "#6A7285",
+            "#B8BED1",
+            "#7A9175",
+            "#4A5B47",
+          ],
+        },
+        {
+          name: "Plum & Ochre",
+          colors: [
+            "#291F2D",
+            "#3B2D40",
+            "#85748C",
+            "#C9BDD1",
+            "#C79D55",
+            "#8C6831",
+          ],
+        },
+        {
+          name: "Night Blush",
+          colors: [
+            "#1E2026",
+            "#2D313A",
+            "#787E8F",
+            "#C2C6D6",
+            "#C48A8A",
+            "#8C5656",
+          ],
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const themeContainer = document.getElementById("theme-buttons");
+        const cssVars = [
+          "--c-57545B",
+          "--c-716F75",
+          "--c-959294",
+          "--c-AAAAAA",
+          "--c-7F2B3E",
+          "--c-661B28",
+        ];
+
+        themes.forEach((theme) => {
+          const btn = document.createElement("button");
+          btn.title = theme.name;
+          btn.style.cssText = `
+              width: 32px; height: 32px; border-radius: 50%; cursor: pointer;
+              background: ${theme.colors[0]}; border: 3px solid ${theme.colors[4]};
+              transition: transform 0.2s;
+            `;
+          btn.onmouseover = () => (btn.style.transform = "scale(1.2)");
+          btn.onmouseout = () => (btn.style.transform = "scale(1)");
+          btn.onclick = () => {
+            theme.colors.forEach((color, i) => {
+              document.documentElement.style.setProperty(cssVars[i], color);
+            });
+            // Update the threejs geometry colors dynamically
+            if (window.globalParticlesArray) {
+              window.globalParticlesArray.forEach((p) => {
+                const cHex =
+                  theme.colors[Math.floor(Math.random() * theme.colors.length)];
+                p.material.color.set(
+                  Math.random() > 0.3 ? cHex : theme.colors[2],
+                );
+              });
+            }
+          };
+          themeContainer.appendChild(btn);
+        });
+      });
+
       /* --- 1. Three.js Hero Geometry (Particles & Wireframes) --- */
       function initThreeJS() {
         const container = document.getElementById("canvas-container");
@@ -341,6 +536,9 @@
           scene.add(mesh);
           particles.push(mesh);
         }
+
+        // Expose to global scope so the theme switcher can access it
+        window.globalParticlesArray = particles;
 
         function animate() {
           requestAnimationFrame(animate);
