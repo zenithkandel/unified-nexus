@@ -1,8 +1,8 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Unified Nexus - We Work We Win" />
     <title>Unified Nexus | We Work We Win</title>
     <link rel="stylesheet" href="css/variables.css" />
@@ -11,231 +11,141 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
     <link rel="stylesheet" href="css/sections.css" />
-    <link rel="stylesheet" href="css/animations.css" />
-  </head>
-  <body>
-    <div id="loader" class="loader" aria-live="polite">
-      <div class="loader-curtain loader-curtain-left"></div>
-      <div class="loader-curtain loader-curtain-right"></div>
-      <p class="loader-text">Unified Nexus</p>
-    </div>
-
-    <header class="site-header" id="top">
-      <div class="container header-content">
-        <a class="brand" href="#hero">
-          <span class="brand-mark">UN</span>
-          <span class="brand-text">
-            <strong>Unified Nexus</strong>
-            <small>Editorial Student Collective</small>
-          </span>
-        </a>
-        <div class="header-actions">
-          <nav class="main-nav" aria-label="Primary navigation">
-            <a href="#hero">Opening</a>
-            <a href="#about">Story</a>
-            <a href="#clubs">Clubs</a>
-            <a href="#executive">Team</a>
-            <a href="#apply">Join</a>
-          </nav>
-          <button
-            id="themeToggle"
-            class="btn btn-ghost"
-            type="button"
-            aria-label="Toggle theme"
-          >
-            Theme
-          </button>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a class="brand" href="#hero">
+                <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" height="50">
+            </a>
+            <nav class="main-nav">
+                <a href="#hero">Opening</a>
+                <a href="#about">Story</a>
+                <a href="#clubs">Clubs</a>
+                <a href="#executive">Team</a>
+                <a href="#apply" class="btn btn-donate">Join Now</a>
+            </nav>
         </div>
-      </div>
     </header>
 
     <main>
-      <section id="hero" class="section hero-section scene-intro">
-        <div class="hero-backdrop" aria-hidden="true">
-          <div id="particles" class="particles-layer"></div>
-        </div>
-        <div class="container hero-grid">
-          <div class="hero-content" data-reveal>
-            <p class="section-label">Scene 01</p>
-            <h1>
-              We Do Not Build Events.<br />
-              We Stage Movements.
-            </h1>
-            <p class="lead">
-              Unified Nexus is a student-led narrative where ideas become
-              performances, projects become impact, and leadership becomes lived
-              practice.
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-accent" href="#apply">Enter the Collective</a>
-              <a class="btn" href="#clubs">View Club Stories</a>
+        <section id="hero" class="hero-kap-style">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80" alt="Students collaborating" class="hero-bg">
+            <div class="hero-content">
+                <p class="section-label">SCENE 01</p>
+                <h1>We Do Not Build Events.<br/>We Stage Movements.</h1>
+                <p class="lead">Unified Nexus is a student-led narrative where ideas become performances, projects become impact, and leadership becomes lived practice.</p>
+                <div class="hero-actions">
+                    <a class="btn btn-donate" href="#apply" style="margin-right: 1rem;">ENTER THE COLLECTIVE</a>
+                    <a href="#clubs" style="color: white; font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem; letter-spacing: 0.1em; text-decoration: none;">VIEW CLUB STORIES &rarr;</a>
+                </div>
             </div>
-          </div>
-          <div class="hero-visual-stack" data-reveal data-reveal-delay="1">
-            <figure class="hero-visual hero-visual-main">
-              <img
-                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80"
-                alt="Students collaborating at an event"
-                loading="eager"
-              />
-            </figure>
-            <figure class="hero-visual hero-visual-side">
-              <img
-                src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80"
-                alt="Student team discussing ideas"
-                loading="lazy"
-              />
-            </figure>
-          </div>
-        </div>
-        <div class="hero-marquee" aria-hidden="true">
-          <span>Creativity</span><span>Leadership</span><span>Expression</span
-          ><span>Impact</span><span>Unity</span>
-        </div>
-      </section>
+            <div class="scroll-prompt">SCROLL TO EXPLORE &darr;</div>
+        </section>
 
-      <section id="about" class="section story-section">
-        <div class="container story-layout">
-          <div class="story-intro" data-reveal>
-            <p class="section-label">Scene 02</p>
-            <h2>The Story We Are Writing Together</h2>
-            <p>
-              This is not a static club page. It is a growing story of students
-              who transform curiosity into craft and ambition into social
-              contribution.
-            </p>
-          </div>
-          <div class="story-image" data-reveal data-reveal-delay="1">
-            <img
-              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
-              alt="Creative student group working together"
-              loading="lazy"
-            />
-          </div>
-          <div id="aboutContent"></div>
-        </div>
-      </section>
-
-      <section id="clubs" class="section section-alt clubs-scene">
-        <div class="container">
-          <div class="scene-head" data-reveal>
-            <p class="section-label">Scene 03</p>
-            <h2>Club Chapters</h2>
-            <p>
-              Each club is an active chapter with its own voice, motive, and
-              atmosphere.
-            </p>
-          </div>
-          <div id="clubsGrid" class="clubs-rail"></div>
-        </div>
-      </section>
-
-      <section id="executive" class="section executive-scene">
-        <div class="container">
-          <div class="scene-head" data-reveal>
-            <p class="section-label">Scene 04</p>
-            <h2>Faces Behind Direction</h2>
-            <p>
-              Editorially framed leadership focused on role, alignment, and
-              accountability.
-            </p>
-          </div>
-          <div id="executiveGrid" class="executive-editorial"></div>
-        </div>
-      </section>
-
-      <section id="apply" class="section section-alt apply-scene">
-        <div class="container apply-layout">
-          <div class="apply-copy" data-reveal>
-            <p class="section-label">Final Scene</p>
-            <h2>Start Your Chapter</h2>
-            <p>
-              We are open to every student ready to work with intent, create
-              with discipline, and contribute with empathy.
-            </p>
-            <figure class="apply-image">
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1100&q=80"
-                alt="Students in discussion session"
-                loading="lazy"
-              />
-            </figure>
-          </div>
-
-          <form id="applyForm" class="form-panel" novalidate data-reveal>
-            <div class="form-head">
-              <p class="form-kicker">Application</p>
-              <h3>Join Unified Nexus</h3>
+        <section id="about" class="section about-section">
+            <div class="container about-container">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80" alt="Creative student group">
+                    <p class="caption">The Student Collective, Foundation</p>
+                </div>
+                <div class="about-content">
+                    <span class="subheading">SCENE 02 &bull; STORY</span>
+                    <h2>The Story We Are Writing Together</h2>
+                    <p>This is not a static club page. It is a growing story of students who transform curiosity into craft and ambition into social contribution.</p>
+                    <p>We believe in pushing boundaries, organizing cultural events, and engaging our community in impactful conservation and technological efforts. Every project we launch, every event we host, tells a story of resilience and ambition.</p>
+                    <p>Our work goes beyond mere participation. We're rebuilding connections—between disciplines, between communities, and between the present and the future. Through Unified Nexus, we ensure that student voices are amplified and ideas are realized.</p>
+                    <div class="signature">&mdash; Unified Nexus Editorial</div>
+                </div>
             </div>
+        </section>
 
-            <div class="form-grid">
-              <div class="field">
-                <label for="name">Name</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  maxlength="120"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  maxlength="150"
-                  required
-                />
-              </div>
-              <div class="field">
-                <label for="phone">Phone (optional)</label>
-                <input id="phone" name="phone" type="text" maxlength="30" />
-              </div>
-              <div class="field">
-                <label for="clubId">Select Club</label>
-                <select id="clubId" name="clubId" required>
-                  <option value="">Choose a club</option>
-                </select>
-              </div>
-              <div class="field field-full">
-                <label for="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  maxlength="1500"
-                  required
-                ></textarea>
-              </div>
+        <section id="clubs" class="section events-section">
+            <div class="container">
+                <div class="section-header text-center">
+                    <span class="subheading">SCENE 03 &bull; CLUBS</span>
+                    <h2>Club Chapters</h2>
+                    <p>Each club is an active chapter with its own voice, motive, and atmosphere.</p>
+                </div>
+                <div class="events-grid" id="clubsGrid">
+                    <!-- Tech Club -->
+                    <article class="event-card">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600&q=80" alt="Tech Club">
+                            <div class="event-badge badge-upcoming">ACTIVE</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="tag">TECHNOLOGY</span>
+                            </div>
+                            <h3>Nexus Tech</h3>
+                            <p>Exploring the frontiers of software development, AI, and digital innovation through hands-on projects and hackathons.</p>
+                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
+                        </div>
+                    </article>
+                    
+                    <!-- Arts Club -->
+                    <article class="event-card">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1544928147-79a2dbc1f389?auto=format&fit=crop&w=600&q=80" alt="Arts Club">
+                            <div class="event-badge badge-open">RECRUITING</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="tag">CREATIVE ARTS</span>
+                            </div>
+                            <h3>The Canvas Collective</h3>
+                            <p>A space for traditional and digital artists to collaborate, share masterpieces, and host creative workshops.</p>
+                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
+                        </div>
+                    </article>
+
+                    <!-- Literature Club -->
+                    <article class="event-card">
+                        <div class="event-image">
+                            <img src="https://images.unsplash.com/photo-1533158307587-828f0a76ef46?auto=format&fit=crop&w=600&q=80" alt="Literature Club">
+                            <div class="event-badge badge-soon">NEW CHAPTER</div>
+                        </div>
+                        <div class="event-info">
+                            <div class="event-meta">
+                                <span class="tag">LITERATURE & DEBATE</span>
+                            </div>
+                            <h3>Words & Wisdom</h3>
+                            <p>Fostering critical thinking, poetry readings, and debate tournaments. A home for the articulate and profound.</p>
+                            <a href="#" class="read-more">EXPLORE CHAPTER &rarr;</a>
+                        </div>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <button class="btn btn-accent" type="submit">
-              Submit Application
-            </button>
-            <p id="formStatus" class="form-status" aria-live="polite"></p>
-          </form>
-        </div>
-      </section>
+        <section id="executive" class="section gallery-section">
+            <div class="container text-center">
+                <span class="subheading">SCENE 04 &bull; TEAM</span>
+                <h2>Faces Behind Direction</h2>
+                <p>Editorially framed leadership focused on role, alignment, and accountability.</p>
+                <div class="polaroid-grid" id="executiveGrid">
+                    <!-- Sample Polaroids for Executives -->
+                    <div class="polaroid p1">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80" alt="Member 1">
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">President</p>
+                    </div>
+                    <div class="polaroid p2">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=400&q=80" alt="Member 2">
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">VP</p>
+                    </div>
+                    <div class="polaroid p3">
+                        <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&q=80" alt="Member 3">
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">Tech Lead</p>
+                    </div>
+                    <div class="polaroid p4">
+                        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Member 4">
+                        <p style="font-family: 'IBM Plex Mono', monospace; font-size: 0.7rem; margin-top: 10px; color: var(--text-strong);">Design Lead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-
-    <footer class="site-footer">
-      <div class="container footer-grid">
-        <div>
-          <p class="section-label">Unified Nexus</p>
-          <p class="footer-tagline">
-            A student-led platform for creativity, leadership, and social
-            impact.
-          </p>
-        </div>
-        <div>
-          <p class="footer-title">Connect</p>
-          <p class="footer-item">Instagram: @unified__nexus</p>
-          <p class="footer-item">Gmail: unifiednexus1@gmail.com</p>
-        </div>
-      </div>
-    </footer>
-
-    <script type="module" src="js/app.js"></script>
-  </body>
+</body>
 </html>
