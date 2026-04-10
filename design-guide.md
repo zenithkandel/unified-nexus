@@ -110,4 +110,6 @@ now lets continue with other components. we need a professional and a classy web
 
 we know clearly that our main user base is in mobile devices and small screens so we focus the most on small screens. actually you should start designing from the small screen prespective initially. we make everything very much though out and a indepth detailed site. we need a professional looking and premium feeling site.
 
-make dark theme and dark theme both but make sure both feel very professional and there will be no contrasting issues while switching between the themes.
+make dark theme and dark theme both but make sure both feel very professional and there will be no contrasting issues while switching between the themes.the website should feel matt and premium, just looking at the website, the user needs to feel like WOW.
+
+now, not just the UI but we focus extensively on UX. just imagine once, why would a person come to our website? either to know what unified nexus is or to join the club or similar purposes. we need to toatally account for all of their goals and keep our thing clear and straight.
