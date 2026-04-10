@@ -335,6 +335,7 @@
 }
 
 .leader-strip {
+    position: relative;
     display: grid;
     gap: 1rem;
     align-items: center;

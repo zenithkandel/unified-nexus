@@ -8,6 +8,7 @@ const dashboardSection = document.getElementById('dashboardSection');
 const loginForm = document.getElementById('loginForm');
 const loginStatus = document.getElementById('loginStatus');
 const logoutBtn = document.getElementById('logoutBtn');
+const dashboardToast = document.getElementById('dashboardToast');
 
 const clubsModule = initClubsAdmin();
 const executiveModule = initExecutiveAdmin();
@@ -18,6 +19,13 @@ function setLoginStatus(message, type = '') {
     loginStatus.textContent = message;
     loginStatus.classList.remove('success', 'error');
     if (type) loginStatus.classList.add(type);
+}
+
+function setDashboardToast(message, type = '') {
+    if (!dashboardToast) return;
+    dashboardToast.textContent = message;
+    dashboardToast.classList.remove('success', 'error');
+    if (type) dashboardToast.classList.add(type);
 }
 
 function showDashboard() {
@@ -31,11 +39,13 @@ function showLogin() {
 }
 
 async function loadAllData() {
+    setDashboardToast('Loading dashboard data...');
     await Promise.all([
         clubsModule.refresh(),
         executiveModule.refresh(),
         applicationsModule.refresh()
     ]);
+    setDashboardToast('Dashboard updated.', 'success');
 }
 
 async function bootstrapSession() {
@@ -44,6 +54,7 @@ async function bootstrapSession() {
         setCsrfToken(session.csrfToken || '');
         showDashboard();
         await loadAllData();
+        setDashboardToast('Session restored.', 'success');
     } catch {
         showLogin();
     }
@@ -59,6 +70,7 @@ loginForm?.addEventListener('submit', async (event) => {
         setLoginStatus('Login successful.', 'success');
         showDashboard();
         await loadAllData();
+        setDashboardToast('Welcome back. Content is ready.', 'success');
     } catch (error) {
         setLoginStatus(error.message, 'error');
     }
@@ -70,6 +82,7 @@ logoutBtn?.addEventListener('click', async () => {
     } finally {
         showLogin();
         setLoginStatus('Logged out successfully.', 'success');
+        setDashboardToast('');
     }
 });
 
