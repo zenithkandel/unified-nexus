@@ -113,3 +113,25 @@ we know clearly that our main user base is in mobile devices and small screens s
 make dark theme and dark theme both but make sure both feel very professional and there will be no contrasting issues while switching between the themes.the website should feel matt and premium, just looking at the website, the user needs to feel like WOW.
 
 now, not just the UI but we focus extensively on UX. just imagine once, why would a person come to our website? either to know what unified nexus is or to join the club or similar purposes. we need to toatally account for all of their goals and keep our thing clear and straight.
+
+now lets talk about the website's technical carefulness guide.
+we need the thing to be totally scalable and understandable and professional. dont write thousands and thousands of code in a single file, break down files and components into various files and partitions. place css in a folder, js in a folder, json in a folder, images in another, php in another and everything and in every folder, make a readme.md file which contains the details for the every file and the purpose of that file. everything should be modular and clear. dont use hardcoded inline css anywhere. define the global css variables which can be called from everywhere. dont use hard coded color codes everywhere, prioritize the defined color variables. and do similar for the js and php and backend as well.
+the backend must be well thought out and a secure one which can handle thoudsands of requests simultaneously. clearly mark the usage of each API and work in a very systematic order. make a environment file .env where we will keep each and every environment variable which we need to change later. make everything secure and well thought through
+
+now about the content the client has asked for these sections:
+loading screen: very well animated and a professional looking loading screen which opens like curtains on page load.
+hero section: hero section must contain the tagline and the hero section should have something realted to iamge. either a static image or a slider. the hero section should have a professional font choice and a good design thought. use various libraries to load particles and shapes and lines which move mildly so that the page never looks static.
+
+about section:
+about section should have some paragraphs and some bullets and some images about the club and its history, origin, its meaning, etc
+
+clubs section:
+unified nexus has various clubs, list those clubs in this section along with their motive and theme and a short description and a club president name as well
+
+executives team section:
+the profile cards of executive team section in the order as mentioned in the details. it should contain image, name and the post.
+
+apply for club section:
+a form which lets the users apply for existing clubs along with their details and contact information.
+
+thats the total list of
