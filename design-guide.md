@@ -99,4 +99,11 @@ Instagram: @unified\_\_nexus
 Gmail: unifiednexus1@gmail.com
 ```
 
-so what we need is a dynamic professional website which is both frontend and backend made entierly in the stack of html css js and php. using libraries is accepted. what we need is a SPA with some crutial details.
+so what we need is a dynamic professional website which is both frontend and backend made entierly in the stack of html css js and php. using libraries is accepted. what we need is a SPA with some crutial features and some strict guidelines. so at first lemme tell you the color theme, we need these colors in the site, i rn dont have much of a idea about which color to use as what or where but i need these colors and their shades and derivatives to be used.
+#57545B
+#716F75
+#959294
+#AAAAAA
+#7F2B3E
+#661B28
+now lets continue with other components. we need a professional and a classy website which has a professional look and feel to it. the edges for every button, input fields, boxes, containers and everything needs to be sharp and very mildly rounded, so mild round that it doesnot even look round, smth like border-radius:2px; and talking about other design rules, the website must not look like made by AI and lame, the design should feel humanly, the color theme is mute colors so, we prefer muted colors and basic and oldschool looking classic themes. try to keep things black and white and very flat colored with slight accent of the brighter and attractive colors here and there so that the website doesnot look dull but it should look professional and not like a childs project. it is a real deal and a real company so we need to be professional. we need a preety good use of images. the less we use image the less the site feels believable. thorugh out the site, we will be following a minimalistic and a clean and minimally perfect design, we dont use much design patterns and excessive and intensive design elements. we keep everything clean and simple with a professoinal feel rather than more elements.
