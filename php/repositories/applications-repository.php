@@ -40,8 +40,8 @@ function applications_create(PDO $pdo, array $payload): int
 
 function applications_get_all(PDO $pdo): array
 {
-	$stmt = $pdo->prepare(
-		'SELECT
+    $stmt = $pdo->prepare(
+        'SELECT
 			a.id,
 			a.applicant_name,
 			a.contact_email,
@@ -54,15 +54,15 @@ function applications_get_all(PDO $pdo): array
 		 FROM applications a
 		 INNER JOIN clubs c ON c.id = a.selected_club_id
 		 ORDER BY a.submitted_at DESC, a.id DESC'
-	);
-	$stmt->execute();
-	return $stmt->fetchAll();
+    );
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function applications_delete(PDO $pdo, int $applicationId): bool
 {
-	$stmt = $pdo->prepare('DELETE FROM applications WHERE id = :id');
-	$stmt->execute([':id' => $applicationId]);
-	return $stmt->rowCount() > 0;
+    $stmt = $pdo->prepare('DELETE FROM applications WHERE id = :id');
+    $stmt->execute([':id' => $applicationId]);
+    return $stmt->rowCount() > 0;
 }
 
