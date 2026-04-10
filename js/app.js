@@ -20,6 +20,8 @@ async function initApp() {
     initHero();
     initRouter();
     initParticles();
+    initReveal();
+    initHeaderState();
 
     const form = document.getElementById('applyForm');
     const formStatus = document.getElementById('formStatus');
@@ -33,6 +35,7 @@ async function initApp() {
         renderClubs(document.getElementById('clubsGrid'), state.clubs);
         renderExecutive(document.getElementById('executiveGrid'), state.executive);
         populateClubSelect(document.getElementById('clubId'), state.clubs);
+        initReveal();
     } catch (error) {
         const clubsGrid = document.getElementById('clubsGrid');
         const executiveGrid = document.getElementById('executiveGrid');
@@ -45,6 +48,43 @@ async function initApp() {
     } finally {
         hideLoader();
     }
+}
+
+function initReveal() {
+    const revealNodes = Array.from(document.querySelectorAll('[data-reveal]'));
+    if (revealNodes.length === 0) {
+        return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+        revealNodes.forEach((node) => node.classList.add('is-revealed'));
+        return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-revealed');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+    revealNodes.forEach((node) => observer.observe(node));
+}
+
+function initHeaderState() {
+    const header = document.querySelector('.site-header');
+    if (!header) {
+        return;
+    }
+
+    const onScroll = () => {
+        header.classList.toggle('scrolled', window.scrollY > 28);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 }
 
 initApp();

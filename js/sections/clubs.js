@@ -9,8 +9,8 @@ export function renderClubs(target, clubs) {
     }
 
     target.innerHTML = clubs.map((club, index) => `
-        <article class="card club-card">
-            <p class="eyebrow">Club ${String(index + 1).padStart(2, '0')}</p>
+        <article class="card club-card" data-reveal data-reveal-delay="${index % 2 === 0 ? '1' : '2'}">
+            <p class="section-label">Club ${String(index + 1).padStart(2, '0')}</p>
             <h3>${escapeHtml(club.name)}</h3>
             <p>${escapeHtml(club.description)}</p>
             <p class="meta"><strong>Theme:</strong> ${escapeHtml(club.theme_motive)}</p>

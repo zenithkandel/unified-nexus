@@ -5,6 +5,7 @@
     align-items: center;
     overflow: hidden;
 }
+
 .hero-section::after {
     content: "";
     position: absolute;
@@ -127,6 +128,7 @@
     border-left: 2px solid var(--accent);
     padding-left: var(--space-5);
 }
+
 .hero-content h1 {
     font-size: clamp(2.5rem, 8vw, 4.4rem);
 }
@@ -142,10 +144,12 @@
     padding: var(--space-5);
     box-shadow: var(--shadow-card);
 }
+
 .hero-panel {
     position: relative;
     overflow: hidden;
 }
+
 .hero-panel::after {
     content: "";
     position: absolute;
