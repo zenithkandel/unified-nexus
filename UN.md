@@ -1,5 +1,7 @@
 # Unified Nexus
 
+# tagline: we work we win
+
 ## About
 
 **Unified Nexus** is a vibrant student-led platform that celebrates creativity, expression, and collaboration. It brings together students from diverse interests to explore, refine, and showcase their talents in an inspiring environment. Whether you're into music, literature, dance, or social service, Unified Nexus welcomes all students to discover and develop their talents in a supportive environment where everyone thrives together.
@@ -90,4 +92,5 @@ Unified Nexus is **open for all students**. Express your unique talents and be p
 
 ## Connect With Us
 
-Follow us on social media: **@unifiednexus**
+Instagram: @unified\_\_nexus
+Gmail: unifiednexus1@gmail.com
