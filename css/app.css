@@ -72,7 +72,7 @@ ul { list-style: none; }
 .font-mono { font-family: var(--font-mono); }
 
 .section-label {
-  display: block;
+  display: flex;
   font-family: var(--font-mono);
   text-transform: uppercase;
   font-size: 0.875rem;
@@ -85,11 +85,12 @@ ul { list-style: none; }
 .navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   background-color: rgba(245, 241, 232, 0.95);
   backdrop-filter: blur(10px);
   z-index: 100;
   border-bottom: 1px solid var(--color-dust-gray);
+  transition: padding 0.3s ease;
 }
 
 .navbar .container {
@@ -99,11 +100,18 @@ ul { list-style: none; }
 }
 
 .nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-text-primary);
   letter-spacing: 0.05em;
+}
+.nav-brand img {
+  height: 40px;
+  width: auto;
 }
 
 .nav-menu {
@@ -136,14 +144,26 @@ ul { list-style: none; }
 
 /* Hero Section */
 .hero {
-  padding: 12rem 0 6rem;
+  padding: 16rem 0 10rem;
   text-align: center;
   position: relative;
+  background-image: linear-gradient(rgba(43, 37, 32, 0.75), rgba(43, 37, 32, 0.8)), url("https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--color-white);
 }
 
 .hero-content {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero .section-label {
+  color: var(--color-accent-gold);
+  justify-content: center;
 }
 
 .hero h1 {
@@ -152,13 +172,13 @@ ul { list-style: none; }
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: var(--color-text-primary);
+  color: var(--color-white);
 }
 
 .hero p {
   font-family: var(--font-body);
   font-size: 1.25rem;
-  color: var(--color-text-secondary);
+  color: var(--color-dust-gray);
   margin-bottom: 2.5rem;
 }
 
@@ -207,16 +227,31 @@ ul { list-style: none; }
 
 .club-card {
   background: var(--color-white);
-  padding: 2rem;
   border-radius: 8px;
   box-shadow: var(--shadow-subtle);
   border: 1px solid var(--color-dust-gray);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .club-card:hover {
   transform: translateY(-5px);
   box-shadow: var(--shadow-medium);
+}
+
+.club-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-dust-gray);
+  background-color: var(--color-cream);
+}
+
+.club-content {
+  padding: 2rem;
+  flex: 1;
 }
 
 .club-card h3 {
@@ -235,7 +270,7 @@ ul { list-style: none; }
 /* Leadership Grid */
 .leader-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -243,6 +278,16 @@ ul { list-style: none; }
 .leader-item {
   text-align: center;
   padding: 1.5rem;
+}
+
+.leader-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 2px solid var(--color-accent-gold);
+  background-color: var(--color-dust-gray);
 }
 
 .leader-name {
@@ -256,9 +301,81 @@ ul { list-style: none; }
 .leader-role {
   font-family: var(--font-mono);
   font-size: 0.875rem;
-  color: var(--color-accent-gold);
+  color: var(--color-accent-terracotta);
   letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
+
+/* Contact Form */
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--color-white);
+  padding: 3rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--color-dust-gray);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  border: 1px solid var(--color-dust-gray);
+  border-radius: 4px;
+  background: var(--color-bg-base);
+  transition: border-color var(--transition-base);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--color-accent-terracotta);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: var(--color-accent-terracotta);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color var(--transition-base);
+}
+.form-submit:hover {
+  background-color: var(--color-sepia);
+}
+
+.form-message {
+  margin-top: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.form-message.success { color: var(--color-forest-green, #4A7C59); }
+.form-message.error { color: var(--color-terracotta, #C17B5C); }
 
 /* Benefits & Footer */
 .benefits-pills {
@@ -287,9 +404,17 @@ ul { list-style: none; }
 }
 
 .footer-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   margin-bottom: 1rem;
+}
+.footer-logo img {
+  height: 30px;
+  filter: brightness(0) invert(1);
 }
 
 .reveal {
