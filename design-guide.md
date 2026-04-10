@@ -134,4 +134,11 @@ the profile cards of executive team section in the order as mentioned in the det
 apply for club section:
 a form which lets the users apply for existing clubs along with their details and contact information.
 
-thats the total list of
+thats the total list of sections, now lets talk about backend.
+the backend should be accessed via a password protected admin portal which will have a password which is modified via the env file. store the data in the database of MYSQL and phpmyadmin.
+from the backend, we should be able to perform Create Read Update and Delete all operations on the following factors
+clubs and details and presidents of clubs
+executive members and their images and posts
+recieved messages/request for joining clubs
+
+thats about all that our backend will handle. also
