@@ -63,3 +63,17 @@ function auth_validate_csrf(?string $token): bool
     return is_string($token) && $sessionToken !== '' && hash_equals($sessionToken, $token);
 }
 
+function auth_require_admin_or_401(): void
+{
+    if (!auth_require_admin()) {
+        json_error('Unauthorized.', ['Admin authentication required.'], 401);
+    }
+}
+
+function auth_require_csrf_or_403(?string $token): void
+{
+    if (!auth_validate_csrf($token)) {
+        json_error('Forbidden.', ['Invalid CSRF token.'], 403);
+    }
+}
+

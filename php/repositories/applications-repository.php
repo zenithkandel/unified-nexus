@@ -38,3 +38,31 @@ function applications_create(PDO $pdo, array $payload): int
     return (int) $pdo->lastInsertId();
 }
 
+function applications_get_all(PDO $pdo): array
+{
+	$stmt = $pdo->prepare(
+		'SELECT
+			a.id,
+			a.applicant_name,
+			a.contact_email,
+			a.contact_phone,
+			a.selected_club_id,
+			c.name AS club_name,
+			a.message,
+			a.status,
+			a.submitted_at
+		 FROM applications a
+		 INNER JOIN clubs c ON c.id = a.selected_club_id
+		 ORDER BY a.submitted_at DESC, a.id DESC'
+	);
+	$stmt->execute();
+	return $stmt->fetchAll();
+}
+
+function applications_delete(PDO $pdo, int $applicationId): bool
+{
+	$stmt = $pdo->prepare('DELETE FROM applications WHERE id = :id');
+	$stmt->execute([':id' => $applicationId]);
+	return $stmt->rowCount() > 0;
+}
+
