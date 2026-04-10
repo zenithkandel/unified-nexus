@@ -6,17 +6,17 @@
 
 :root {
     /* STRICT PALETTE */
-    --c-57545B: #2E222A;
+    --c-57545B: #0F172A;
     /* Dark background */
-    --c-716F75: #352732;
+    --c-716F75: #1E293B;
     /* Borders / dark elements */
-    --c-959294: #8B7485;
+    --c-959294: #475569;
     /* Secondary text */
-    --c-AAAAAA: #D1C2CC;
+    --c-AAAAAA: #CBD5E1;
     /* Primary text / Light */
-    --c-7F2B3E: #BA7883;
+    --c-7F2B3E: #3B82F6;
     /* Accent Primary */
-    --c-661B28: #2A1D25;
+    --c-661B28: #1D4ED8;
     /* Accent Secondary / Darker */
 
     --color-bg-base: var(--c-57545B);
@@ -378,7 +378,7 @@ ul {
     background: var(--c-57545B);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(127, 43, 62, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     overflow: hidden;
     display: flex;
@@ -390,14 +390,14 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(127, 43, 62, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
     z-index: 0;
     pointer-events: none;
 }
 
 .club-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(127, 43, 62, 0.3);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
     border-color: var(--c-7F2B3E);
 }
 
@@ -471,7 +471,7 @@ ul {
     background: var(--c-57545B);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(127, 43, 62, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.3);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     position: relative;
     overflow: hidden;
@@ -481,14 +481,14 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(127, 43, 62, 0.05), transparent);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), transparent);
     z-index: 0;
     pointer-events: none;
 }
 
 .leader-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(127, 43, 62, 0.3);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.3);
     border-color: var(--c-7F2B3E);
 }
 
