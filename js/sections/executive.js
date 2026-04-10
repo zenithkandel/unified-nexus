@@ -8,12 +8,13 @@ export function renderExecutive(target, members) {
         return;
     }
 
-    target.innerHTML = members.map((member) => `
-		<article class="card">
-			<h3>${escapeHtml(member.full_name)}</h3>
-			<p class="meta">${escapeHtml(member.role_title)}</p>
-		</article>
-	`).join('');
+    target.innerHTML = members.map((member, index) => `
+        <article class="card executive-card">
+            <p class="eyebrow">Position ${String(index + 1).padStart(2, '0')}</p>
+            <h3>${escapeHtml(member.full_name)}</h3>
+            <p class="meta">${escapeHtml(member.role_title)}</p>
+        </article>
+    `).join('');
 }
 
 function escapeHtml(value) {

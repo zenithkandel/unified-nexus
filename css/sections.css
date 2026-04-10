@@ -10,9 +10,9 @@
     position: absolute;
     inset: 0;
     background:
-    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%),
-    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--color-base-2) 28%, transparent), transparent 38%),
-    linear-gradient(180deg, color-mix(in srgb, var(--surface-1) 88%, transparent), var(--surface-0));
+        radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%),
+        radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--color-base-2) 28%, transparent), transparent 38%),
+        linear-gradient(180deg, color-mix(in srgb, var(--surface-1) 88%, transparent), var(--surface-0));
 }
 
 .particles-layer {
@@ -126,7 +126,7 @@
     gap: var(--space-4);
 }
 
-.about-grid > :first-child {
+.about-grid> :first-child {
     background: var(--surface-panel);
     border: 1px solid var(--line-soft);
     padding: var(--space-5);

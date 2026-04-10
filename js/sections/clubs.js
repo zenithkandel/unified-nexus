@@ -8,14 +8,15 @@ export function renderClubs(target, clubs) {
         return;
     }
 
-    target.innerHTML = clubs.map((club) => `
-		<article class="card">
-			<h3>${escapeHtml(club.name)}</h3>
-			<p>${escapeHtml(club.description)}</p>
-			<p class="meta"><strong>Theme:</strong> ${escapeHtml(club.theme_motive)}</p>
-			<p class="meta"><strong>President:</strong> ${escapeHtml(club.president_name || 'TBD')}</p>
-		</article>
-	`).join('');
+    target.innerHTML = clubs.map((club, index) => `
+        <article class="card club-card">
+            <p class="eyebrow">Club ${String(index + 1).padStart(2, '0')}</p>
+            <h3>${escapeHtml(club.name)}</h3>
+            <p>${escapeHtml(club.description)}</p>
+            <p class="meta"><strong>Theme:</strong> ${escapeHtml(club.theme_motive)}</p>
+            <p class="meta"><strong>President:</strong> ${escapeHtml(club.president_name || 'TBD')}</p>
+        </article>
+    `).join('');
 }
 
 export function populateClubSelect(target, clubs) {
