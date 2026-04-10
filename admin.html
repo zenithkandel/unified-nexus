@@ -47,7 +47,11 @@
               <p class="muted">Fast, modal-driven publishing workflow.</p>
             </div>
             <div class="head-actions">
-              <button id="logoutBtn" class="admin-btn admin-btn-secondary" type="button">
+              <button
+                id="logoutBtn"
+                class="admin-btn admin-btn-secondary"
+                type="button"
+              >
                 Logout
               </button>
             </div>
@@ -58,7 +62,9 @@
           <section class="panel" id="clubsPanel">
             <div class="panel-head">
               <h3>Clubs</h3>
-              <button id="clubAddBtn" class="admin-btn" type="button">Add Club</button>
+              <button id="clubAddBtn" class="admin-btn" type="button">
+                Add Club
+              </button>
             </div>
             <p id="clubStatus" class="status" aria-live="polite"></p>
             <div class="table-wrap">
@@ -80,7 +86,9 @@
           <section class="panel" id="executivePanel">
             <div class="panel-head">
               <h3>Executive Team</h3>
-              <button id="executiveAddBtn" class="admin-btn" type="button">Add Member</button>
+              <button id="executiveAddBtn" class="admin-btn" type="button">
+                Add Member
+              </button>
             </div>
             <p id="executiveStatus" class="status" aria-live="polite"></p>
             <div class="table-wrap">
@@ -127,10 +135,17 @@
 
     <div id="adminModal" class="admin-modal hidden" aria-hidden="true">
       <div class="admin-modal-backdrop" data-action="close"></div>
-      <div class="admin-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div
+        class="admin-modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
         <div class="admin-modal-head">
           <h3 id="modalTitle">Modal</h3>
-          <button id="modalCloseBtn" type="button" class="row-btn">Close</button>
+          <button id="modalCloseBtn" type="button" class="row-btn">
+            Close
+          </button>
         </div>
         <div id="modalBody" class="admin-modal-body"></div>
       </div>
