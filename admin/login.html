@@ -82,7 +82,9 @@
         font-size: 1rem;
         font-weight: 500;
         cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease;
+        transition:
+          background 0.3s ease,
+          transform 0.2s ease;
         margin-bottom: 1.5rem;
         display: flex;
         justify-content: center;
@@ -123,55 +125,63 @@
       <i class="fa-duotone fa-shield-keyhole login-logo"></i>
       <h1>Console Access</h1>
       <p class="subtitle">Secure administrative panel.</p>
-      
+
       <form id="loginForm" novalidate>
         <div class="input-group">
           <i class="fa-solid fa-lock"></i>
-          <input id="adminPassword" name="password" type="password" placeholder="Passcode" required />
+          <input
+            id="adminPassword"
+            name="password"
+            type="password"
+            placeholder="Passcode"
+            required
+          />
         </div>
         <p id="loginStatus" class="status" aria-live="polite"></p>
         <button class="login-btn" type="submit">
-          <span>Authenticate</span> <i class="fa-solid fa-arrow-right-to-bracket"></i>
+          <span>Authenticate</span>
+          <i class="fa-solid fa-arrow-right-to-bracket"></i>
         </button>
       </form>
 
       <a href="../index.html" class="unintentional-link">
-        <i class="fa-regular fa-house"></i> Looks like you're lost. Return to Home.
+        <i class="fa-regular fa-house"></i> Looks like you're lost. Return to
+        Home.
       </a>
     </div>
 
     <script type="module">
-      import { apiFetch } from '../js/api-client.js';
+      import { apiFetch } from "../js/api-client.js";
 
-      const loginForm = document.getElementById('loginForm');
-      const loginStatus = document.getElementById('loginStatus');
+      const loginForm = document.getElementById("loginForm");
+      const loginStatus = document.getElementById("loginStatus");
 
-      loginForm.addEventListener('submit', async (e) => {
+      loginForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        loginStatus.textContent = 'Authenticating...';
-        loginStatus.className = 'status';
+        loginStatus.textContent = "Authenticating...";
+        loginStatus.className = "status";
 
-        const password = document.getElementById('adminPassword').value;
+        const password = document.getElementById("adminPassword").value;
 
         try {
-          const res = await apiFetch('../api/admin/login.php', {
-            method: 'POST',
+          const res = await apiFetch("../api/admin/login.php", {
+            method: "POST",
             body: JSON.stringify({ password }),
           });
 
-          if (res.status === 'success') {
-            loginStatus.textContent = 'Success! Redirecting...';
-            loginStatus.className = 'status success';
+          if (res.status === "success") {
+            loginStatus.textContent = "Success! Redirecting...";
+            loginStatus.className = "status success";
             setTimeout(() => {
-              window.location.href = 'index.html';
+              window.location.href = "index.html";
             }, 500);
           } else {
-            loginStatus.textContent = res.message || 'Invalid credentials.';
-            loginStatus.className = 'status error';
+            loginStatus.textContent = res.message || "Invalid credentials.";
+            loginStatus.className = "status error";
           }
         } catch (err) {
-          loginStatus.textContent = err.message || 'Connection error.';
-          loginStatus.className = 'status error';
+          loginStatus.textContent = err.message || "Connection error.";
+          loginStatus.className = "status error";
         }
       });
     </script>
