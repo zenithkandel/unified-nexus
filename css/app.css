@@ -655,7 +655,7 @@ ul {
 
 .footer-logo img {
     height: 50px;
-    filter: brightness(0) invert(1);
+    filter: var(--logo-filter, brightness(0) invert(1));
 }
 
 @media (max-width: 991px) {
