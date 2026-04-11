@@ -32,6 +32,19 @@
     --shadow-medium: 0 8px 24px color-mix(in srgb, #000 calc(0.4 * 100%), transparent);
 }
 
+[data-theme="light"] {
+    --c-57545B: #F4EBE3;
+    --c-716F75: #EBE0D7;
+    --c-959294: #7D6A78;
+    --c-AAAAAA: #4A3A43;
+    --c-7F2B3E: #A1374F;
+    --c-661B28: #E2D3CD;
+    --color-text-primary: #1F171A;
+    --logo-filter: brightness(0);
+    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
 *,
 *::before,
 *::after {
@@ -143,6 +156,32 @@ ul {
 
 .nav-link:hover {
     color: var(--color-accent-terracotta);
+}
+
+.theme-toggle {
+    background: transparent;
+    border: 1px solid var(--c-959294);
+    color: var(--color-text-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--c-7F2B3E);
+    border-color: var(--c-7F2B3E);
+    color: #fff;
+    transform: rotate(15deg);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
 }
 
 .btn {
