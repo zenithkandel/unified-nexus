@@ -123,7 +123,9 @@ const observer = new IntersectionObserver(
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         if (!entry.target.classList.contains("is-visible")) {
-          entry.target.style.transitionDelay = `${animateCount * 0.1}s`;
+          // Cap the delay so fast scrolling doesn't stall the UI, max out at 0.3s
+          const delay = Math.min(animateCount * 0.05, 0.3);
+          entry.target.style.transitionDelay = `${delay}s`;
           entry.target.classList.add("is-visible");
           animateCount++;
         }
@@ -135,9 +137,9 @@ const observer = new IntersectionObserver(
     clearTimeout(animateTimeout);
     animateTimeout = setTimeout(() => {
       animateCount = 0;
-    }, 200); // Reset staggered delay for the next scroll frame
+    }, 100); // Reset staggered delay much faster
   },
-  { threshold: 0.1 },
+  { threshold: 0.05, rootMargin: '0px 0px -5% 0px' },
 );
 
 document
