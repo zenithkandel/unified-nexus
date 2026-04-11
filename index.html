@@ -17,11 +17,44 @@
     />
 
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/loader.css" />
 
     <!-- Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/loader-fx.js" defer></script>
   </head>
-  <body>
+  <body class="loading">
+    <!-- Loading Screen -->
+    <div class="loader" aria-hidden="true">
+      <div class="loader__panel loader__panel--left"></div>
+      <div class="loader__panel loader__panel--right"></div>
+      <div class="loader__content">
+        <div class="loader__logo-container">
+          <img
+            class="loader__logo"
+            src="images/branding/logo-icon.png"
+            alt="Unified Nexus"
+            aria-hidden="true"
+            onerror="this.style.display = 'none'"
+          />
+        </div>
+        <div class="loader__brand">
+          <h1 class="loader__title">Unified Nexus</h1>
+          <p class="loader__subtitle">We Work We Win</p>
+        </div>
+        <div class="loader__progress">
+          <div class="loader__progress-track">
+            <div class="loader__progress-bar"></div>
+          </div>
+          <div class="loader__progress-text">
+            <span class="loader__status">Loading...</span>
+            <span class="loader__percentage">0%</span>
+          </div>
+        </div>
+        <p class="loader__hint">Move to enter</p>
+      </div>
+    </div>
+
     <div id="canvas-container"></div>
     <!-- Navigation -->
     <nav class="navbar anim-slide-down" id="navbar">
@@ -29,7 +62,11 @@
         <a href="#" class="nav-brand">
           <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
         </a>
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Toggle navigation"
+        >
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-menu" id="navMenu">
@@ -269,6 +306,6 @@
       </div>
     </footer>
 
-        <script src="js/index-main.js"></script>
+    <script src="js/index-main.js"></script>
   </body>
 </html>
