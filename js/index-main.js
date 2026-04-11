@@ -33,15 +33,15 @@ function initThreeJS() {
   // Dynamic Theme Colors for geometry
   const rootStyles = getComputedStyle(document.documentElement);
   const getHex = (varName) => parseInt(rootStyles.getPropertyValue(varName).trim().replace('#', '0x'), 16) || 0xAAAAAA;
-  
+
   const colors = [
-    getHex("--c-716F75"), 
-    getHex("--c-959294"), 
-    getHex("--c-AAAAAA"), 
-    getHex("--c-7F2B3E"), 
+    getHex("--c-716F75"),
+    getHex("--c-959294"),
+    getHex("--c-AAAAAA"),
+    getHex("--c-7F2B3E"),
     getHex("--c-661B28")
   ];
-  
+
   const geometries = [
     new THREE.TetrahedronGeometry(0.8), // Triangle like
     new THREE.BoxGeometry(0.8, 0.8, 0.8), // Rectangle

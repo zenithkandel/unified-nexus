@@ -8,8 +8,8 @@
     injector.style.position = 'fixed';
     injector.style.top = '20px';
     injector.style.right = '20px';
-    injector.style.width = '320px';
-    injector.style.maxHeight = '400px';
+    injector.style.width = '340px';
+    injector.style.maxHeight = '450px';
     injector.style.backgroundColor = '#1e1e1e';
     injector.style.color = '#fff';
     injector.style.border = '1px solid #444';
@@ -24,40 +24,47 @@
     // Dynamic Styles
     const style = document.createElement('style');
     style.textContent = `
-    .theme-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 10px; overflow-y: auto; }
-    .theme-item { width: 100%; aspect-ratio: 1; border-radius: 4px; cursor: pointer; transition: transform 0.2s; border: 2px solid transparent; }
-    .theme-item:hover { transform: scale(1.1); border-color: #fff; z-index: 2; }
-    .theme-header { background: #333; padding: 10px; cursor: move; user-select: none; font-weight: bold; border-bottom: 1px solid #444; display: flex; justify-content: space-between; }
-    .theme-close { cursor: pointer; color: #ff5555; }
-    .theme-label { font-size: 10px; text-align: center; color: #888; margin-top: 2px; }
+    .theme-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; padding: 12px; overflow-y: auto; overflow-x: hidden; max-height: calc(450px - 90px); }
+    .theme-item { width: 100%; aspect-ratio: 1; border-radius: 50%; cursor: pointer; transition: transform 0.2s; border: 2px solid transparent; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .theme-item:hover { transform: scale(1.15); border-color: #fff; z-index: 2; }
+    .theme-header { background: #333; padding: 12px; cursor: move; user-select: none; font-weight: bold; border-bottom: 1px solid #444; display: flex; justify-content: space-between; align-items: center;}
+    .theme-close { cursor: pointer; color: #ff5555; padding: 0 5px; font-size: 16px; line-height: 1;}
+    .theme-controls { padding: 10px; border-bottom: 1px solid #444; background: #2a2a2a; display: flex; gap: 5px; font-size: 12px; justify-content: space-around;}
+    .t-btn { background: #444; border: none; color: white; padding: 4px 8px; border-radius: 4px; cursor: pointer; }
+    .t-btn:hover { background: #666; }
+    .t-btn.active { background: #BA7883; font-weight: bold; }
   `;
     document.head.appendChild(style);
 
-    // Header
+    // Header & Controls mapping
     const header = document.createElement('div');
     header.className = 'theme-header';
-
     const title = document.createElement('span');
-    title.innerText = 'Theme Injector';
-
+    title.innerText = 'Nexus Theme Engine';
     const closeBtn = document.createElement('span');
     closeBtn.className = 'theme-close';
     closeBtn.innerText = '✕';
     closeBtn.onclick = () => injector.remove();
-
     header.appendChild(title);
     header.appendChild(closeBtn);
     injector.appendChild(header);
 
-    // Grid
+    const controls = document.createElement('div');
+    controls.className = 'theme-controls';
+    const modes = ['All', 'Dark', 'Light', 'Vibrant', 'Pastel'];
+    const btns = {};
+    modes.forEach(mode => {
+        const btn = document.createElement('button');
+        btn.className = 't-btn' + (mode === 'All' ? ' active' : '');
+        btn.innerText = mode;
+        btn.onclick = () => filterThemes(mode, btn);
+        controls.appendChild(btn);
+        btns[mode] = btn;
+    });
+    injector.appendChild(controls);
+
     const grid = document.createElement('div');
     grid.className = 'theme-grid';
-
-    // Generate 50 palettes
-    // Base keys:
-    // --c-57545B: bg, --c-661B28: dark accent, --c-716F75: sepia bg
-    // --c-AAAAAA: text secondary, --c-7F2B3E: accent
-    // --color-text-primary: text primary
 
     function hslToHex(h, s, l) {
         l /= 100;
@@ -67,59 +74,80 @@
             const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
             return Math.round(255 * color).toString(16).padStart(2, '0');
         };
-        return `#${f(0)}${f(8)}${f(4)}`;
+        return "#" + f(0) + f(8) + f(4);
     }
 
     const themes = [];
-    // 50 variations along the hue spectrum
-    for (let i = 0; i < 50; i++) {
-        const rH = Math.floor((i / 50) * 360);
-        const palette = {
-            name: `H:${rH}`,
+
+    function createTheme(name, group, h, bgS, bgL, txtL, accS, accL) {
+        const isDarkBg = bgL < 50;
+        const bg1 = hslToHex(h, bgS, bgL);
+        const bg2 = hslToHex(h, bgS, Math.max(0, bgL - 5));
+        const bg3 = hslToHex(h, bgS, Math.max(0, bgL - 10));
+        const bg4 = hslToHex(h, bgS, Math.min(100, bgL + 15));
+
+        // Light themes need dark text. Dark themes need light text.
+        const textBright = isDarkBg ? hslToHex(h, Math.min(100, bgS / 2), txtL) : hslToHex(h, bgS, Math.max(0, 100 - txtL));
+        const textMuted = isDarkBg ? hslToHex(h, bgS, txtL - 25) : hslToHex(h, bgS, Math.max(0, 100 - txtL + 25));
+        const accPrimary = hslToHex((h + 30) % 360, accS, accL);
+
+        themes.push({
+            name: name,
+            group: group,
             vars: {
-                '--color-bg-base': hslToHex(rH, 15, 8),
-                '--c-57545B': hslToHex(rH, 15, 8),
-                '--color-charcoal': hslToHex(rH, 15, 8),
-
-                '--color-cream': hslToHex(rH, 25, 12),
-                '--c-661B28': hslToHex(rH, 25, 12),
-
-                '--color-sepia': hslToHex(rH, 10, 18),
-                '--c-716F75': hslToHex(rH, 10, 18),
-
-                '--color-dust-gray': hslToHex(rH, 5, 50),
-                '--c-959294': hslToHex(rH, 5, 50),
-
-                '--color-text-secondary': hslToHex(rH, 15, 75),
-                '--c-AAAAAA': hslToHex(rH, 15, 75),
-
-                '--color-text-primary': '#ffffff',
-
-                '--color-accent-terracotta': hslToHex(rH, 60, 45),
-                '--c-7F2B3E': hslToHex(rH, 60, 45)
+                '--color-bg-base': bg1,
+                '--color-charcoal': bg1,
+                '--c-57545B': bg1,
+                '--color-cream': bg3,
+                '--c-661B28': bg3,
+                '--color-sepia': bg2,
+                '--c-716F75': bg2,
+                '--color-dust-gray': bg4,
+                '--c-959294': bg4,
+                '--color-text-primary': textBright,
+                '--color-text-secondary': textMuted,
+                '--c-AAAAAA': textMuted,
+                '--color-accent-terracotta': accPrimary,
+                '--c-7F2B3E': accPrimary
             }
-        };
-        themes.push(palette);
+        });
     }
 
-    themes.forEach(t => {
-        const item = document.createElement('div');
-        item.className = 'theme-item';
-        item.title = `Apply Theme ${t.name}`;
+    for (let i = 0; i < 20; i++) {
+        const h = Math.floor((i / 20) * 360);
+        // Dark: low lightness bg, high lightness text
+        createTheme("Dark-" + h, "Dark", h, 20, 10, 95, 60, 50);
+        // Light: high lightness bg, low lightness text
+        createTheme("Light-" + h, "Light", h, 15, 95, 90, 50, 45);
+        // Vibrant: saturated bg, high contrast
+        createTheme("Vibrant-" + h, "Vibrant", h, 80, 40, 95, 90, 60);
+        // Pastel: soft bg, soft accents
+        createTheme("Pastel-" + h, "Pastel", h, 40, 85, 90, 60, 70);
+    }
 
-        // Split item to show Primary Accent and Bg Base
-        item.style.background = `linear-gradient(135deg, ${t.vars['--c-7F2B3E']} 50%, ${t.vars['--c-57545B']} 50%)`;
+    function renderGrid(filter) {
+        grid.innerHTML = '';
+        themes.forEach(t => {
+            if (filter !== 'All' && t.group !== filter) return;
+            const item = document.createElement('div');
+            item.className = 'theme-item';
+            item.title = `${t.name} - Click to apply`;
+            item.style.background = `linear-gradient(135deg, ${t.vars['--c-7F2B3E']} 50%, ${t.vars['--c-57545B']} 50%)`;
+            item.onclick = () => {
+                Object.keys(t.vars).forEach(k => document.documentElement.style.setProperty(k, t.vars[k]));
+                console.log(`[Injector] Applied theme: ${t.name}`);
+            };
+            grid.appendChild(item);
+        });
+    }
 
-        item.onclick = () => {
-            Object.keys(t.vars).forEach(k => {
-                document.documentElement.style.setProperty(k, t.vars[k]);
-            });
-            console.log(`[Injector] Applied theme: ${t.name}`);
-        };
+    function filterThemes(mode, activeBtn) {
+        Object.values(btns).forEach(b => b.classList.remove('active'));
+        activeBtn.classList.add('active');
+        renderGrid(mode);
+    }
 
-        grid.appendChild(item);
-    });
-
+    renderGrid('All');
     injector.appendChild(grid);
 
     // Drag logic
@@ -136,13 +164,11 @@
         if (!isDragging) return;
         injector.style.left = (e.clientX - offsetX) + 'px';
         injector.style.top = (e.clientY - offsetY) + 'px';
-        injector.style.right = 'auto'; // Disable right
+        injector.style.right = 'auto';
     });
 
-    document.addEventListener('mouseup', () => {
-        isDragging = false;
-    });
+    document.addEventListener('mouseup', () => isDragging = false);
 
     document.body.appendChild(injector);
-    console.log('[Theme Injector] Ready. Drag the panel and click a swatch to change theme variables.');
+    console.log('[Theme Injector] Overhauled with 80 palettes across Dark, Light, Vibrant, and Pastel styles.');
 })();
