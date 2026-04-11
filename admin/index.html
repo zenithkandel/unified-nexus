@@ -1,928 +1,808 @@
 <!doctype html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Unified Nexus Admin Console</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/variables.css" />
-    <link rel="stylesheet" href="../css/themes.css" />
-    <link rel="stylesheet" href="../css/base.css" />
-    <script src="https://zenithkandel.com.np/fontawesome/zenith-icons.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-    <style>
-      :root {
-        --sidebar-width: 260px;
-        --bottom-nav-height: 70px;
-        --admin-bg: color-mix(in srgb, var(--surface-0) 50%, var(--surface-1));
-        --card-bg: var(--surface-panel);
-        --font-body: 'Plus Jakarta Sans', sans-serif;
-        --font-heading: 'Plus Jakarta Sans', sans-serif;
-      }
-      body {
-        margin: 0;
-        display: flex;
-        background: var(--admin-bg);
-        color: var(--text-strong);
-        font-family: var(--font-body);
-        min-height: 100vh;
-        overflow-x: hidden;
-      }
-      /* Layout structure */
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unified Nexus Workspace</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://zenithkandel.com.np/fontawesome/zenith-icons.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+
+  <style>
+    /* Premium Modern Dark Theme - Linear/Vercel Inspired */
+    :root {
+      --bg: #0a0a0a;
+      --bg-panel: #111111;
+      --bg-hover: #1a1a1a;
+      --line: #222222;
+      --text: #ededed;
+      --text-muted: #888888;
+      --accent: #0070f3;
+      --accent-hover: #0051a8;
+      --danger: #e00;
+      --danger-hover: #c00;
+      --radius: 12px;
+      --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --shadow-float: 0 8px 30px rgba(0,0,0,0.4);
+      --sidebar-w: 250px;
+      --bottom-nav-h: 64px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3 { font-weight: 600; letter-spacing: -0.02em; }
+    p { line-height: 1.6; }
+
+    /* LAYOUT */
+    .sidebar {
+      width: var(--sidebar-w);
+      background: var(--bg-panel);
+      border-right: 1px solid var(--line);
+      position: fixed;
+      top: 0; bottom: 0; left: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+    .brand {
+      padding: 2rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-bottom: 1px solid transparent;
+    }
+    .brand i { color: var(--accent); font-size: 1.4rem; }
+    
+    .nav-links {
+      flex-grow: 1;
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .nav-link {
+      padding: 0.8rem 1.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: all 0.2s;
+      border-left: 2px solid transparent;
+      margin-bottom: 0.2rem;
+    }
+    .nav-link i { font-size: 1.1rem; width: 20px; text-align: center; }
+    .nav-link:hover { color: var(--text); background: var(--bg-hover); }
+    .nav-link.active {
+      color: var(--text);
+      background: var(--bg-hover);
+      border-left-color: var(--accent);
+    }
+    .nav-link.danger:hover { color: var(--danger); }
+
+    .main-content {
+      margin-left: var(--sidebar-w);
+      flex-grow: 1;
+      padding: 3rem 4rem;
+      width: calc(100% - var(--sidebar-w));
+    }
+
+    /* VIEWS */
+    .content-view { display: none; animation: fadeUp 0.4s ease forwards; opacity: 0; transform: translateY(10px); }
+    .content-view.active { display: block; }
+    
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .view-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .view-header h2 { font-size: 2rem; }
+
+    /* BUTTONS */
+    .btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.2s;
+    }
+    .btn:hover { background: var(--bg-hover); border-color: var(--text-muted); }
+    
+    .btn-primary { background: var(--text); color: var(--bg); border: none; }
+    .btn-primary:hover { background: #fff; border-color: transparent; }
+    
+    .btn-danger { color: var(--danger); border-color: rgba(238, 0, 0, 0.2); }
+    .btn-danger:hover { background: rgba(238, 0, 0, 0.1); border-color: var(--danger); }
+
+    /* CARDS GRID */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .card:hover { border-color: #333; }
+    
+    .drag-handle {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 32px; height: 32px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      cursor: grab;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .card:hover .drag-handle { opacity: 1; }
+    .drag-handle:active { cursor: grabbing; }
+
+    .card-img {
+      height: 160px;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .card-img i { font-size: 2.5rem; color: var(--line); }
+    
+    .card-body { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+    .card-title { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .card-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem; }
+    .card-meta i { font-size: 0.9rem; }
+    
+    .card-text { font-size: 0.9rem; color: #aaa; margin-bottom: 1.5rem; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .sortable-ghost { opacity: 0.4; border: 1px dashed var(--accent) !important; background: var(--bg) !important; }
+
+    /* MODALS */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s; z-index: 1000;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    
+    .modal-container {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      width: min(600px, 92%);
+      max-height: 85vh;
+      overflow-y: auto;
+      transform: scale(0.96);
+      transition: transform 0.2s;
+      box-shadow: var(--shadow-float);
+    }
+    .modal-overlay.active .modal-container { transform: scale(1); }
+    
+    .modal-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center;
+      position: sticky; top: 0; background: var(--bg-panel); z-index: 5;
+    }
+    .modal-header h3 { font-size: 1.25rem; }
+    .close-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.25rem; transition: 0.2s; }
+    .close-btn:hover { color: var(--text); }
+    
+    .modal-body { padding: 2rem; }
+
+    /* FORMS */
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; font-size: 0.85rem; color: var(--text-muted); font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus { border-color: var(--accent); outline: none; }
+    textarea.form-control { resize: vertical; min-height: 100px; }
+    
+    .checkbox-wrapper { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.95rem; padding: 0.5rem 0; }
+    .checkbox-wrapper input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+
+    .modal-actions {
+      display: flex; justify-content: flex-end; gap: 1rem;
+      padding-top: 1.5rem; border-top: 1px solid var(--line); margin-top: 1rem;
+    }
+
+    /* SETTINGS CARD */
+    .settings-panel {
+      background: var(--bg-panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2rem;
+      max-width: 500px;
+    }
+
+    /* APP VIEW FORMATTING */
+    .data-row { margin-bottom: 1rem; }
+    .data-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .data-value { font-size: 1.05rem; }
+    .data-value a { color: var(--accent); text-decoration: none; }
+    .data-value a:hover { text-decoration: underline; }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
       .sidebar {
-        width: var(--sidebar-width);
-        background: var(--surface-panel);
-        border-right: 1px solid var(--line-soft);
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        z-index: 100;
-        transition: transform 0.3s;
+        width: 100%; height: var(--bottom-nav-h);
+        top: auto; border-right: none; border-top: 1px solid var(--line);
+        flex-direction: row;
       }
-      .brand {
-        padding: 1.5rem;
-        font-family: var(--font-heading);
-        font-size: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        color: var(--accent);
-        border-bottom: 1px solid var(--line-soft);
-      }
-      .nav-links {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        padding: 1rem 0;
-      }
-      .nav-link {
-        padding: 1rem 1.5rem;
-        color: var(--text-muted);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-weight: 500;
-        transition:
-          background 0.2s,
-          color 0.2s;
-        border-left: 3px solid transparent;
-      }
-      .nav-link i {
-        font-size: 1.1rem;
-        width: 24px;
-        text-align: center;
-      }
-      .nav-link:hover,
-      .nav-link.active {
-        background: color-mix(in srgb, var(--accent) 10%, transparent);
-        color: var(--accent);
-        border-left-color: var(--accent);
-      }
+      .brand { display: none; }
+      .nav-links { flex-direction: row; padding: 0; width: 100%; justify-content: space-around; }
+      .nav-link { padding: 0.5rem; flex-direction: column; gap: 0.25rem; font-size: 0.65rem; border-left: none; border-top: 2px solid transparent; }
+      .nav-link i { font-size: 1.25rem; }
+      .nav-link.active { border-left: none; border-top-color: var(--accent); }
+      
       .main-content {
-        margin-left: var(--sidebar-width);
-        flex-grow: 1;
-        padding: 2rem;
-        padding-bottom: 5rem; /* Space for mobile nav if needed */
-        width: calc(100% - var(--sidebar-width));
-        box-sizing: border-box;
+        margin-left: 0; width: 100%;
+        padding: 1.5rem 1rem calc(var(--bottom-nav-h) + 2rem);
       }
-      .content-view {
-        display: none;
-        animation: fadeIn 0.3s;
-      }
-      .content-view.active {
-        display: block;
-      }
+      .view-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .view-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        border-bottom: 1px solid var(--line-soft);
-        padding-bottom: 1rem;
-      }
-      .view-header h2 {
-        font-family: var(--font-heading);
-        font-size: 2rem;
-        margin: 0;
-      }
-      /* Cards Grid */
-      .cards-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 1.5rem;
-      }
-      .card {
-        background: var(--card-bg);
-        border-radius: 12px;
-        border: 1px solid var(--line-soft);
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        box-shadow: var(--shadow-subtle);
-        transition:
-          transform 0.2s,
-          box-shadow 0.2s;
-      }
-      .card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-medium);
-      }
-      .card-img {
-        height: 180px;
-        background: var(--surface-1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-      }
-      .card-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .card-img i {
-        font-size: 3rem;
-        color: var(--text-muted);
-        opacity: 0.5;
-      }
-      .card-body {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-      }
-      .card-title {
-        font-family: var(--font-heading);
-        font-size: 1.25rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-      }
-      .card-meta {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-bottom: 1rem;
-      }
-      .card-actions {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: auto;
-        padding-top: 1rem;
-        border-top: 1px solid var(--line-soft);
-      }
-
-      /* Utilities */
-      .btn {
-        padding: 0.6rem 1rem;
-        border-radius: 6px;
-        border: none;
-        cursor: pointer;
-        font-weight: 500;
-        font-size: 0.9rem;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        transition: all 0.2s;
-      }
-      .btn-primary {
-        background: var(--accent);
-        color: white;
-      }
-      .btn-primary:hover {
-        background: color-mix(in srgb, var(--accent) 80%, black);
-      }
-      .btn-danger {
-        background: color-mix(in srgb, var(--error) 15%, transparent);
-        color: var(--error);
-      }
-      .btn-danger:hover {
-        background: var(--error);
-        color: white;
-      }
-      .btn-edit {
-        background: color-mix(in srgb, var(--text-strong) 10%, transparent);
-        color: var(--text-strong);
-      }
-      .btn-edit:hover {
-        background: var(--text-strong);
-        color: var(--card-bg);
-      }
-
-      /* Modals */
-      .modal-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(4px);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.2s;
-        z-index: 1000;
-      }
-      .modal-overlay.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-      .modal-content {
-        background: var(--surface-panel);
-        width: min(600px, 95%);
-        max-height: 90vh;
-        overflow-y: auto;
-        border-radius: 12px;
-        padding: 2rem;
-        transform: scale(0.95);
-        transition: 0.2s;
-      }
-      .modal-overlay.active .modal-content {
-        transform: scale(1);
-      }
-      .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-      }
-      .modal-header h3 {
-        font-family: var(--font-heading);
-        margin: 0;
-        font-size: 1.5rem;
-      }
-      .close-btn {
-        background: none;
-        border: none;
-        color: var(--text-muted);
-        font-size: 1.5rem;
-        cursor: pointer;
-      }
-
-      /* Form elements inside modal */
-      .form-group {
-        margin-bottom: 1.25rem;
-      }
-      .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-        font-size: 0.9rem;
-      }
-      .form-group input,
-      .form-group textarea,
-      .form-group select {
-        width: 100%;
-        padding: 0.75rem;
-        border: 1px solid var(--line-soft);
-        border-radius: 6px;
-        background: var(--surface-0);
-        color: var(--text-strong);
-        font-family: inherit;
-      }
-      .form-group input:focus,
-      .form-group textarea:focus {
-        border-color: var(--accent);
-        outline: none;
-      }
-      .form-group textarea {
-        min-height: 100px;
-        resize: vertical;
-      }
-      .checkbox-inline {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        cursor: pointer;
-      }
-
-      /* Responsive Mobile */
-      @media (max-width: 768px) {
-        .sidebar {
-          width: 100%;
-          height: var(--bottom-nav-height);
-          top: auto;
-          bottom: 0;
-          flex-direction: row;
-          border-right: none;
-          border-top: 1px solid var(--line-soft);
-          box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-        }
-        .brand {
-          display: none;
-        }
-        .nav-links {
-          flex-direction: row;
-          padding: 0;
-          justify-content: space-around;
-          width: 100%;
-        }
-        .nav-link {
-          flex-direction: column;
-          padding: 0.5rem;
-          gap: 0.2rem;
-          font-size: 0.75rem;
-          border-left: none;
-          border-bottom: 3px solid transparent;
-        }
-        .nav-link i {
-          font-size: 1.25rem;
-        }
-        .nav-link:hover,
-        .nav-link.active {
-          border-left: none;
-          border-bottom-color: var(--accent);
-        }
-        .main-content {
-          margin-left: 0;
-          width: 100%;
-          padding: 1.5rem 1rem;
-          padding-bottom: calc(var(--bottom-nav-height) + 1.5rem);
-        }
-        .view-header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 1rem;
-        }
-        .cards-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navigation -->
-    <aside class="sidebar">
-      <div class="brand">
-        <i class="fa-sharp fa-solid fa-shield-keyhole"></i> <span>Nexus Admin</span>
-      </div>
-      <nav class="nav-links">
-        <a href="#clubs" class="nav-link active" data-view="clubsView">
-          <i class="fa-sharp fa-solid fa-layer-group"></i> <span>Clubs</span>
-        </a>
-        <a href="#executive" class="nav-link" data-view="execView">
-          <i class="fa-sharp fa-solid fa-users"></i> <span>Executive</span>
-        </a>
-        <a href="#applications" class="nav-link" data-view="appsView">
-          <i class="fa-sharp fa-solid fa-file-signature"></i> <span>Applications</span>
-        </a>
-        <a
-          style="margin-top: auto"
-          href="#password"
-          class="nav-link"
-          data-view="passwordView"
-        >
-          <i class="fa-sharp fa-solid fa-key"></i>
-          <span style="display: none" id="mobilePassLabel">Pass</span
-          ><span id="deskPassLabel">Password</span>
-        </a>
-        <a href="#" class="nav-link" id="logoutBtn" style="color: var(--error)">
-          <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
-          <span>Logout</span>
-        </a>
-      </nav>
-    </aside>
-
-    <!-- Main Content Area -->
-    <main class="main-content">
-      <!-- Clubs View -->
-      <section id="clubsView" class="content-view active">
-        <div class="view-header">
-          <h2>Clubs Management</h2>
-          <button class="btn btn-primary" onclick="openModal('clubModal')">
-            <i class="fa-sharp fa-solid fa-plus"></i> Add Club
-          </button>
-        </div>
-        <div class="cards-grid" id="clubsGrid">Loading clubs...</div>
-      </section>
-
-      <!-- Executive View -->
-      <section id="execView" class="content-view">
-        <div class="view-header">
-          <h2>Executive Members</h2>
-          <button class="btn btn-primary" onclick="openModal('execModal')">
-            <i class="fa-sharp fa-solid fa-plus"></i> Add Member
-          </button>
-        </div>
-        <div class="cards-grid" id="execGrid">Loading executives...</div>
-      </section>
-
-      <!-- Apps View -->
-      <section id="appsView" class="content-view">
-        <div class="view-header">
-          <h2>Applications</h2>
-        </div>
-        <div class="cards-grid" id="appsGrid">Loading applications...</div>
-      </section>
-
-      <!-- Password View -->
-      <section id="passwordView" class="content-view">
-        <div class="view-header">
-          <h2>Change Admin Password</h2>
-        </div>
-        <div class="card" style="max-width: 500px">
-          <div class="card-body">
-            <form id="passwordForm">
-              <div class="form-group">
-                <label>Current Password</label>
-                <input type="password" id="currentPassword" required />
-              </div>
-              <div class="form-group">
-                <label>New Password</label>
-                <input type="password" id="newPassword" required />
-              </div>
-              <button class="btn btn-primary" type="submit">
-                Update Password
-              </button>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-        <!-- View Application Modal -->
-    <div class="modal-overlay" id="appModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3>View Application</h3>
-          <button class="close-btn" onclick="closeModal('appModal')">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <div id="appModalContent" style="line-height: 1.6; font-size: 0.95rem;">
-        </div>
-      </div>
+  <!-- Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <i class="fa-sharp fa-solid fa-shield-keyhole"></i> Nexus Admin
     </div>
+    <nav class="nav-links">
+      <a href="#clubs" class="nav-link active" data-view="clubsView">
+        <i class="fa-sharp fa-solid fa-layer-group"></i> <span>Clubs</span>
+      </a>
+      <a href="#executive" class="nav-link" data-view="execView">
+        <i class="fa-sharp fa-solid fa-users"></i> <span>Executives</span>
+      </a>
+      <a href="#applications" class="nav-link" data-view="appsView">
+        <i class="fa-sharp fa-solid fa-file-signature"></i> <span>Applications</span>
+      </a>
+      <a style="margin-top: auto" href="#password" class="nav-link" data-view="passwordView">
+        <i class="fa-sharp fa-solid fa-key"></i> <span>Security</span>
+      </a>
+      <a href="#" class="nav-link danger" id="logoutBtn">
+        <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
 
-    <!-- Modals -->
-    <!-- Club Modal -->
-    <div class="modal-overlay" id="clubModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="clubModalTitle">Add Club</h3>
-          <button class="close-btn" onclick="closeModal('clubModal')">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
+  <!-- Main View -->
+  <main class="main-content">
+    
+    <!-- CLUBS VIEW -->
+    <section id="clubsView" class="content-view active">
+      <div class="view-header">
+        <h2>Clubs Platform</h2>
+        <button class="btn btn-primary" onclick="openModal('clubModal')">
+          <i class="fa-sharp fa-solid fa-plus"></i> New Club
+        </button>
+      </div>
+      <div class="cards-grid" id="clubsGrid">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+    <!-- EXECUTIVES VIEW -->
+    <section id="execView" class="content-view">
+      <div class="view-header">
+        <h2>Leadership Board</h2>
+        <button class="btn btn-primary" onclick="openModal('execModal')">
+          <i class="fa-sharp fa-solid fa-plus"></i> Add Leader
+        </button>
+      </div>
+      <div class="cards-grid" id="execGrid">
+      </div>
+    </section>
+
+    <!-- APPLICATIONS VIEW -->
+    <section id="appsView" class="content-view">
+      <div class="view-header">
+        <h2>Member Applications</h2>
+      </div>
+      <div class="cards-grid" id="appsGrid">
+      </div>
+    </section>
+
+    <!-- SETTINGS VIEW -->
+    <section id="passwordView" class="content-view">
+      <div class="view-header">
+        <h2>Security & Access</h2>
+      </div>
+      <div class="settings-panel">
+        <form id="passwordForm">
+          <div class="form-group">
+            <label>Current Master Password</label>
+            <input type="password" class="form-control" id="currentPassword" required />
+          </div>
+          <div class="form-group">
+            <label>New Master Password</label>
+            <input type="password" class="form-control" id="newPassword" required />
+          </div>
+          <button class="btn btn-primary" type="submit" style="width: 100%; justify-content: center; margin-top: 1rem;">
+            Update Credentials
           </button>
-        </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- MODALS PORTAL -->
+  
+  <!-- Club Modal -->
+  <div class="modal-overlay" id="clubModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="clubModalTitle">Create File</h3>
+        <button class="close-btn" onclick="closeModal('clubModal')"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
         <form id="clubForm">
           <input type="hidden" id="clubId" name="id" />
+          <input type="hidden" id="clubOrder" name="display_order" value="0" />
+          
           <div class="form-group">
-            <label>Club Name</label>
-            <input type="text" id="clubName" name="name" required />
+            <label>Club Designation</label>
+            <input type="text" class="form-control" id="clubName" name="name" required placeholder="e.g. IT Club" />
           </div>
           <div class="form-group">
-            <label>President</label>
-            <input
-              type="text"
-              id="clubPresident"
-              name="president_name"
-              required
-            />
+            <label>Lead / President</label>
+            <input type="text" class="form-control" id="clubPresident" name="president_name" required placeholder="e.g. John Doe" />
           </div>
           <div class="form-group">
-            <label>Description</label>
-            <textarea id="clubDesc" name="description" required></textarea>
+            <label>Public Description</label>
+            <textarea class="form-control" id="clubDesc" name="description" required></textarea>
           </div>
           <div class="form-group">
-            <label>Theme & Motive</label>
-            <textarea id="clubMotive" name="theme_motive" required></textarea>
+            <label>Core Motive / Goals</label>
+            <textarea class="form-control" id="clubMotive" name="theme_motive" required></textarea>
           </div>
           <div class="form-group">
-            <label>Display Order (Priority)</label>
-            <input
-              type="number"
-              id="clubOrder"
-              name="display_order"
-              value="0"
-              required
-            />
+            <label>Cover Asset</label>
+            <input type="file" class="form-control" id="clubImage" name="hero_image" accept="image/*" />
+            <small style="color: var(--text-muted); display: block; margin-top: 0.5rem;">Leave blank to preserve current asset.</small>
           </div>
-          <div class="form-group">
-            <label>Hero Image (Leave blank to keep existing)</label>
-            <input
-              type="file"
-              id="clubImage"
-              name="hero_image"
-              accept="image/*"
-            />
-          </div>
-          <div class="form-group">
-            <label class="checkbox-inline">
-              <input
-                type="checkbox"
-                id="clubActive"
-                name="is_active"
-                value="1"
-                checked
-              />
-              Is Active
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="checkbox-wrapper">
+              <input type="checkbox" id="clubActive" name="is_active" value="1" checked />
+              Visible on Public Directory
             </label>
           </div>
+
           <div class="modal-actions">
-            <button type="submit" class="btn btn-primary">Save Club</button>
-            <button
-              type="button"
-              class="btn btn-edit"
-              onclick="closeModal('clubModal')"
-            >
-              Cancel
-            </button>
+            <button type="button" class="btn" onclick="closeModal('clubModal')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Commit Changes</button>
           </div>
         </form>
       </div>
     </div>
+  </div>
 
-    <!-- Executive Modal -->
-    <div class="modal-overlay" id="execModal">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h3 id="execModalTitle">Add Executive</h3>
-          <button class="close-btn" onclick="closeModal('execModal')">
-            <i class="fa-sharp fa-solid fa-xmark"></i>
-          </button>
-        </div>
+  <!-- Exec Modal -->
+  <div class="modal-overlay" id="execModal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 id="execModalTitle">Add Executive</h3>
+        <button class="close-btn" onclick="closeModal('execModal')"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
         <form id="execForm">
           <input type="hidden" id="execId" name="id" />
-          <div class="form-group">
-            <label>Full Name</label>
-            <input type="text" id="execName" name="full_name" required />
-          </div>
-          <div class="form-group">
-            <label>Role</label>
-            <input type="text" id="execRole" name="role_title" required />
-          </div>
           <input type="hidden" id="execOrder" name="display_order" value="0" />
+          
           <div class="form-group">
-            <label>Photo (Leave blank to keep existing)</label>
-            <input type="file" id="execImage" name="photo" accept="image/*" />
+            <label>Full Identity</label>
+            <input type="text" class="form-control" id="execName" name="full_name" required />
           </div>
           <div class="form-group">
-            <label class="checkbox-inline">
-              <input
-                type="checkbox"
-                id="execActive"
-                name="is_active"
-                value="1"
-                checked
-              />
-              Is Active
+            <label>Assigned Role</label>
+            <input type="text" class="form-control" id="execRole" name="role_title" required />
+          </div>
+          <div class="form-group">
+            <label>Profile Portrait</label>
+            <input type="file" class="form-control" id="execImage" name="photo" accept="image/*" />
+          </div>
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="checkbox-wrapper">
+              <input type="checkbox" id="execActive" name="is_active" value="1" checked />
+              Active Member
             </label>
           </div>
+
           <div class="modal-actions">
-            <button type="submit" class="btn btn-primary">
-              Save Executive
-            </button>
-            <button
-              type="button"
-              class="btn btn-edit"
-              onclick="closeModal('execModal')"
-            >
-              Cancel
-            </button>
+            <button type="button" class="btn" onclick="closeModal('execModal')">Cancel</button>
+            <button type="submit" class="btn btn-primary">Commit Changes</button>
           </div>
         </form>
       </div>
     </div>
+  </div>
 
-    <script>
-            // Escape key to close modals
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          document.querySelectorAll('.modal-overlay.active').forEach(m => window.closeModal(m.id));
+  <!-- Application Inspect Modal -->
+  <div class="modal-overlay" id="appModal">
+    <div class="modal-container" style="width: min(500px, 92%);">
+      <div class="modal-header">
+        <h3>Application Record</h3>
+        <button class="close-btn" onclick="closeModal('appModal')"><i class="fa-sharp fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="appModalContent">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Application Logic -->
+  <script>
+    // State
+    let csrfToken = "";
+    let activeClubs = [];
+    let activeExecs = [];
+    let activeApps = [];
+
+    // Global UI Scripts
+    window.openModal = (id) => {
+      document.getElementById(id).classList.add("active");
+      if (id === "clubModal" && !document.getElementById("clubId").value) {
+        document.getElementById("clubForm").reset();
+        document.getElementById("clubModalTitle").innerText = "Create Club Profile";
+      }
+      if (id === "execModal" && !document.getElementById("execId").value) {
+        document.getElementById("execForm").reset();
+        document.getElementById("execModalTitle").innerText = "Onboard Executive";
+      }
+    };
+
+    window.closeModal = (id) => {
+      document.getElementById(id).classList.remove("active");
+      if (id === "clubModal") document.getElementById("clubId").value = "";
+      if (id === "execModal") document.getElementById("execId").value = "";
+    };
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        document.querySelectorAll(".modal-overlay.active").forEach(m => window.closeModal(m.id));
+      }
+    });
+
+    // View toggler
+    document.querySelectorAll(".nav-link[data-view]").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        document.querySelectorAll(".nav-link").forEach(l => l.classList.remove("active"));
+        link.classList.add("active");
+        
+        document.querySelectorAll(".content-view").forEach(v => v.classList.remove("active"));
+        document.getElementById(link.dataset.view).classList.add("active");
+      });
+    });
+
+    // API Engine
+    async function adminFetch(endpoint, method = "GET", body = null, isFormData = false) {
+      const headers = {};
+      if (csrfToken) headers["X-CSRF-TOKEN"] = csrfToken;
+      if (!isFormData) headers["Content-Type"] = "application/json";
+
+      const options = { method, headers };
+      if (body) options.body = isFormData ? body : JSON.stringify(body);
+
+      try {
+        const res = await fetch("../" + endpoint, options);
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error((data.errors && data.errors[0]) || data.message || "Execution failed");
+        return data.data;
+      } catch (e) {
+        alert("Alert: " + e.message);
+        throw e;
+      }
+    }
+
+    // Render Helpers
+    function renderImage(url) {
+      return url 
+        ? `<div class="card-img"><img src="../${url}" alt="graphic" /></div>` 
+        : `<div class="card-img"><i class="fa-sharp fa-solid fa-image"></i></div>`;
+    }
+
+    // Drag-and-Drop instances
+    let execSortable = null;
+    let clubsSortable = null;
+
+    function initSortableExec() {
+      if (!window.Sortable) return;
+      const grid = document.getElementById("execGrid");
+      if (execSortable) execSortable.destroy();
+      execSortable = Sortable.create(grid, {
+        handle: '.drag-handle',
+        animation: 250,
+        ghostClass: "sortable-ghost",
+        onEnd: async () => {
+          const ids = Array.from(grid.children).map(c => c.dataset.id).filter(Boolean);
+          try { await adminFetch("api/admin/executive-reorder.php", "POST", { order: ids }); }
+          catch (e) { loadExecs(); }
         }
       });
+    }
 
-      // Make label adapt for mobile inside the specific button
-      if (window.innerWidth <= 768) {
-        document.getElementById("deskPassLabel").style.display = "none";
-        document.getElementById("mobilePassLabel").style.display = "inline";
-      }
-
-      // App State
-      let csrfToken = "";
-      let activeClubs = [];
-      let activeExecs = [];
-      let activeApps = [];
-
-      // Globals
-      window.openModal = (id) => {
-        document.getElementById(id).classList.add("active");
-        if (id === "clubModal" && !document.getElementById("clubId").value) {
-          document.getElementById("clubForm").reset();
-          document.getElementById("clubModalTitle").innerText = "Add Club";
+    function initSortableClubs() {
+      if (!window.Sortable) return;
+      const grid = document.getElementById("clubsGrid");
+      if (clubsSortable) clubsSortable.destroy();
+      clubsSortable = Sortable.create(grid, {
+        handle: '.drag-handle',
+        animation: 250,
+        ghostClass: "sortable-ghost",
+        onEnd: async () => {
+          const ids = Array.from(grid.children).map(c => c.dataset.id).filter(Boolean);
+          try { await adminFetch("api/admin/clubs-reorder.php", "POST", { order: ids }); }
+          catch (e) { loadClubs(); }
         }
-        if (id === "execModal" && !document.getElementById("execId").value) {
-          document.getElementById("execForm").reset();
-          document.getElementById("execModalTitle").innerText = "Add Executive";
-        }
-      };
-      window.closeModal = (id) => {
-        document.getElementById(id).classList.remove("active");
-        if (id === "clubModal") document.getElementById("clubId").value = "";
-        if (id === "execModal") document.getElementById("execId").value = "";
-      };
-
-      // API Fetch wrapper
-      async function adminFetch(
-        endpoint,
-        method = "GET",
-        body = null,
-        isFormData = false,
-      ) {
-        const headers = {};
-        if (csrfToken) headers["X-CSRF-TOKEN"] = csrfToken;
-        if (!isFormData) headers["Content-Type"] = "application/json";
-
-        const options = { method, headers };
-        if (body) options.body = isFormData ? body : JSON.stringify(body);
-
-        try {
-          const res = await fetch("../" + endpoint, options);
-          const data = await res.json();
-          if (!res.ok || !data.success)
-            throw new Error(
-              (data.errors && data.errors[0]) ||
-                data.message ||
-                "Action failed",
-            );
-          return data.data;
-        } catch (e) {
-          alert("Error: " + e.message);
-          throw e;
-        }
-      }
-
-            // Exec Reordering SortableJS
-      let execSortable = null;
-      async function setupExecSortable() {
-        if (!window.Sortable) return;
-        const grid = document.getElementById("execGrid");
-        if (execSortable) execSortable.destroy();
-        execSortable = Sortable.create(grid, {
-          animation: 150,
-          ghostClass: "sortable-ghost",
-          onEnd: async function () {
-            const itemIds = Array.from(grid.children).map(c => c.dataset.id).filter(id => id);
-            try {
-              await adminFetch("api/admin/executive-reorder.php", "POST", { order: itemIds });
-              loadExecs();
-            } catch (e) {
-              console.error("Reorder failed", e);
-              loadExecs();
-            }
-          }
-        });
-      }
-
-      // Navigation Logic
-      document.querySelectorAll(".nav-link[data-view]").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          document
-            .querySelectorAll(".nav-link")
-            .forEach((l) => l.classList.remove("active"));
-          link.classList.add("active");
-          document
-            .querySelectorAll(".content-view")
-            .forEach((v) => v.classList.remove("active"));
-          document.getElementById(link.dataset.view).classList.add("active");
-        });
       });
+    }
 
-      // Core Loaders
-      async function bootstrap() {
-        try {
-          const session = await fetch("../api/admin/session.php").then((r) =>
-            r.json(),
-          );
-          if (!session.success) throw new Error();
-          csrfToken = session.data.csrfToken;
-          loadClubs();
-          loadExecs();
-          loadApps();
-        } catch {
-          window.location.href = "login.html";
-        }
-      }
-
-      function ImagePreview(url) {
-        if (!url)
-          return `<div class="card-img"><i class="fa-sharp fa-solid fa-image"></i></div>`;
-        return `<div class="card-img"><img src="../${url}" alt="Preview" /></div>`;
-      }
-
-      async function loadClubs() {
-        const clubs = await adminFetch("api/admin/clubs-list.php");
-        activeClubs = clubs;
-        const grid = document.getElementById("clubsGrid");
-        grid.innerHTML = "";
-        clubs.forEach((c) => {
-          grid.innerHTML += `
-            <div class="card">
-              ${ImagePreview(c.hero_image_path)}
-              <div class="card-body">
-                <div class="card-title">${c.name}</div>
-                <div class="card-meta"><i class="fa-sharp fa-solid fa-crown"></i> President: ${c.president_name} &bull; Order: ${c.display_order} &bull; ${c.is_active ? "Active" : "Inactive"}</div>
-                <p style="font-size: 0.9rem; flex-grow:1; margin:0;">${c.description.substring(0, 80)}...</p>
-                <div class="card-actions">
-                  <button class="btn btn-edit" onclick="editClub(${c.id})"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button>
-                  <button class="btn btn-danger" onclick="deleteClub(${c.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete</button>
-                </div>
+    // Data Loaders
+    async function loadClubs() {
+      const clubs = await adminFetch("api/admin/clubs-list.php");
+      activeClubs = clubs;
+      const grid = document.getElementById("clubsGrid");
+      grid.innerHTML = clubs.length ? "" : "<p style='color:var(--text-muted);'>No clubs initiated.</p>";
+      
+      clubs.forEach(c => {
+        grid.innerHTML += `
+          <div class="card" data-id="${c.id}">
+            <div class="drag-handle" title="Drag to reorder"><i class="fa-sharp fa-solid fa-grip-dots"></i></div>
+            ${renderImage(c.hero_image_path)}
+            <div class="card-body">
+              <h3 class="card-title">${c.name} <span style="font-size:0.75rem; color:${c.is_active ? 'var(--text)' : 'var(--danger)'}">&#11044;</span></h3>
+              <div class="card-meta"><i class="fa-sharp fa-solid fa-crown"></i> ${c.president_name}</div>
+              <div class="card-text">${c.description}</div>
+              <div class="card-actions">
+                <button class="btn" style="flex:1" onclick="editClub(${c.id})"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                <button class="btn btn-danger" style="flex:1" onclick="deleteClub(${c.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
-            </div>`;
-        });
-        if (!clubs.length) grid.innerHTML = "<p>No clubs found.</p>";
-      }
+            </div>
+          </div>`;
+      });
+      initSortableClubs();
+    }
 
-      async function loadExecs() {
-        const execs = await adminFetch("api/admin/executive-list.php");
-        activeExecs = execs;
-        const grid = document.getElementById("execGrid");
-        grid.innerHTML = "";
-        execs.forEach((e) => {
-          grid.innerHTML += `
-            <div class="card" data-id="${e.id}" style="cursor: grab;">
-              ${ImagePreview(e.photo_path)}
-              <div class="card-body">
-                <div class="card-title">${e.full_name}</div>
-                <div class="card-meta"><i class="fa-sharp fa-solid fa-briefcase"></i> Role: ${e.role_title} &bull; Order: ${e.display_order}</div>
-                <div class="card-actions" style="margin-top:auto;">
-                  <button class="btn btn-edit" onclick="editExec(${e.id})"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button>
-                  <button class="btn btn-danger" onclick="deleteExec(${e.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete</button>
-                </div>
+    async function loadExecs() {
+      const execs = await adminFetch("api/admin/executive-list.php");
+      activeExecs = execs;
+      const grid = document.getElementById("execGrid");
+      grid.innerHTML = execs.length ? "" : "<p style='color:var(--text-muted);'>No executives onboarded.</p>";
+
+      execs.forEach(e => {
+        grid.innerHTML += `
+          <div class="card" data-id="${e.id}">
+            <div class="drag-handle" title="Drag to reorder"><i class="fa-sharp fa-solid fa-grip-dots"></i></div>
+            ${renderImage(e.photo_path)}
+            <div class="card-body">
+              <h3 class="card-title">${e.full_name} <span style="font-size:0.75rem; color:${e.is_active ? 'var(--text)' : 'var(--danger)'}">&#11044;</span></h3>
+              <div class="card-meta"><i class="fa-sharp fa-solid fa-briefcase"></i> ${e.role_title}</div>
+              <div class="card-actions" style="margin-top:auto;">
+                <button class="btn" style="flex:1" onclick="editExec(${e.id})"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                <button class="btn btn-danger" style="flex:1" onclick="deleteExec(${e.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
-            </div>`;
-        });
-        if (!execs.length) grid.innerHTML = "<p>No executives found.</p>";
-        setupExecSortable();
-      }
+            </div>
+          </div>`;
+      });
+      initSortableExec();
+    }
 
-      async function loadApps() {
-        const apps = await adminFetch("api/admin/applications-list.php");
-        activeApps = apps;
-        const grid = document.getElementById("appsGrid");
-        grid.innerHTML = "";
-        apps.forEach((a) => {
-          grid.innerHTML += `
-            <div class="card">
-              <div class="card-body">
-                <div class="card-title">${a.applicant_name}</div>
-                <div class="card-meta"><i class="fa-sharp fa-solid fa-envelope"></i> ${a.contact_email} &bull; ${a.contact_phone || "No phone"}</div>
-                <div class="card-meta" style="margin:0;"><i class="fa-sharp fa-solid fa-house-flag"></i> applied to: Club #${a.selected_club_id}</div>
-                <p style="font-size: 0.9rem; flex-grow:1; margin-top:1rem; background: var(--surface-0); padding: 0.5rem; border-radius: 4px;">"${a.message}"</p>
-                <div class="card-actions">
-                  <button class="btn btn-primary" onclick="viewApp(${a.id})"><i class="fa-sharp fa-solid fa-eye"></i> View</button>
-                  <button class="btn btn-danger" onclick="deleteApp(${a.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete App</button>
-                </div>
+    async function loadApps() {
+      const apps = await adminFetch("api/admin/applications-list.php");
+      activeApps = apps;
+      const grid = document.getElementById("appsGrid");
+      grid.innerHTML = apps.length ? "" : "<p style='color:var(--text-muted);'>Inbox empty.</p>";
+
+      apps.forEach(a => {
+        const selectedClub = activeClubs.find(c => c.id == a.selected_club_id);
+        const clubName = selectedClub ? selectedClub.name : `#${a.selected_club_id}`;
+        
+        grid.innerHTML += `
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">${a.applicant_name}</h3>
+              <div class="card-meta"><i class="fa-sharp fa-solid fa-envelope"></i> ${a.contact_email}</div>
+              <div class="card-meta" style="margin-bottom: 0.5rem;"><i class="fa-sharp fa-solid fa-phone"></i> ${a.contact_phone || "Not Provided"}</div>
+              <div class="card-meta" style="color:var(--accent);"><i class="fa-sharp fa-solid fa-layer-group"></i> ${clubName}</div>
+              <div class="card-actions" style="margin-top: 1.5rem">
+                <button class="btn btn-primary" style="flex:2" onclick="viewApp(${a.id})"><i class="fa-sharp fa-solid fa-eye"></i> View</button>
+                <button class="btn btn-danger" style="flex:1" onclick="deleteApp(${a.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
-            </div>`;
-        });
-        if (!apps.length) grid.innerHTML = "<p>No new applications.</p>";
-      }
+            </div>
+          </div>`;
+      });
+    }
 
-      // Actions
-      window.editClub = (id) => {
-        const c = activeClubs.find((x) => x.id == id);
-        if (!c) return;
-        document.getElementById("clubId").value = c.id;
-        document.getElementById("clubName").value = c.name;
-        document.getElementById("clubPresident").value = c.president_name;
-        document.getElementById("clubDesc").value = c.description;
-        document.getElementById("clubMotive").value = c.theme_motive;
-        document.getElementById("clubOrder").value = c.display_order;
-        document.getElementById("clubActive").checked = !!c.is_active;
-        document.getElementById("clubModalTitle").innerText = "Edit Club";
-        openModal("clubModal");
-      };
+    // CRUD Handlers
+    window.editClub = (id) => {
+      const c = activeClubs.find(x => x.id == id);
+      if (!c) return;
+      document.getElementById("clubId").value = c.id;
+      document.getElementById("clubName").value = c.name;
+      document.getElementById("clubPresident").value = c.president_name;
+      document.getElementById("clubDesc").value = c.description;
+      document.getElementById("clubMotive").value = c.theme_motive;
+      document.getElementById("clubActive").checked = !!c.is_active;
+      document.getElementById("clubModalTitle").innerText = "Edit Club Configuration";
+      openModal("clubModal");
+    };
 
-      window.deleteClub = async (id) => {
-        if (!confirm("Are you sure you want to permanently delete this club?"))
-          return;
-        await adminFetch("api/admin/clubs-delete.php", "POST", { id });
-        loadClubs();
-      };
+    window.deleteClub = async (id) => {
+      if (!confirm("Permanently drop this club?")) return;
+      await adminFetch("api/admin/clubs-delete.php", "POST", { id });
+      loadClubs();
+    };
 
-      document
-        .getElementById("clubForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const fd = new FormData(e.target);
-          if (!document.getElementById("clubActive").checked)
-            fd.set("is_active", "0"); // ensure false
-          else fd.set("is_active", "1");
+    document.getElementById("clubForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      if (!document.getElementById("clubActive").checked) fd.set("is_active", "0");
+      else fd.set("is_active", "1");
 
-          const id = document.getElementById("clubId").value;
-          const endpoint = id
-            ? "api/admin/clubs-update.php"
-            : "api/admin/clubs-create.php";
-          await adminFetch(endpoint, "POST", fd, true);
-          closeModal("clubModal");
-          loadClubs();
-        });
+      const id = document.getElementById("clubId").value;
+      const url = id ? "api/admin/clubs-update.php" : "api/admin/clubs-create.php";
+      await adminFetch(url, "POST", fd, true);
+      closeModal("clubModal");
+      loadClubs();
+    });
 
-      window.editExec = (id) => {
-        const e = activeExecs.find((x) => x.id == id);
-        if (!e) return;
-        document.getElementById("execId").value = e.id;
-        document.getElementById("execName").value = e.full_name;
-        document.getElementById("execRole").value = e.role_title;
-        document.getElementById("execOrder").value = e.display_order;
-        document.getElementById("execActive").checked = !!e.is_active;
-        document.getElementById("execModalTitle").innerText = "Edit Executive";
-        openModal("execModal");
-      };
+    window.editExec = (id) => {
+      const e = activeExecs.find(x => x.id == id);
+      if (!e) return;
+      document.getElementById("execId").value = e.id;
+      document.getElementById("execName").value = e.full_name;
+      document.getElementById("execRole").value = e.role_title;
+      document.getElementById("execActive").checked = !!e.is_active;
+      document.getElementById("execModalTitle").innerText = "Edit Executive Profile";
+      openModal("execModal");
+    };
 
-      window.deleteExec = async (id) => {
-        if (
-          !confirm(
-            "Are you sure you want to permanently delete this executive?",
-          )
-        )
-          return;
-        await adminFetch("api/admin/executive-delete.php", "POST", { id });
+    window.deleteExec = async (id) => {
+      if (!confirm("Remove this leadership entry?")) return;
+      await adminFetch("api/admin/executive-delete.php", "POST", { id });
+      loadExecs();
+    };
+
+    document.getElementById("execForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      if (!document.getElementById("execActive").checked) fd.set("is_active", "0");
+      else fd.set("is_active", "1");
+
+      const id = document.getElementById("execId").value;
+      const url = id ? "api/admin/executive-update.php" : "api/admin/executive-create.php";
+      await adminFetch(url, "POST", fd, true);
+      closeModal("execModal");
+      loadExecs();
+    });
+
+    window.viewApp = (id) => {
+      const a = activeApps.find(x => x.id == id);
+      if (!a) return;
+      const selectedClub = activeClubs.find(c => c.id == a.selected_club_id);
+      const cName = selectedClub ? selectedClub.name : a.selected_club_id;
+
+      document.getElementById("appModalContent").innerHTML = `
+        <div class="data-row"><div class="data-label">Applicant</div><div class="data-value">${a.applicant_name}</div></div>
+        <div class="data-row"><div class="data-label">Target Club</div><div class="data-value">${cName}</div></div>
+        <div class="data-row"><div class="data-label">Email Route</div><div class="data-value">${a.contact_email}</div></div>
+        <div class="data-row"><div class="data-label">Phone Line</div><div class="data-value">${a.contact_phone || "Unspecified"}</div></div>
+        <div class="data-row"><div class="data-label">External Portfolio</div><div class="data-value"><a href="${a.portfolio_url || '#'}" target="_blank">${a.portfolio_url || "None Linked"}</a></div></div>
+        <hr style="border:0; border-top:1px solid var(--line); margin: 1.5rem 0;" />
+        <div class="data-row"><div class="data-label">Pitch / Motive</div><div class="data-value" style="font-size:0.95rem; color:#bbb">${(a.message || "").replace(/\n/g, "<br>")}</div></div>
+      `;
+      openModal("appModal");
+    };
+
+    window.deleteApp = async (id) => {
+      if (!confirm("Delete application record?")) return;
+      await adminFetch("api/admin/applications-delete.php", "POST", { id });
+      loadApps();
+    };
+
+    // Init App
+    document.getElementById("passwordForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      await adminFetch("api/admin/password.php", "POST", {
+        current_password: document.getElementById("currentPassword").value,
+        new_password: document.getElementById("newPassword").value,
+        csrf: csrfToken,
+      });
+      alert("Master credential rotated securely. Required next authentication.");
+      document.getElementById("passwordForm").reset();
+    });
+
+    document.getElementById("logoutBtn").addEventListener("click", async (e) => {
+      e.preventDefault();
+      await fetch("../api/admin/logout.php", { method: "POST" });
+      window.location.href = "login.html";
+    });
+
+    async function initAdmin() {
+      try {
+        const session = await fetch("../api/admin/session.php").then(r => r.json());
+        if (!session.success) throw new Error();
+        csrfToken = session.data.csrfToken;
+        await loadClubs(); // Load clubs first so applications can map the IDs
         loadExecs();
-      };
-
-      document
-        .getElementById("execForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const fd = new FormData(e.target);
-          if (!document.getElementById("execActive").checked)
-            fd.set("is_active", "0");
-          else fd.set("is_active", "1");
-
-          const id = document.getElementById("execId").value;
-          const endpoint = id
-            ? "api/admin/executive-update.php"
-            : "api/admin/executive-create.php";
-          await adminFetch(endpoint, "POST", fd, true);
-          closeModal("execModal");
-          loadExecs();
-        });
-
-            window.viewApp = (id) => {
-        const a = activeApps.find(x => x.id == id);
-        if (!a) return;
-        document.getElementById("appModalContent").innerHTML = `
-          <p><strong>Applicant Name:</strong> ${a.applicant_name}</p>
-          <p><strong>Email:</strong> ${a.contact_email}</p>
-          <p><strong>Phone:</strong> ${a.contact_phone || "N/A"}</p>
-          <p><strong>Portfolio URL:</strong> <a href="${a.portfolio_url}" target="_blank">${a.portfolio_url || "None"}</a></p>
-          <p><strong>Selected Club ID:</strong> ${a.selected_club_id}</p>
-          <hr style="border:0; border-top:1px solid var(--line-soft); margin: 1.5rem 0;" />
-          <p><strong>Message:</strong><br/> ${(a.message || "").replace(/\n/g, "<br>")}</p>
-        `;
-        openModal("appModal");
-      };
-
-      window.deleteApp = async (id) => {
-        if (!confirm("Delete this application forever?")) return;
-        await adminFetch("api/admin/applications-delete.php", "POST", { id });
         loadApps();
-      };
-
-      document
-        .getElementById("passwordForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const cur = document.getElementById("currentPassword").value;
-          const newP = document.getElementById("newPassword").value;
-          await adminFetch("api/admin/password.php", "POST", {
-            current_password: cur,
-            new_password: newP,
-            csrf: csrfToken,
-          });
-          alert(
-            "Password updated successfully! You will need to use it next time.",
-          );
-          document.getElementById("passwordForm").reset();
-        });
-
-      document
-        .getElementById("logoutBtn")
-        .addEventListener("click", async (e) => {
-          e.preventDefault();
-          await fetch("../api/admin/logout.php", { method: "POST" });
-          window.location.href = "login.html";
-        });
-
-      bootstrap();
-    </script>
-  </body>
+      } catch {
+        window.location.href = "login.html";
+      }
+    }
+    
+    initAdmin();
+  </script>
+</body>
 </html>
