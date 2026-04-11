@@ -408,3 +408,41 @@ if (themeToggleBtn) {
     }
   });
 }
+
+/* --- Mobile Scroll Snapping active state Observer --- */
+const initScrollObserver = (selector) => {
+  const containers = document.querySelectorAll(selector);
+  containers.forEach(container => {
+    container.addEventListener('scroll', () => {
+      let closestCard = null;
+      let minDiff = Infinity;
+      const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
+
+      const items = container.querySelectorAll('.club-card, .leader-item');
+      items.forEach(item => {
+        const itemCenter = item.getBoundingClientRect().left + item.offsetWidth / 2;
+        const diff = Math.abs(containerCenter - itemCenter);
+
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestCard = item;
+        }
+      });
+
+      items.forEach(item => item.classList.remove('card-focused'));
+      if (closestCard) {
+        closestCard.classList.add('card-focused');
+      }
+    });
+
+    // trigger once on load
+    container.dispatchEvent(new Event('scroll'));
+  });
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    initScrollObserver('.clubs-grid');
+    initScrollObserver('.leader-grid');
+  }, 1000); // small delay to let fetch populate data
+});

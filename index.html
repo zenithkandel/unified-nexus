@@ -62,41 +62,46 @@
         <a href="#" class="nav-brand">
           <img src="images/branding/logo-icon.png" alt="Unified Nexus Logo" />
         </a>
-        <button
-          class="mobile-menu-btn"
-          id="mobileMenuBtn"
-          aria-label="Toggle navigation"
+        <div
+          class="nav-right"
+          style="display: flex; align-items: center; gap: 1.5rem"
         >
-          <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-menu" id="navMenu">
-          <li><a href="#about" class="nav-link">Story</a></li>
-          <li><a href="#clubs" class="nav-link">Clubs</a></li>
-          <li><a href="#leadership" class="nav-link">Leadership</a></li>
-          <li><a href="#contact" class="btn btn-primary">Join Us</a></li>
-          <li>
-            <button
-              class="theme-toggle"
-              id="themeToggleBtn"
-              aria-label="Toggle Theme"
-            >
-              <!-- Moon Icon Default -->
-              <svg
-                id="themeIcon"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#about" class="nav-link">Story</a></li>
+            <li><a href="#clubs" class="nav-link">Clubs</a></li>
+            <li><a href="#leadership" class="nav-link">Pillars</a></li>
+            <li>
+              <a href="#contact" class="btn btn-primary nav-join-btn"
+                >Join Us</a
               >
-                <path
-                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                ></path>
-              </svg>
-            </button>
-          </li>
-        </ul>
+            </li>
+          </ul>
+          <button
+            class="theme-toggle top-right-theme-btn"
+            id="themeToggleBtn"
+            aria-label="Toggle Theme"
+          >
+            <!-- Moon Icon Default -->
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+          <button
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            aria-label="Toggle navigation"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </nav>
 
@@ -105,14 +110,21 @@
       <div class="container hero-content reveal">
         <span
           class="section-label"
-          style="justify-content: center; color: var(--c-7F2B3E)"
+          style="justify-content: center; color: var(--color-primary)"
           >We Work, We Win</span
         >
-        <h1 class="hero-title-large anim-float-up-2">Unified<br />Nexus</h1>
-        <p class="hero-subtitle anim-float-up-3">
-          A collective space converging talent, expression, and intellect.
-          Exploring the boundaries of retro aesthetics and modern web. We work,
-          we win.
+        <h1
+          class="hero-title-large anim-float-up-2"
+          style="font-size: clamp(3rem, 8vw, 6rem); line-height: 1.1"
+        >
+          Unified<br />Nexus
+        </h1>
+        <p
+          class="hero-subtitle anim-float-up-3"
+          style="font-size: clamp(1rem, 3vw, 1.25rem); line-height: 1.5"
+        >
+          A collective space converging talent, expression, and intellect.<br />
+          Explore the boundaries of modern aesthetics.
         </p>
         <div class="hero-buttons">
           <a href="#contact" class="btn btn-primary">Get Involved</a>
@@ -142,7 +154,7 @@
     <section
       class="section"
       id="clubs"
-      style="background-color: var(--c-57545B)"
+      style="background-color: var(--color-bg-base)"
     >
       <div class="container">
         <div class="text-center reveal">
@@ -153,20 +165,27 @@
           <p
             style="
               font-family: var(--font-body);
-              color: var(--c-AAAAAA);
+              color: var(--color-text-muted);
               max-width: 600px;
               margin: 0 auto;
-              font-size: 1.125rem;
+              font-size: 1rem;
+              margin-bottom: 2rem;
             "
           >
             Whether you are into music, literature, dance, or social service,
             Unified Nexus welcomes all students to discover and develop their
-            talents in a supportive environment.
+            talents.
           </p>
         </div>
 
         <div class="clubs-grid" id="clubs-grid-dynamic">
-          <p style="text-align: center; width: 100%; color: var(--c-AAAAAA)">
+          <p
+            style="
+              text-align: center;
+              width: 100%;
+              color: var(--color-text-muted);
+            "
+          >
             Loading clubs...
           </p>
         </div>
@@ -177,10 +196,7 @@
     <section
       class="section mission"
       id="leadership"
-      style="
-        background-color: var(--c-57545B);
-        border-top: 1px solid var(--c-716F75);
-      "
+      style="background-color: var(--color-bg-card)"
     >
       <div class="container">
         <div class="text-center reveal">
@@ -191,10 +207,11 @@
           <p
             style="
               font-family: var(--font-body);
-              color: var(--c-AAAAAA);
+              color: var(--color-text-muted);
               max-width: 600px;
               margin: 0 auto;
-              font-size: 1.125rem;
+              font-size: 1rem;
+              margin-bottom: 2rem;
             "
           >
             The dedicated individuals steering our collective narrative forward.
@@ -202,7 +219,13 @@
         </div>
 
         <div class="leader-grid" id="leader-grid-dynamic">
-          <p style="text-align: center; width: 100%; color: var(--c-AAAAAA)">
+          <p
+            style="
+              text-align: center;
+              width: 100%;
+              color: var(--color-text-muted);
+            "
+          >
             Loading team...
           </p>
         </div>
@@ -213,21 +236,21 @@
     <section
       class="section"
       id="contact"
-      style="background-color: var(--c-661B28)"
+      style="background-color: var(--color-bg-card)"
     >
       <div class="container reveal text-center">
         <span
           class="section-label"
-          style="justify-content: center; color: var(--c-AAAAAA)"
+          style="justify-content: center; color: var(--color-text-muted)"
           >Get Involved</span
         >
         <h2 class="section-title">Join Unified Nexus</h2>
         <p
           style="
             font-family: var(--font-body);
-            color: var(--c-959294);
-            margin-bottom: 4rem;
-            font-size: 1.125rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            font-size: 1rem;
           "
         >
           Ready to be a part of the platform? Submit your application.
