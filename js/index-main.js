@@ -222,8 +222,8 @@ window.addEventListener("scroll", () => {
       canvasContainer.classList.add("scrolled-bg");
       if (window.globalParticlesArray) {
         window.globalParticlesArray.forEach((p, i) => {
-          // Increase opacity by a factor of 3 to ~0.3 when scrolled down for better visibility
-          p.userData.targetOpacity = Math.min(p.userData.baseOpacity * 3, 0.45);
+          // Keep the opacity increase very subtle (1.5x) so it doesn't distract from content
+          p.userData.targetOpacity = Math.min(p.userData.baseOpacity * 1.5, 0.2);
           p.visible = true; // Ensure they stay visible
         });
       }
