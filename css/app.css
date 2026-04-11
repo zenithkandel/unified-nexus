@@ -9,20 +9,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 :root {
-    --c-57545B: #2E222A;
-    --c-716F75: #352732;
-    --c-959294: #8B7485;
-    --c-AAAAAA: #D1C2CC;
-    --c-7F2B3E: #BA7883;
-    --c-661B28: #2A1D25;
+    --c-57545B: #1F2328;
+    --c-716F75: #2C3137;
+    --c-959294: #9CA3AF;
+    --c-AAAAAA: #D1D5DB;
+    --c-7F2B3E: #6B7280;
+    --c-661B28: #181C20;
     --color-bg-base: var(--c-57545B);
     --color-cream: var(--c-661B28);
-    --color-text-primary: var(--color-text-primary);
+    --color-text-primary: #F3F4F6;
     --color-text-secondary: var(--c-AAAAAA);
     --color-accent-terracotta: var(--c-7F2B3E);
     --color-sepia: var(--c-716F75);
     --color-dust-gray: var(--c-959294);
     --color-charcoal: var(--c-57545B);
+    --logo-filter: brightness(0) invert(1);
     --font-heading: "Playfair Display", Georgia, serif;
     --font-subheading: "Merriweather", Georgia, serif;
     --font-body: "Source Serif 4", Georgia, serif;
@@ -33,13 +34,13 @@
 }
 
 [data-theme="light"] {
-    --c-57545B: #F4EBE3;
-    --c-716F75: #EBE0D7;
-    --c-959294: #7D6A78;
-    --c-AAAAAA: #4A3A43;
-    --c-7F2B3E: #A1374F;
-    --c-661B28: #E2D3CD;
-    --color-text-primary: #1F171A;
+    --c-57545B: #E6F7FF;
+    --c-716F75: #D0EDFF;
+    --c-959294: #5A8CA6;
+    --c-AAAAAA: #2C4F5F;
+    --c-7F2B3E: #4FC3F7;
+    --c-661B28: #C7E6F5;
+    --color-text-primary: #1A2F38;
     --logo-filter: brightness(0);
     --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.05);
     --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -443,14 +444,16 @@ ul {
     height: 100%;
     object-fit: cover;
     display: block;
-    mix-blend-mode: luminosity;
+    /* mix-blend-mode: luminosity; */
+    filter: saturate(0.45);
     opacity: 0.85;
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), mix-blend-mode 0s, opacity var(--transition-base);
 }
 
 .club-card:hover .club-image {
     transform: scale(1.05);
-    mix-blend-mode: normal;
+    /* mix-blend-mode: normal; */
+    filter: saturate(1.2);
     opacity: 1;
 }
 
@@ -529,11 +532,14 @@ ul {
     height: 100%;
     object-fit: cover;
     display: block;
+    filter: saturate(.45);
     transition: transform var(--transition-base);
 }
 
 .leader-item:hover .leader-image {
     transform: scale(1.05);
+    filter: saturate(1.2);
+
 }
 
 .leader-info {
