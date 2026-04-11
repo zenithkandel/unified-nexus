@@ -68,81 +68,81 @@
             return Math.round(255 * color).toString(16).padStart(2, '0');
         };
         return `#${f(0)}${f(8)}${f(4)}`;
-  }
+    }
 
-  const themes = [];
-  // 50 variations along the hue spectrum
-  for (let i = 0; i < 50; i++) {
-    const rH = Math.floor((i / 50) * 360);
-    const palette = {
-      name: `H:${rH}`,
-      vars: {
-        '--color-bg-base': hslToHex(rH, 15, 8),
-        '--c-57545B': hslToHex(rH, 15, 8),
-        '--color-charcoal': hslToHex(rH, 15, 8),
-        
-        '--color-cream': hslToHex(rH, 25, 12),
-        '--c-661B28': hslToHex(rH, 25, 12),
-        
-        '--color-sepia': hslToHex(rH, 10, 18),
-        '--c-716F75': hslToHex(rH, 10, 18),
-        
-        '--color-dust-gray': hslToHex(rH, 5, 50),
-        '--c-959294': hslToHex(rH, 5, 50),
-        
-        '--color-text-secondary': hslToHex(rH, 15, 75),
-        '--c-AAAAAA': hslToHex(rH, 15, 75),
-        
-        '--color-text-primary': '#ffffff',
-        
-        '--color-accent-terracotta': hslToHex(rH, 60, 45),
-        '--c-7F2B3E': hslToHex(rH, 60, 45)
-      }
-    };
-    themes.push(palette);
-  }
+    const themes = [];
+    // 50 variations along the hue spectrum
+    for (let i = 0; i < 50; i++) {
+        const rH = Math.floor((i / 50) * 360);
+        const palette = {
+            name: `H:${rH}`,
+            vars: {
+                '--color-bg-base': hslToHex(rH, 15, 8),
+                '--c-57545B': hslToHex(rH, 15, 8),
+                '--color-charcoal': hslToHex(rH, 15, 8),
 
-  themes.forEach(t => {
-    const item = document.createElement('div');
-    item.className = 'theme-item';
-    item.title = `Apply Theme ${t.name}`;
-    
-    // Split item to show Primary Accent and Bg Base
-    item.style.background = `linear-gradient(135deg, ${t.vars['--c-7F2B3E']} 50%, ${t.vars['--c-57545B']} 50%)`;
-    
-    item.onclick = () => {
-      Object.keys(t.vars).forEach(k => {
-        document.documentElement.style.setProperty(k, t.vars[k]);
-      });
-      console.log(`[Injector] Applied theme: ${t.name}`);
-    };
-    
-    grid.appendChild(item);
-  });
+                '--color-cream': hslToHex(rH, 25, 12),
+                '--c-661B28': hslToHex(rH, 25, 12),
 
-  injector.appendChild(grid);
+                '--color-sepia': hslToHex(rH, 10, 18),
+                '--c-716F75': hslToHex(rH, 10, 18),
 
-  // Drag logic
-  let isDragging = false;
-  let offsetX, offsetY;
+                '--color-dust-gray': hslToHex(rH, 5, 50),
+                '--c-959294': hslToHex(rH, 5, 50),
 
-  header.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    offsetX = e.clientX - injector.getBoundingClientRect().left;
-    offsetY = e.clientY - injector.getBoundingClientRect().top;
-  });
+                '--color-text-secondary': hslToHex(rH, 15, 75),
+                '--c-AAAAAA': hslToHex(rH, 15, 75),
 
-  document.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-    injector.style.left = (e.clientX - offsetX) + 'px';
-    injector.style.top = (e.clientY - offsetY) + 'px';
-    injector.style.right = 'auto'; // Disable right
-  });
+                '--color-text-primary': '#ffffff',
 
-  document.addEventListener('mouseup', () => {
-    isDragging = false;
-  });
+                '--color-accent-terracotta': hslToHex(rH, 60, 45),
+                '--c-7F2B3E': hslToHex(rH, 60, 45)
+            }
+        };
+        themes.push(palette);
+    }
 
-  document.body.appendChild(injector);
-  console.log('[Theme Injector] Ready. Drag the panel and click a swatch to change theme variables.');
+    themes.forEach(t => {
+        const item = document.createElement('div');
+        item.className = 'theme-item';
+        item.title = `Apply Theme ${t.name}`;
+
+        // Split item to show Primary Accent and Bg Base
+        item.style.background = `linear-gradient(135deg, ${t.vars['--c-7F2B3E']} 50%, ${t.vars['--c-57545B']} 50%)`;
+
+        item.onclick = () => {
+            Object.keys(t.vars).forEach(k => {
+                document.documentElement.style.setProperty(k, t.vars[k]);
+            });
+            console.log(`[Injector] Applied theme: ${t.name}`);
+        };
+
+        grid.appendChild(item);
+    });
+
+    injector.appendChild(grid);
+
+    // Drag logic
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    header.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - injector.getBoundingClientRect().left;
+        offsetY = e.clientY - injector.getBoundingClientRect().top;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        injector.style.left = (e.clientX - offsetX) + 'px';
+        injector.style.top = (e.clientY - offsetY) + 'px';
+        injector.style.right = 'auto'; // Disable right
+    });
+
+    document.addEventListener('mouseup', () => {
+        isDragging = false;
+    });
+
+    document.body.appendChild(injector);
+    console.log('[Theme Injector] Ready. Drag the panel and click a swatch to change theme variables.');
 })();
