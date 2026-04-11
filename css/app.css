@@ -326,8 +326,8 @@ ul {
 }
 
 #canvas-container.scrolled-bg {
-    opacity: 0.6;
-    /* Increased from 0.15 to ensure particles stay noticeable behind content */
+    opacity: 1;
+    /* Relies on JS for precise particle opacity */
 }
 
 .hero-content {
