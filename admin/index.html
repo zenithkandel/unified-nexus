@@ -32,6 +32,20 @@
       --bottom-nav-h: 64px;
     }
 
+    [data-theme="light"] {
+      --bg: #fafafa;
+      --bg-panel: #ffffff;
+      --bg-hover: #f0f0f0;
+      --line: #eaeaea;
+      --text: #111111;
+      --text-muted: #666666;
+      --accent: #0070f3;
+      --accent-hover: #0051a8;
+      --danger: #e00;
+      --danger-hover: #c00;
+      --shadow-float: 0 8px 30px rgba(0,0,0,0.08);
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
@@ -204,6 +218,15 @@
       border-top: 1px solid var(--line);
       padding-top: 1rem;
       margin-top: auto;
+      justify-content: flex-end;
+    }
+    
+    .btn-icon {
+      padding: 0.5rem;
+      width: 36px;
+      height: 36px;
+      justify-content: center;
+      border-radius: 8px;
     }
 
     .sortable-ghost { opacity: 0.4; border: 1px dashed var(--accent) !important; background: var(--bg) !important; }
@@ -324,7 +347,10 @@
       <a href="#applications" class="nav-link" data-view="appsView">
         <i class="fa-sharp fa-solid fa-file-signature"></i> <span>Applications</span>
       </a>
-      <a style="margin-top: auto" href="#password" class="nav-link" data-view="passwordView">
+      <a style="margin-top: auto" href="#" class="nav-link" id="adminThemeToggle">
+        <i class="fa-sharp fa-solid fa-moon" id="adminThemeIcon"></i> <span>Toggle Theme</span>
+      </a>
+      <a href="#password" class="nav-link" data-view="passwordView">
         <i class="fa-sharp fa-solid fa-key"></i> <span>Security</span>
       </a>
       <a href="#" class="nav-link danger" id="logoutBtn">
@@ -625,8 +651,8 @@
               <div class="card-meta"><i class="fa-sharp fa-solid fa-crown"></i> ${c.president_name}</div>
               <div class="card-text">${c.description}</div>
               <div class="card-actions">
-                <button class="btn" style="flex:1" onclick="editClub(${c.id})"><i class="fa-sharp fa-solid fa-pen"></i></button>
-                <button class="btn btn-danger" style="flex:1" onclick="deleteClub(${c.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                <button class="btn btn-icon" onclick="editClub(${c.id})" title="Edit"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                <button class="btn btn-danger btn-icon" onclick="deleteClub(${c.id})" title="Delete"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>`;
@@ -649,8 +675,8 @@
               <h3 class="card-title">${e.full_name} <span style="font-size:0.75rem; color:${e.is_active ? 'var(--text)' : 'var(--danger)'}">&#11044;</span></h3>
               <div class="card-meta"><i class="fa-sharp fa-solid fa-briefcase"></i> ${e.role_title}</div>
               <div class="card-actions" style="margin-top:auto;">
-                <button class="btn" style="flex:1" onclick="editExec(${e.id})"><i class="fa-sharp fa-solid fa-pen"></i></button>
-                <button class="btn btn-danger" style="flex:1" onclick="deleteExec(${e.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                <button class="btn btn-icon" onclick="editExec(${e.id})" title="Edit"><i class="fa-sharp fa-solid fa-pen"></i></button>
+                <button class="btn btn-danger btn-icon" onclick="deleteExec(${e.id})" title="Delete"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>`;
@@ -676,8 +702,8 @@
               <div class="card-meta" style="margin-bottom: 0.5rem;"><i class="fa-sharp fa-solid fa-phone"></i> ${a.contact_phone || "Not Provided"}</div>
               <div class="card-meta" style="color:var(--accent);"><i class="fa-sharp fa-solid fa-layer-group"></i> ${clubName}</div>
               <div class="card-actions" style="margin-top: 1.5rem">
-                <button class="btn btn-primary" style="flex:2" onclick="viewApp(${a.id})"><i class="fa-sharp fa-solid fa-eye"></i> View</button>
-                <button class="btn btn-danger" style="flex:1" onclick="deleteApp(${a.id})"><i class="fa-sharp fa-solid fa-trash"></i></button>
+                <button class="btn btn-primary" onclick="viewApp(${a.id})"><i class="fa-sharp fa-solid fa-eye"></i> View Application</button>
+                <button class="btn btn-danger btn-icon" onclick="deleteApp(${a.id})" title="Delete"><i class="fa-sharp fa-solid fa-trash"></i></button>
               </div>
             </div>
           </div>`;
@@ -788,6 +814,34 @@
       await fetch("../api/admin/logout.php", { method: "POST" });
       window.location.href = "login.html";
     });
+
+    // Theme Switcher Logic
+    const themeToggleBtn = document.getElementById("adminThemeToggle");
+    const themeIcon = document.getElementById("adminThemeIcon");
+    const docElement = document.documentElement;
+
+    const savedTheme = localStorage.getItem("nexusTheme") || "dark";
+    docElement.setAttribute("data-theme", savedTheme);
+    updateThemeIcon(savedTheme);
+
+    themeToggleBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const currentTheme = docElement.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      docElement.setAttribute("data-theme", newTheme);
+      localStorage.setItem("nexusTheme", newTheme);
+      updateThemeIcon(newTheme);
+    });
+
+    function updateThemeIcon(theme) {
+      if (theme === 'dark') {
+        themeIcon.classList.remove("fa-sun");
+        themeIcon.classList.add("fa-moon");
+      } else {
+        themeIcon.classList.remove("fa-moon");
+        themeIcon.classList.add("fa-sun");
+      }
+    }
 
     async function initAdmin() {
       try {
