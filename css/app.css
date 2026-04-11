@@ -17,7 +17,7 @@
     --c-661B28: #2A1D25;
     --color-bg-base: var(--c-57545B);
     --color-cream: var(--c-661B28);
-    --color-text-primary: #FFFFFF;
+    --color-text-primary: var(--color-text-primary);
     --color-text-secondary: var(--c-AAAAAA);
     --color-accent-terracotta: var(--c-7F2B3E);
     --color-sepia: var(--c-716F75);
@@ -28,8 +28,8 @@
     --font-body: "Source Serif 4", Georgia, serif;
     --font-mono: "IBM Plex Mono", "Courier New", monospace;
     --transition-base: 0.3s ease;
-    --shadow-subtle: 0 4px 12px rgba(0, 0, 0, 0.2);
-    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-subtle: 0 4px 12px color-mix(in srgb, #000 calc(0.2 * 100%), transparent);
+    --shadow-medium: 0 8px 24px color-mix(in srgb, #000 calc(0.4 * 100%), transparent);
 }
 
 *,
@@ -103,7 +103,7 @@ ul {
 }
 
 .navbar.scrolled {
-    background-color: rgba(53, 39, 50, 0.9);
+    background-color: color-mix(in srgb, var(--color-bg-base) 90%, transparent);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--c-716F75);
     padding: 0.75rem 0;
@@ -163,16 +163,16 @@ ul {
 
 .btn-primary {
     background-color: var(--c-7F2B3E);
-    color: #fff !important;
+    color: var(--color-text-primary) !important;
     border: 1px solid var(--c-7F2B3E);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px color-mix(in srgb, #000 calc(0.2 * 100%), transparent);
 }
 
 .btn-primary:hover {
     background-color: var(--c-661B28);
     border-color: var(--c-661B28);
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px color-mix(in srgb, #000 calc(0.3 * 100%), transparent);
 }
 
 @keyframes slideDown {
@@ -284,7 +284,7 @@ ul {
     line-height: 1;
     color: var(--c-AAAAAA);
     margin-bottom: 1.5rem;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 20px color-mix(in srgb, #000 calc(0.5 * 100%), transparent);
 }
 
 .hero-subtitle {
@@ -342,8 +342,8 @@ ul {
 .club-card {
     background: var(--c-57545B);
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(127, 43, 62, 0.3);
+    box-shadow: 0 4px 20px color-mix(in srgb, #000 calc(0.15 * 100%), transparent);
+    border: 1px solid color-mix(in srgb, var(--color-accent-terracotta) 0.3, transparent);
     transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
     overflow: hidden;
     display: flex;
@@ -355,14 +355,14 @@ ul {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(127, 43, 62, 0.05), transparent);
+    background: linear-gradient(135deg, color-mix(in srgb, var(--color-accent-terracotta) 0.05, transparent), transparent);
     z-index: 0;
     pointer-events: none;
 }
 
 .club-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(127, 43, 62, 0.3);
+    box-shadow: 0 12px 30px color-mix(in srgb, var(--color-accent-terracotta) 0.3, transparent);
     border-color: var(--c-7F2B3E);
 }
 
@@ -415,7 +415,7 @@ ul {
     font-family: var(--font-heading);
     font-size: 1.75rem;
     margin-bottom: 1rem;
-    color: #FFFFFF;
+    color: var(--color-text-primary);
 }
 
 .club-card p {
@@ -434,8 +434,8 @@ ul {
 .leader-item {
     background-color: var(--c-57545B);
     border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid color-mix(in srgb, var(--color-text-primary) 0.05, transparent);
+    box-shadow: 0 4px 15px color-mix(in srgb, #000 calc(0.1 * 100%), transparent);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
     overflow: hidden;
     display: flex;
@@ -444,8 +444,8 @@ ul {
 
 .leader-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 30px color-mix(in srgb, #000 calc(0.2 * 100%), transparent);
+    border-color: color-mix(in srgb, var(--color-text-primary) 0.15, transparent);
 }
 
 .leader-image-wrapper {
@@ -453,7 +453,7 @@ ul {
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: color-mix(in srgb, #000 calc(0.1 * 100%), transparent);
     border-bottom: 3px solid var(--c-959294);
     transition: border-color var(--transition-base);
 }
@@ -477,7 +477,7 @@ ul {
 .leader-info {
     padding: 1.5rem;
     text-align: center;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent);
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--color-text-primary) 0.02, transparent), transparent);
 }
 
 .leader-name {
@@ -485,7 +485,7 @@ ul {
     display: block;
     font-size: 1.4rem;
     font-weight: 600;
-    color: #FFFFFF;
+    color: var(--color-text-primary);
     margin-bottom: 0.5rem;
 }
 
@@ -551,7 +551,7 @@ ul {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     background-color: var(--c-7F2B3E);
-    color: #FFFFFF;
+    color: var(--color-text-primary);
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -667,7 +667,7 @@ ul {
     .mobile-menu-btn span {
         width: 100%;
         height: 2px;
-        background-color: #FFFFFF;
+        background-color: var(--color-text-primary);
         border-radius: 10px;
         transition: all 0.3s linear;
         position: relative;

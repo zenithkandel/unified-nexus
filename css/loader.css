@@ -3,12 +3,12 @@
    ========================================================================== */
 
 :root {
-    --color-loader-bg: #151113;
+    --color-loader-bg: var(--color-bg-base);
     /* Dark aubergine/charcoal base */
-    --color-loader-text: #F5F0E8;
-    --color-loader-bar: #7F2B3E;
+    --color-loader-text: var(--color-text-primary);
+    --color-loader-bar: var(--color-accent-terracotta);
     /* Aubergine Rose accent */
-    --color-ink-muted: #AAAAAA;
+    --color-ink-muted: var(--color-text-secondary);
     --font-label: 'Playfair Display', serif;
     --font-mono: 'IBM Plex Mono', monospace;
     --space-1: 0.5rem;
@@ -118,7 +118,7 @@
     font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 400;
     letter-spacing: 0.3em;
-    color: rgba(245, 240, 232, 0.9);
+    color: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
     margin-bottom: var(--space-1);
     text-transform: uppercase;
 }
@@ -143,7 +143,7 @@
 .loader__progress-track {
     width: 100%;
     height: 2px;
-    background-color: rgba(245, 240, 232, 0.15);
+    background-color: color-mix(in srgb, var(--color-text-primary) 15%, transparent);
     position: relative;
     overflow: hidden;
 }
@@ -181,7 +181,7 @@
    Loaded State
    -------------------------------------------------------------------------- */
 .loader__status--loaded {
-    color: rgba(245, 240, 232, 0.9);
+    color: color-mix(in srgb, var(--color-text-primary) 90%, transparent);
 }
 
 /* --------------------------------------------------------------------------
