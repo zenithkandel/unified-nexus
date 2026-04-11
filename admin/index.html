@@ -4,16 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Unified Nexus Admin Console</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/variables.css" />
     <link rel="stylesheet" href="../css/themes.css" />
     <link rel="stylesheet" href="../css/base.css" />
     <script src="https://zenithkandel.com.np/fontawesome/zenith-icons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <style>
       :root {
         --sidebar-width: 260px;
         --bottom-nav-height: 70px;
         --admin-bg: color-mix(in srgb, var(--surface-0) 50%, var(--surface-1));
         --card-bg: var(--surface-panel);
+        --font-body: 'Plus Jakarta Sans', sans-serif;
+        --font-heading: 'Plus Jakarta Sans', sans-serif;
       }
       body {
         margin: 0;
@@ -365,17 +369,17 @@
     <!-- Navigation -->
     <aside class="sidebar">
       <div class="brand">
-        <i class="fa-duotone fa-shield-keyhole"></i> <span>Nexus Admin</span>
+        <i class="fa-sharp fa-sharp fa-solid fa-shield-keyhole"></i> <span>Nexus Admin</span>
       </div>
       <nav class="nav-links">
         <a href="#clubs" class="nav-link active" data-view="clubsView">
-          <i class="fa-duotone fa-layer-group"></i> <span>Clubs</span>
+          <i class="fa-sharp fa-sharp fa-solid fa-layer-group"></i> <span>Clubs</span>
         </a>
         <a href="#executive" class="nav-link" data-view="execView">
-          <i class="fa-duotone fa-users"></i> <span>Executive</span>
+          <i class="fa-sharp fa-sharp fa-solid fa-users"></i> <span>Executive</span>
         </a>
         <a href="#applications" class="nav-link" data-view="appsView">
-          <i class="fa-duotone fa-file-signature"></i> <span>Apps</span>
+          <i class="fa-sharp fa-sharp fa-solid fa-file-signature"></i> <span>Applications</span>
         </a>
         <a
           style="margin-top: auto"
@@ -383,12 +387,12 @@
           class="nav-link"
           data-view="passwordView"
         >
-          <i class="fa-duotone fa-key"></i>
+          <i class="fa-sharp fa-sharp fa-solid fa-key"></i>
           <span style="display: none" id="mobilePassLabel">Pass</span
           ><span id="deskPassLabel">Password</span>
         </a>
         <a href="#" class="nav-link" id="logoutBtn" style="color: var(--error)">
-          <i class="fa-duotone fa-arrow-right-from-bracket"></i>
+          <i class="fa-sharp fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </a>
       </nav>
@@ -401,7 +405,7 @@
         <div class="view-header">
           <h2>Clubs Management</h2>
           <button class="btn btn-primary" onclick="openModal('clubModal')">
-            <i class="fa-solid fa-plus"></i> Add Club
+            <i class="fa-sharp fa-solid fa-plus"></i> Add Club
           </button>
         </div>
         <div class="cards-grid" id="clubsGrid">Loading clubs...</div>
@@ -412,7 +416,7 @@
         <div class="view-header">
           <h2>Executive Members</h2>
           <button class="btn btn-primary" onclick="openModal('execModal')">
-            <i class="fa-solid fa-plus"></i> Add Member
+            <i class="fa-sharp fa-solid fa-plus"></i> Add Member
           </button>
         </div>
         <div class="cards-grid" id="execGrid">Loading executives...</div>
@@ -451,6 +455,20 @@
       </section>
     </main>
 
+        <!-- View Application Modal -->
+    <div class="modal-overlay" id="appModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>View Application</h3>
+          <button class="close-btn" onclick="closeModal('appModal')">
+            <i class="fa-sharp fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div id="appModalContent" style="line-height: 1.6; font-size: 0.95rem;">
+        </div>
+      </div>
+    </div>
+
     <!-- Modals -->
     <!-- Club Modal -->
     <div class="modal-overlay" id="clubModal">
@@ -458,7 +476,7 @@
         <div class="modal-header">
           <h3 id="clubModalTitle">Add Club</h3>
           <button class="close-btn" onclick="closeModal('clubModal')">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
           </button>
         </div>
         <form id="clubForm">
@@ -535,7 +553,7 @@
         <div class="modal-header">
           <h3 id="execModalTitle">Add Executive</h3>
           <button class="close-btn" onclick="closeModal('execModal')">
-            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-sharp fa-solid fa-xmark"></i>
           </button>
         </div>
         <form id="execForm">
@@ -548,16 +566,7 @@
             <label>Role</label>
             <input type="text" id="execRole" name="role_title" required />
           </div>
-          <div class="form-group">
-            <label>Display Order</label>
-            <input
-              type="number"
-              id="execOrder"
-              name="display_order"
-              value="0"
-              required
-            />
-          </div>
+          <input type="hidden" id="execOrder" name="display_order" value="0" />
           <div class="form-group">
             <label>Photo (Leave blank to keep existing)</label>
             <input type="file" id="execImage" name="photo" accept="image/*" />
@@ -591,6 +600,13 @@
     </div>
 
     <script>
+            // Escape key to close modals
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-overlay.active').forEach(m => window.closeModal(m.id));
+        }
+      });
+
       // Make label adapt for mobile inside the specific button
       if (window.innerWidth <= 768) {
         document.getElementById("deskPassLabel").style.display = "none";
@@ -601,6 +617,7 @@
       let csrfToken = "";
       let activeClubs = [];
       let activeExecs = [];
+      let activeApps = [];
 
       // Globals
       window.openModal = (id) => {
@@ -650,6 +667,28 @@
         }
       }
 
+            // Exec Reordering SortableJS
+      let execSortable = null;
+      async function setupExecSortable() {
+        if (!window.Sortable) return;
+        const grid = document.getElementById("execGrid");
+        if (execSortable) execSortable.destroy();
+        execSortable = Sortable.create(grid, {
+          animation: 150,
+          ghostClass: "sortable-ghost",
+          onEnd: async function () {
+            const itemIds = Array.from(grid.children).map(c => c.dataset.id).filter(id => id);
+            try {
+              await adminFetch("api/admin/executive-reorder.php", "POST", { order: itemIds });
+              loadExecs();
+            } catch (e) {
+              console.error("Reorder failed", e);
+              loadExecs();
+            }
+          }
+        });
+      }
+
       // Navigation Logic
       document.querySelectorAll(".nav-link[data-view]").forEach((link) => {
         link.addEventListener("click", (e) => {
@@ -683,7 +722,7 @@
 
       function ImagePreview(url) {
         if (!url)
-          return `<div class="card-img"><i class="fa-duotone fa-image"></i></div>`;
+          return `<div class="card-img"><i class="fa-sharp fa-sharp fa-solid fa-image"></i></div>`;
         return `<div class="card-img"><img src="../${url}" alt="Preview" /></div>`;
       }
 
@@ -698,11 +737,11 @@
               ${ImagePreview(c.hero_image_path)}
               <div class="card-body">
                 <div class="card-title">${c.name}</div>
-                <div class="card-meta"><i class="fa-solid fa-crown"></i> President: ${c.president_name} &bull; Order: ${c.display_order} &bull; ${c.is_active ? "Active" : "Inactive"}</div>
+                <div class="card-meta"><i class="fa-sharp fa-solid fa-crown"></i> President: ${c.president_name} &bull; Order: ${c.display_order} &bull; ${c.is_active ? "Active" : "Inactive"}</div>
                 <p style="font-size: 0.9rem; flex-grow:1; margin:0;">${c.description.substring(0, 80)}...</p>
                 <div class="card-actions">
-                  <button class="btn btn-edit" onclick="editClub(${c.id})"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                  <button class="btn btn-danger" onclick="deleteClub(${c.id})"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                  <button class="btn btn-edit" onclick="editClub(${c.id})"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button>
+                  <button class="btn btn-danger" onclick="deleteClub(${c.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete</button>
                 </div>
               </div>
             </div>`;
@@ -717,23 +756,25 @@
         grid.innerHTML = "";
         execs.forEach((e) => {
           grid.innerHTML += `
-            <div class="card">
+            <div class="card" data-id="${e.id}" style="cursor: grab;">
               ${ImagePreview(e.photo_path)}
               <div class="card-body">
                 <div class="card-title">${e.full_name}</div>
-                <div class="card-meta"><i class="fa-solid fa-briefcase"></i> Role: ${e.role_title} &bull; Order: ${e.display_order}</div>
+                <div class="card-meta"><i class="fa-sharp fa-solid fa-briefcase"></i> Role: ${e.role_title} &bull; Order: ${e.display_order}</div>
                 <div class="card-actions" style="margin-top:auto;">
-                  <button class="btn btn-edit" onclick="editExec(${e.id})"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                  <button class="btn btn-danger" onclick="deleteExec(${e.id})"><i class="fa-solid fa-trash-can"></i> Delete</button>
+                  <button class="btn btn-edit" onclick="editExec(${e.id})"><i class="fa-sharp fa-solid fa-pen-to-square"></i> Edit</button>
+                  <button class="btn btn-danger" onclick="deleteExec(${e.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete</button>
                 </div>
               </div>
             </div>`;
         });
         if (!execs.length) grid.innerHTML = "<p>No executives found.</p>";
+        setupExecSortable();
       }
 
       async function loadApps() {
         const apps = await adminFetch("api/admin/applications-list.php");
+        activeApps = apps;
         const grid = document.getElementById("appsGrid");
         grid.innerHTML = "";
         apps.forEach((a) => {
@@ -741,11 +782,12 @@
             <div class="card">
               <div class="card-body">
                 <div class="card-title">${a.applicant_name}</div>
-                <div class="card-meta"><i class="fa-solid fa-envelope"></i> ${a.contact_email} &bull; ${a.contact_phone || "No phone"}</div>
-                <div class="card-meta" style="margin:0;"><i class="fa-solid fa-house-flag"></i> applied to: Club #${a.selected_club_id}</div>
+                <div class="card-meta"><i class="fa-sharp fa-solid fa-envelope"></i> ${a.contact_email} &bull; ${a.contact_phone || "No phone"}</div>
+                <div class="card-meta" style="margin:0;"><i class="fa-sharp fa-solid fa-house-flag"></i> applied to: Club #${a.selected_club_id}</div>
                 <p style="font-size: 0.9rem; flex-grow:1; margin-top:1rem; background: var(--surface-0); padding: 0.5rem; border-radius: 4px;">"${a.message}"</p>
                 <div class="card-actions">
-                  <button class="btn btn-danger" onclick="deleteApp(${a.id})"><i class="fa-solid fa-trash-can"></i> Delete App</button>
+                  <button class="btn btn-primary" onclick="viewApp(${a.id})"><i class="fa-sharp fa-solid fa-eye"></i> View</button>
+                  <button class="btn btn-danger" onclick="deleteApp(${a.id})"><i class="fa-sharp fa-solid fa-trash-can"></i> Delete App</button>
                 </div>
               </div>
             </div>`;
@@ -833,6 +875,21 @@
           closeModal("execModal");
           loadExecs();
         });
+
+            window.viewApp = (id) => {
+        const a = activeApps.find(x => x.id == id);
+        if (!a) return;
+        document.getElementById("appModalContent").innerHTML = `
+          <p><strong>Applicant Name:</strong> ${a.applicant_name}</p>
+          <p><strong>Email:</strong> ${a.contact_email}</p>
+          <p><strong>Phone:</strong> ${a.contact_phone || "N/A"}</p>
+          <p><strong>Portfolio URL:</strong> <a href="${a.portfolio_url}" target="_blank">${a.portfolio_url || "None"}</a></p>
+          <p><strong>Selected Club ID:</strong> ${a.selected_club_id}</p>
+          <hr style="border:0; border-top:1px solid var(--line-soft); margin: 1.5rem 0;" />
+          <p><strong>Message:</strong><br/> ${(a.message || "").replace(/\n/g, "<br>")}</p>
+        `;
+        openModal("appModal");
+      };
 
       window.deleteApp = async (id) => {
         if (!confirm("Delete this application forever?")) return;

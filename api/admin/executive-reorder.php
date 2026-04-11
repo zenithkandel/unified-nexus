@@ -22,11 +22,11 @@ try {
     $pdo = app_db();
     $pdo->beginTransaction();
     $stmt = $pdo->prepare('UPDATE executive_members SET display_order = :order WHERE id = :id');
-    
+
     foreach ($payload['order'] as $index => $id) {
-        $stmt->execute([':order' => $index + 1, ':id' => (int)$id]);
+        $stmt->execute([':order' => $index + 1, ':id' => (int) $id]);
     }
-    
+
     $pdo->commit();
     json_success('Order updated successfully.');
 } catch (Throwable $e) {
