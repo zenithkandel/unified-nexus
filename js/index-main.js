@@ -31,16 +31,64 @@ function initThreeJS() {
   container.appendChild(renderer.domElement);
 
   // Dynamic Theme Colors for geometry
-  const rootStyles = getComputedStyle(document.documentElement);
-  const getHex = (varName) => parseInt(rootStyles.getPropertyValue(varName).trim().replace('#', '0x'), 16) || 0xAAAAAA;
+  const getSafeHex = (varName) => {
+    let raw = getComputedStyle(document.documentElement).getPropertyValue(varName).trim();
+    if (!raw) return 0xAAAAAA;
 
-  const colors = [
-    getHex("--c-716F75"),
-    getHex("--c-959294"),
-    getHex("--c-AAAAAA"),
-    getHex("--c-7F2B3E"),
-    getHex("--c-661B28")
+    let hex = raw.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+    if (hex.length !== 6) return 0xAAAAAA;
+
+    let r = parseInt(hex.substring(0, 2), 16) / 255;
+    let g = parseInt(hex.substring(2, 4), 16) / 255;
+    let b = parseInt(hex.substring(4, 6), 16) / 255;
+
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max === min) {
+      h = s = 0;
+    } else {
+      let d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+      h /= 6;
+    }
+
+    // Clamp lightness to prevent extremely bright or pitch black particles covering text
+    l = Math.max(0.3, Math.min(l, 0.6));
+
+    let q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    let p = 2 * l - q;
+    let hue2rgb = (p, q, t) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1 / 6) return p + (q - p) * 6 * t;
+      if (t < 1 / 2) return q;
+      if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+      return p;
+    };
+
+    let R = Math.round(hue2rgb(p, q, h + 1 / 3) * 255).toString(16).padStart(2, '0');
+    let G = Math.round(hue2rgb(p, q, h) * 255).toString(16).padStart(2, '0');
+    let B = Math.round(hue2rgb(p, q, h - 1 / 3) * 255).toString(16).padStart(2, '0');
+
+    return parseInt(`0x${R}${G}${B}`);
+  };
+
+  const getColors = () => [
+    getSafeHex("--c-716F75"),
+    getSafeHex("--c-959294"),
+    getSafeHex("--c-AAAAAA"),
+    getSafeHex("--c-7F2B3E"),
+    getSafeHex("--c-661B28")
   ];
+
+  const colors = getColors();
 
   const geometries = [
     new THREE.TetrahedronGeometry(0.8), // Triangle like
@@ -84,6 +132,13 @@ function initThreeJS() {
 
   // Expose to global scope so the theme switcher can access it
   window.globalParticlesArray = particles;
+
+  window.updateParticlesTheme = () => {
+    const updatedColors = getColors();
+    particles.forEach(p => {
+      p.material.color.setHex(updatedColors[Math.floor(Math.random() * updatedColors.length)]);
+    });
+  };
 
   function animate() {
     requestAnimationFrame(animate);
@@ -318,6 +373,7 @@ const setLightMode = () => {
     themeToggleBtn.innerHTML = `<svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
   }
   localStorage.setItem('nexusTheme', 'light');
+  if (window.updateParticlesTheme) window.updateParticlesTheme();
 };
 
 const setDarkMode = () => {
@@ -326,6 +382,7 @@ const setDarkMode = () => {
     themeToggleBtn.innerHTML = `<svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
   }
   localStorage.setItem('nexusTheme', 'dark');
+  if (window.updateParticlesTheme) window.updateParticlesTheme();
 };
 
 // Initialize
