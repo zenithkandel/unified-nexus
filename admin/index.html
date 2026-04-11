@@ -487,6 +487,13 @@
       }
 
       /* MOBILE RESPONSIVENESS */
+      .mobile-menu-overlay {
+        display: none;
+      }
+      .hamburger-btn {
+        display: none;
+      }
+      
       @media (max-width: 768px) {
         .sidebar {
           width: 100%;
@@ -495,6 +502,7 @@
           border-right: none;
           border-top: 1px solid var(--line);
           flex-direction: row;
+          z-index: 1000;
         }
         .brand {
           display: none;
@@ -520,6 +528,72 @@
           border-left: none;
           border-top-color: var(--accent);
         }
+        
+        .desktop-only {
+          display: none !important;
+        }
+        
+        .hamburger-btn {
+          display: flex;
+          background: none;
+          border: none;
+          color: var(--text-muted);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 0.25rem;
+          font-size: 0.65rem;
+          padding: 0.5rem;
+          font-family: var(--font);
+          cursor: pointer;
+        }
+        .hamburger-btn i {
+          font-size: 1.25rem;
+        }
+        .hamburger-btn:hover, .hamburger-btn.active {
+          color: var(--text);
+        }
+
+        .mobile-menu-overlay {
+          display: flex;
+          position: fixed;
+          bottom: var(--bottom-nav-h);
+          right: 0;
+          width: 200px;
+          background: var(--bg-panel);
+          border: 1px solid var(--line);
+          border-right: none;
+          border-bottom: none;
+          border-radius: 12px 0 0 0;
+          flex-direction: column;
+          padding: 0.5rem 0;
+          transform: translateY(100%);
+          opacity: 0;
+          pointer-events: none;
+          transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          z-index: 999;
+          box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+        }
+        .mobile-menu-overlay.active {
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+        .mobile-menu-overlay .nav-link {
+          flex-direction: row;
+          padding: 1rem 1.5rem;
+          font-size: 0.95rem;
+          border-top: none;
+          border-left: 2px solid transparent;
+        }
+        .mobile-menu-overlay .nav-link i {
+          font-size: 1.1rem;
+          width: 20px;
+        }
+        .mobile-menu-overlay .nav-link:hover {
+          background: var(--bg-hover);
+        }
+
 
         .main-content {
           margin-left: 0;
@@ -557,21 +631,39 @@
         <a
           style="margin-top: auto"
           href="#"
-          class="nav-link"
+          class="nav-link desktop-only"
           id="adminThemeToggle"
         >
           <i class="fa-sharp fa-solid fa-moon" id="adminThemeIcon"></i>
-          <span>Toggle Theme</span>
+          <span>Theme</span>
         </a>
         <a href="#password" class="nav-link" data-view="passwordView">
           <i class="fa-sharp fa-solid fa-key"></i> <span>Security</span>
         </a>
-        <a href="#" class="nav-link danger" id="logoutBtn">
+        <a href="#" class="nav-link danger desktop-only" id="logoutBtn">
           <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </a>
+        
+        <!-- Mobile hamburger menu trigger -->
+        <button class="hamburger-btn" id="mobileOptionsBtn">
+          <i class="fa-sharp fa-solid fa-bars"></i>
+          <span>More</span>
+        </button>
       </nav>
     </aside>
+
+    <!-- Mobile slide-up menu overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuPanel">
+      <a href="#" class="nav-link" id="adminThemeToggleMobile">
+        <i class="fa-sharp fa-solid fa-moon" id="adminThemeIconMobile"></i>
+        <span>Toggle Theme</span>
+      </a>
+      <a href="#" class="nav-link danger" id="logoutBtnMobile">
+        <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
 
     <!-- Main View -->
     <main class="main-content">
