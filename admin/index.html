@@ -493,7 +493,7 @@
       .hamburger-btn {
         display: none;
       }
-      
+
       @media (max-width: 768px) {
         .sidebar {
           width: 100%;
@@ -528,11 +528,11 @@
           border-left: none;
           border-top-color: var(--accent);
         }
-        
+
         .desktop-only {
           display: none !important;
         }
-        
+
         .hamburger-btn {
           display: flex;
           background: none;
@@ -550,7 +550,8 @@
         .hamburger-btn i {
           font-size: 1.25rem;
         }
-        .hamburger-btn:hover, .hamburger-btn.active {
+        .hamburger-btn:hover,
+        .hamburger-btn.active {
           color: var(--text);
         }
 
@@ -572,7 +573,7 @@
           pointer-events: none;
           transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
           z-index: 999;
-          box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+          box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
         }
         .mobile-menu-overlay.active {
           transform: translateY(0);
@@ -593,7 +594,6 @@
         .mobile-menu-overlay .nav-link:hover {
           background: var(--bg-hover);
         }
-
 
         .main-content {
           margin-left: 0;
@@ -644,7 +644,7 @@
           <i class="fa-sharp fa-solid fa-arrow-right-from-bracket"></i>
           <span>Logout</span>
         </a>
-        
+
         <!-- Mobile hamburger menu trigger -->
         <button class="hamburger-btn" id="mobileOptionsBtn">
           <i class="fa-sharp fa-solid fa-bars"></i>
@@ -1282,41 +1282,79 @@
           document.getElementById("passwordForm").reset();
         });
 
+      const triggerLogout = async (e) => {
+        if (e) e.preventDefault();
+        await fetch("../api/admin/logout.php", { method: "POST" });
+        window.location.href = "login.html";
+      };
+
       document
         .getElementById("logoutBtn")
-        .addEventListener("click", async (e) => {
-          e.preventDefault();
-          await fetch("../api/admin/logout.php", { method: "POST" });
-          window.location.href = "login.html";
-        });
+        .addEventListener("click", triggerLogout);
+      document
+        .getElementById("logoutBtnMobile")
+        .addEventListener("click", triggerLogout);
 
       // Theme Switcher Logic
       const themeToggleBtn = document.getElementById("adminThemeToggle");
+      const themeToggleBtnMobile = document.getElementById(
+        "adminThemeToggleMobile",
+      );
       const themeIcon = document.getElementById("adminThemeIcon");
+      const themeIconMobile = document.getElementById("adminThemeIconMobile");
       const docElement = document.documentElement;
 
       const savedTheme = localStorage.getItem("nexusTheme") || "dark";
       docElement.setAttribute("data-theme", savedTheme);
       updateThemeIcon(savedTheme);
 
-      themeToggleBtn.addEventListener("click", (e) => {
-        e.preventDefault();
+      const handleThemeToggle = (e) => {
+        if (e) e.preventDefault();
         const currentTheme = docElement.getAttribute("data-theme");
         const newTheme = currentTheme === "dark" ? "light" : "dark";
         docElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("nexusTheme", newTheme);
         updateThemeIcon(newTheme);
-      });
+      };
+
+      themeToggleBtn.addEventListener("click", handleThemeToggle);
+      themeToggleBtnMobile.addEventListener("click", handleThemeToggle);
 
       function updateThemeIcon(theme) {
         if (theme === "dark") {
           themeIcon.classList.remove("fa-sun");
           themeIcon.classList.add("fa-moon");
+          themeIconMobile.classList.remove("fa-sun");
+          themeIconMobile.classList.add("fa-moon");
         } else {
           themeIcon.classList.remove("fa-moon");
           themeIcon.classList.add("fa-sun");
+          themeIconMobile.classList.remove("fa-moon");
+          themeIconMobile.classList.add("fa-sun");
         }
       }
+
+      // Mobile Hamburger Menu
+      const mobileOptionsBtn = document.getElementById("mobileOptionsBtn");
+      const mobileMenuPanel = document.getElementById("mobileMenuPanel");
+
+      mobileOptionsBtn.addEventListener("click", () => {
+        mobileMenuPanel.classList.toggle("active");
+        mobileOptionsBtn.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (
+          mobileMenuPanel &&
+          mobileOptionsBtn &&
+          !mobileMenuPanel.contains(e.target) &&
+          !mobileOptionsBtn.contains(e.target)
+        ) {
+          mobileMenuPanel.classList.remove("active");
+          mobileOptionsBtn.classList.remove("active");
+        }
+      });
 
       async function initAdmin() {
         try {
