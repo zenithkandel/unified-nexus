@@ -151,8 +151,6 @@
     </div>
 
     <script type="module">
-      import { apiFetch } from "../js/api-client.js";
-
       const loginForm = document.getElementById("loginForm");
       const loginStatus = document.getElementById("loginStatus");
 
@@ -164,23 +162,27 @@
         const password = document.getElementById("adminPassword").value;
 
         try {
-          const res = await apiFetch("../api/admin/login.php", {
+          const res = await fetch("../api/admin/login.php", {
             method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
             body: JSON.stringify({ password }),
           });
+          const data = await res.json();
 
-          if (res.status === "success") {
+          if (data.success) {
             loginStatus.textContent = "Success! Redirecting...";
             loginStatus.className = "status success";
             setTimeout(() => {
               window.location.href = "index.html";
             }, 500);
           } else {
-            loginStatus.textContent = res.message || "Invalid credentials.";
+            loginStatus.textContent = data.message || "Invalid credentials.";
             loginStatus.className = "status error";
           }
         } catch (err) {
-          loginStatus.textContent = err.message || "Connection error.";
+          loginStatus.textContent = "Connection error.";
           loginStatus.className = "status error";
         }
       });
