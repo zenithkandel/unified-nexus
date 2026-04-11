@@ -24,7 +24,6 @@ CREATE TABLE IF NOT EXISTS executive_members (
 	is_active TINYINT(1) NOT NULL DEFAULT 1,
 	created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	UNIQUE KEY uniq_executive_display_order (display_order),
 	INDEX idx_executive_display_order (display_order)
 ) ENGINE=InnoDB;
 
