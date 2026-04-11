@@ -104,11 +104,13 @@ function initThreeJS() {
     const geom =
       geometries[Math.floor(Math.random() * geometries.length)];
     const col = colors[Math.floor(Math.random() * colors.length)];
+    const baseOpacity = Math.random() * 0.1 + 0.05; // highly translucent (0.05 to 0.15)
+
     const mat = new THREE.MeshBasicMaterial({
       color: col,
       wireframe: Math.random() > 0.3, // Mostly wireframe
       transparent: true,
-      opacity: Math.random() * 0.3 + 0.1, // very translucent (0.1 to 0.4)
+      opacity: baseOpacity,
     });
 
     const mesh = new THREE.Mesh(geom, mat);
@@ -124,6 +126,8 @@ function initThreeJS() {
       ry: (Math.random() - 0.5) * 0.02,
       dx: (Math.random() - 0.5) * 0.01,
       dy: (Math.random() - 0.5) * 0.01,
+      baseOpacity: baseOpacity,
+      targetOpacity: baseOpacity
     };
 
     scene.add(mesh);
@@ -148,6 +152,9 @@ function initThreeJS() {
       p.rotation.y += p.userData.ry;
       p.position.x += p.userData.dx;
       p.position.y += p.userData.dy;
+
+      // Smoothly animate opacity towards target
+      p.material.opacity += (p.userData.targetOpacity - p.material.opacity) * 0.05;
 
       // Wrap around screen
       if (p.position.x > 20) p.position.x = -20;
@@ -215,14 +222,16 @@ window.addEventListener("scroll", () => {
       canvasContainer.classList.add("scrolled-bg");
       if (window.globalParticlesArray) {
         window.globalParticlesArray.forEach((p, i) => {
-          if (i % 2 === 0) p.visible = false;
+          // Increase opacity by a factor of 2.5 when scrolled down for better visibility
+          p.userData.targetOpacity = Math.min(p.userData.baseOpacity * 2.5, 0.4);
+          p.visible = true; // Ensure they stay visible
         });
       }
     } else {
       canvasContainer.classList.remove("scrolled-bg");
       if (window.globalParticlesArray) {
         window.globalParticlesArray.forEach((p, i) => {
-          p.visible = true;
+          p.userData.targetOpacity = p.userData.baseOpacity;
         });
       }
     }
