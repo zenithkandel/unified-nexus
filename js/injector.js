@@ -67,7 +67,7 @@
             const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
             return Math.round(255 * color).toString(16).padStart(2, '0');
         };
-        return \`#\${f(0)}\${f(8)}\${f(4)}\`;
+        return `#${f(0)}${f(8)}${f(4)}`;
   }
 
   const themes = [];
@@ -75,7 +75,7 @@
   for (let i = 0; i < 50; i++) {
     const rH = Math.floor((i / 50) * 360);
     const palette = {
-      name: \`H:\${rH}\`,
+      name: `H:${rH}`,
       vars: {
         '--color-bg-base': hslToHex(rH, 15, 8),
         '--c-57545B': hslToHex(rH, 15, 8),
@@ -105,16 +105,16 @@
   themes.forEach(t => {
     const item = document.createElement('div');
     item.className = 'theme-item';
-    item.title = \`Apply Theme \${t.name}\`;
+    item.title = `Apply Theme ${t.name}`;
     
     // Split item to show Primary Accent and Bg Base
-    item.style.background = \`linear-gradient(135deg, \${t.vars['--c-7F2B3E']} 50%, \${t.vars['--c-57545B']} 50%)\`;
+    item.style.background = `linear-gradient(135deg, ${t.vars['--c-7F2B3E']} 50%, ${t.vars['--c-57545B']} 50%)`;
     
     item.onclick = () => {
       Object.keys(t.vars).forEach(k => {
         document.documentElement.style.setProperty(k, t.vars[k]);
       });
-      console.log(\`[Injector] Applied theme: \${t.name}\`);
+      console.log(`[Injector] Applied theme: ${t.name}`);
     };
     
     grid.appendChild(item);
